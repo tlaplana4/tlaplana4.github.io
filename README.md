@@ -3,8 +3,8 @@
 ## Que Es aixo?
 Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.github.io), el primer projecte de l'optativa de Programació a l'Institut Pompeu Fabra de Martorell
 
-## Altres Alumnes
-mvidal401
+## Repositoris dels altres Alumnes
+[Marti Vidal](https:/github.com/mvidal401/mvidal401.github.io)\
 mszavo4
 gerardleon21
 janbarriga
