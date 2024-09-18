@@ -8,6 +8,6 @@ Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.gith
 [Miguel Angel Szabo](https://github.com/mszabo4/mszabo4.github.io)\
 [Gerard Leon](https://github.com/gerardleon21/gerardleon21.github.io)\
 [Jan Barriga](https://github.com/JanBarriga/jbarriga.github.io)\
-ecastro4\
-omesa4\
-pdieguez4
+[Eric Castro](https://github.com/ecastro4/ecastro4.github.io)\
+[Oscar Mesa](https://github.com/omesa4/omesa4.github.io)\
+[Pedro Alejandro Dieguez](https://github.com/pdieguez4/pdieguez4.github.io)
