@@ -40,7 +40,43 @@ body {
   <!-- <script src="../addons/p5.sound.js"></script> -->
   <script src="sketch.js"></script>
 </head>
-<body>
+<body><!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <div class="container-fluid">
+       <a class="navbar-brand d-flex align-items-center" href="#">
+    <img src="/files/images/logo.png" alt="Logo" width="50" class="logo">
+    <span class="brand-text">Web de Teo</span>
+</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Inici</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tema 1</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Projectes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Projecte 1</a>
+                        <a class="dropdown-item" href="#">Projecte 2</a>
+                        <a class="dropdown-item" href="#">Projecte 3</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tema 2</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Contingut principal -->
+<div class="content-container">
   <main>
   </main>
     <p>El fons gris esta fet amb la funció "background" (Si un numero esta en parentesis sol es considera escala de grisos)</p>
