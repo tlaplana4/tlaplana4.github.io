@@ -7,7 +7,7 @@ Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.gith
 [Marti Vidal](https://github.com/mvidal401/mvidal401.github.io)\
 [Miguel Angel Szabo](https://github.com/mszabo4/mszabo4.github.io)\
 [Gerard Leon](https://github.com/gerardleon21/gerardleon21.github.io)\
-janbarriga\
+[Jan Barriga](https://github.com/JanBarriga/jbarriga.github.io)\
 ecastro4\
 omesa4\
 pdieguez4
