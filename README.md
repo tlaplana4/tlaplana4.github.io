@@ -10,4 +10,6 @@ Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.gith
 [Jan Barriga](https://github.com/JanBarriga/jbarriga.github.io)\
 [Eric Castro](https://github.com/ecastro4/ecastro4.github.io)\
 [Oscar Mesa](https://github.com/omesa4/omesa4.github.io)\
-[Pedro Alejandro Dieguez](https://github.com/pdieguez4/pdieguez4.github.io)
+[Pedro Alejandro Dieguez](https://github.com/pdieguez4/pdieguez4.github.io)\
+[Martí Cadenas](https://github.com/mcadenas4/mcadenas4.github.io)\
+[Alex Cruz](https://github.com/acruz4pompeu/acruz4pompeu.github.io)
