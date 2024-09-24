@@ -9,8 +9,8 @@ function draw() {
   let vol= mic.getLevel();
   let vulls= map(vol,0,1,0,100);
   let vboca= map(vol,0,1,0,300);
-  console.log("vulls is "vulls)
-  console.log("vol is "vol)
+  console.log("vulls is "+vulls)
+  console.log("vol is "+vol)
   background(127);
   //Cara
   fill(227,192,139);
