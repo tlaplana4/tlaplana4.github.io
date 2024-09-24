@@ -1,46 +1,35 @@
+let mic;
+
 function setup() {
- createCanvas(480, 120);
+  createCanvas(1000, 500);
+  mic=new p5.AudioIn();
+  mic.start();
 }
 
 function draw() {
-  background(204);
- 
- //Ocell esquerra
- beginShape();
- vertex(50,120);
- vertex(100,90);
- vertex(110,60);
- vertex(80,20);
- vertex(210,60);
- vertex(160,80);                                      
- vertex(200,90);
- vertex(140,100);
- vertex(130,120);
- endShape();
- fill(0);
- ellipse(155,60,8,8);
- 
- //Ocell dreta
- beginShape();
- vertex(370,120);
-  vertex(360,90);
-  vertex(290,80);
-  vertex(340,70);
-  vertex(280,50);
-  vertex(420,10);
-  vertex(390,50);
-  vertex(410,90);
-  vertex(460,120);
- endShape();
- fill(0);
- ellipse(345,50,10,10);
-
-
-
-
-
-
-
-
-
+  background(220);
+  vol=mic.getLevel();
+  vpic=map(vol,0,1,0,10);
+  beginShape();
+  vertex(60,10);
+  //pic
+  vertex(40,30);
+  vertex(20,40);
+  vertex(40,40);
+  vertex(20,40+vpic);
+  vertex(40,50);
+  //cos
+  vertex(60,90);
+  vertex(90,90);
+  vertex(120,40);
+  //ploma
+  vertex(140,40);
+  vertex(135,35);
+  vertex(140,30);
+  vertex(130,30);
+  vertex(120,40);
+  //cos
+  vertex(70,30);
+  vertex(60,10);
+  endShape();
 }
