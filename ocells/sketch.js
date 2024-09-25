@@ -9,7 +9,7 @@ function setup() {
 function draw() {
   background(220);
   vol=mic.getLevel();
-  vpic=map(vol,0,1,0,10);
+  vpic=map(vol,0,1,0,100);
   beginShape();
   vertex(600,100);
   //pic
