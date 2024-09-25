@@ -9,8 +9,8 @@ function draw() {
   let pseuRan= noise(frameCount*0.1);
   let ranX = map(pseuRan,0,1,0,600);
   let ranX = map(pseuRan,0,1,0,400);
-  let cX =ranX;
-  let cY =ranY;
+  let cX =300;
+  let cY =250;
   let vol= mic.getLevel();
   let vulls= map(vol,0,1,0,100);
   let vboca= map(vol,0,1,0,300);
