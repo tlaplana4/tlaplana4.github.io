@@ -112,22 +112,16 @@ body {
     <!--un canvas és una zona on hi haura un gràfic que representarà en el nostre cas els 2 braços del robot,
     en aquest cas quedarà un requadre de 400x400 buit fins que apreti calcula la posició-->
     <script>
-        <!--script vol dir que canvio totalment de llenguatge de programació i deixem d'escriure HTML que
-            té els simbols <> i que serveix per fer estuctures estatiques que no es mouen ni són
-            interactives amb llenguatge Javascript-->
-    <p>Em dic Martí i sóc alumne de programació de 1r de batxillerat tecnològic de <a href="https://agora.xtec.cat/ies-pompeu-fabra-martorell/">l'institut Pompeu Fabra</a></p>
-    <p>A continuació veuràs un llistat amb diferents projectes que farem durant el curs:</p>
-    <ul><li>codi amb Javascript, CSS i HTML que construiran una pàgina web on l'usuari itroduirà diferents dades d'un braç robotic i el sistema ens calcularà altres dades i les representarà visuaoment<li>
-        <!--"ul" significa llista desordenada o unordered list i "ol" és llista ordenada en números o ordered list i cada "li" és un element de llista-->
-        <li>Creació d'una obra d'art geomètrica interactiva que reaccioni a la meva veu a través d'un micròfon i a diferents tecles del teclat, al ratolí, que faci moviments repetitius amb sin i cos, moviments aleatoris amb random... Utilitzarem p5.js.</li>
-        <li>Projecte de farmacocinètica: Us deixaré 2 llibre de farmacocinètica amb fòrmules matemàtiques i us donarè un codi inicial de 375 línies on usuari introdueix dades amb un slider com la dosis de fàrmac, la constant d'absorció i la ocnstant d'eliminació, el volum de distribució, la via d'administració (que serà un dropdown que podré trirar oral, intravenosa, transdèrmica, sublingual i inalatòria) nivell tòxic i el sistema em farà un grafic amb unes fòrmules matemàtiques que introduiré i el dibuixarà en un gràfic a temps real i em calculara moltes coses d'interès per un metge o un farmacèutic.</li>
-        <li>Aliments ecològics i convencionals amb C++.</li>
-        <li>Contaminació atmosfèrica d'una ciutat catalana amb R.</li> 
-        <li>Aprenentatge profund o "deep learning" amb Python i amb JavaScript (farem un codi que ens reconeixerà els contorns d'una obra d'art i ens donarà un codi en p5.js).</li>
-    </ul>
-</div>
-
-<!-- Scripts necessaris -->
+    <!--script vol dir que canvio totalment de llenguatge de programació i deixem d escriure HTML que té els simbols <> i que serveix per fer estuctures estatiques que no es mouen ni són interactives amb llenguatge Javascript -->
+        function calculatePosition()
+        {
+            //agafar les dades introduides per l'usuari
+            let a1 = parseFloat(document.getElementById("a1").value);
+            let a2 = parseFloat(document.getElementById("a2").value);
+            let q1_deg = parseFloat(document.getElementById("q1").value);
+            let q2_deg = parseFloat(document.getElementById("q2").value);
+        }
+            <!-- Scripts necessaris -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
