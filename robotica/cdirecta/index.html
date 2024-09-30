@@ -128,6 +128,27 @@ body {
             output += "<div class='equation'>\\[ x = a1 \\ cos(q1) + a2 \\ cos(q1 + q2) \\]</div>";
             output += "<div class='equation'>\\[ x = a1 \\ sin(q1) + a2 \\ sin(q1 + q2) \\]</div>";
         }
+     <script>
+// Substituir les variables en les equacions
+        output += "<div class='equation'>Substituint els valors:</div>";
+        output += `<div class='equation'>\\[ x = ${a1} \\cos(${q1_deg}&deg;) + ${a2} \\ cos(${q1_deg}&deg; + ${q2_deg}&deg;) \\]</div>`;
+        output += `<div class='equation'>\\[ y = ${a1} \\sin(${q1_deg}&deg;) + ${a2} \\ sin(${q1_deg}&deg; + ${q2_deg}&deg;) \\]</div>`;
+        // Càlculs numèrics detallats
+        let x1 = a1 * Math.cos(q1); // Posició en X del primer braç
+        let x2 = a2 * Math.cos(q1 + q2); // Posició en X del segon braç
+        let y1 = a1 * Math.sin(q1); // Posició en Y del primer braç
+        let y2 = a2 * Math.sin(q1 + q2); // Posició en Y del segon braç
+        output += "<div class='equation'>Desglossant els càlculs:</div>";
+        output += `<div class='equation'>\\[ x_1 = a_1 \\cos(q_1) = ${a1} \\times \\cos(${q1_deg}&deg;) = ${x1.toFixed(2)}\\]</div>`;
+        output += `<div class='equation'>\\[ x_2 = a_2 \\cos(q_1 + q_2) = ${a2} \\times \\cos(${q1_deg}&deg;) + ${q2_deg}&deg;) = ${x2.toFixed(2)}\\]</div>`;
+        output += `<div class='equation'>\\[ y_1 = a_1 \\sin(q_1) = ${a1} \\times \\sin(${q1_deg}&deg;) = ${y1.toFixed(2)}\\]</div>`;
+        output += `<div class='equation'>\\[ y_2 = a_2 \\sin(q_1 + q_2) = ${a2} \\times \\sin(${q1_deg}&deg;) + ${q2_deg}&deg;) = ${y2.toFixed(2)}\\]</div>`;
+        //Càlcul de les coordenades finals (x, y) de la mà del robot
+        let x = x1 + x2;
+        let y = y1 + y2;
+        output += "<div class'equation'>Calculant els resultats numèrics totals:</div>";
+        output += `<div class=
+    </script> 
             <!-- Scripts necessaris -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
