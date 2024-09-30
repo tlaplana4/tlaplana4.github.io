@@ -13,3 +13,4 @@ Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.gith
 [Pedro Alejandro Dieguez](https://github.com/pdieguez4/pdieguez4.github.io)\
 [Martí Cadenas](https://github.com/mcadenas4/mcadenas4.github.io)\
 [Alex Cruz](https://github.com/acruz4pompeu/acruz4pompeu.github.io)
+[Joel Pizarro](https://github.com/jpizarro4)
