@@ -72,6 +72,7 @@ body {
     </div>
 </nav>
 
+
 <!-- Contingut principal -->
 <div class="content-container">
     <h1>Càlcul  de la posició d'un robot amb dos braços</h1>
@@ -79,7 +80,7 @@ body {
     <div> 
              <!-- div es un divisor i conté en aquet cas unes quantes instrucions HTML que severixen per introduir totes les dades que vulgui l'usari-->
         <!-- etiquetes i camp d'entrades per a les dades del robot-->
-        <label>for="a1"> Longitud del primer braç (a1):</label>
+        <label for="a1"> Longitud del primer braç (a1):</label>
             <!--label és una etiqueta que ens ajuda a identificar un text però no es un identificador-->
         <input type="number" id="a1" value="2" step="0.1"> <br><br>
             <!--input vol dir entrada d'informació per part de l'usuari que pot ser de molts tipus, en aquet cas és un número, però podia ser un input type text, date o button que serian  que respectivament que nomes accepta que escrivim text, una data o un boto respectivament, més exemples aqui: https://www.w3schools.com/html/html_form_input_types.asp--> 
@@ -98,15 +99,15 @@ body {
             <!--br significa "break" que deixa una linia en blanc  darrera, com hi ha 2 br hi hauran 2 línies en blanc-->
        
         
-        <label>for="a2"> Longitud del segon braç (a2):</label>
+        <label for="a2"> Longitud del segon braç (a2):</label>
         <input type="number" id="a2" value="1.5" step="0.1"> <br><br>
-        <label>for="q1"> Longitud del primer braç (q1, en graus):</label>
+        <label for="q1"> Longitud del primer braç (q1, en graus):</label>
         <input type="number" id="q1" value="45" step="0.1"> <br><br>
-        <label>for="q2"> Longitud del segon braç (q2, en graus):</label>
+        <label for="q2"> Longitud del segon braç (q2, en graus):</label>
         <input type="number" id="q2" value="30" step="0.1"> <br><br>
         <!-- fins aqui els camps d'entrada de dades de l'usuari per fer el problema-->
         <!-- tots els inputs son com caixes blanques d'entrada d'informació-->
-        <button onclick="caculatePosition()">Calcula la posició</button>
+        <button onclick="calculatePosition()">Calcula la posició</button>
         <!--calcula la posició té forma de botó i quan el cliquem s'executa una funció Javascript anomenada calculatedPosition() que té els parentesis buits perqué no depen de cap parametreo argument.-->
             <!--Button és un tag principal com label-->
             <!--p per paràgraf-->
@@ -121,18 +122,18 @@ body {
             <!-- script vol dir que convio totalment de llenguatge de programació i deixem d'escriure HTML que té els simbols <> i que serveixen per fer estructures estatiques que no es mouen ni són interactives amb llenguatge Javascript-->
         function calculatePosition() {
         //agafar les dades introduides perl'usuari
-        let a1 = parseFloat (document.getElementById("a1")value); //longitud primer braç
-        let a2 = parseFloat (document.getElementById("a2")value); //longitud segon braç
-        let q1_deg = parseFloat (document.getElementById("a1")value); //angle en graus del primer braç
-        let q2_deg = parseFloat (document.getElementById("a1")value); //angle en graus del segon braç
+        let a1 = parseFloat(document.getElementById('a1').value); //longitud primer braç
+        let a2 = parseFloat(document.getElementById('a2').value); //longitud segon braç
+        let q1_deg = parseFloat(document.getElementById('q1').value); //angle en graus del primer braç
+        let q2_deg = parseFloat(document.getElementById('q2').value); //angle en graus del segon braç
             /* let ens permet crear variables locals perque estan dintre de una funció en quet cas (seria variabl global si estiguesi a principi del codi i afectes a tot el codi) que emmagatzzena els valors introduits per l'usuari perque a banda de fer getElementtById aplico el metode .value per asegurarme que agaafo el valo escrit i aplico la funció parseFloat per convertir el valor del l'usuari en un numero decimal o Floatng point number en anglès (si hages parseInt el convertiria en nombres enters).
             En aquet tros de codi de la linia 123 a la 127 hem aconseguit guardar les 4 dades geometriques del nostre robot per fer calculs de la seva posició en la funció de les 4 dades incluides per l'usuari*/
         //convertir graus a radiants per als calculs trigonometrics
         let q1=q1_deg * Math.PI / 180;
-        let q1=q1_deg * Math.PI / 180;
+        let q2=q2_deg * Math.PI / 180;
         //aixó es lo mateix que 2PI/360
         //mostrar les fórmules per calcular la pocició del robot
-        let output += "<div class='equation'>  les equacions per calcular le pocició final del robor son:</div>";
+        let output = "<div class='equation'>  les equacions per calcular le pocició final del robor son:</div>";
         output += "<div class='equation'>\\[ x = a_1 \\ cos(q_1) + a_2 \\cos(q_1 + q_2) \\J </div>";
         output += "<div class='equation'>\\[ x = a_1 \\ sin(q_1) + a_2 \\sin(q_1 + q_2) \\J </div>";
         /* Estic creant una variable anomenada output en Javascript que conte un element <div> o divisor HTML dintre del qual hi han equacions del robot en llenguatge Javascript de la bibliotece (library) mathJax3 que permet veure formules matematiques en una web.
@@ -146,11 +147,11 @@ body {
         let x2 = a2 * Math.cos(q1 + q2); // Posició en X del segon braç
         let y1 = a1 * Math.sin(q1); // Posició en Y del primer braç
         let y2 = a2 * Math.sin(q1 + q2); // Posició en Y del segon braç
-        output += "<div class='equation'> Dessglosant els càlculs: </div>
-        output += "<div class='equation'>\\}{ x_1 = a_1 \\ cos(q_1) = ${a1} \\times \\cos (${q1_deg}&deg;) = $x1.tofixed(2)} </div>';
-        output += "<div class='equation'>\\}{ x_2 = a_2 \\ cos(q_1 + q_2) = ${a2} \\times \\cos (${q1_deg}&deg;) + (${q2_deg}&deg;) = ${x2.tofixed(2)} </div>';
-        output += "<div class='equation'>\\}{ y_1 = a_1 \\ sin(q_1) = ${a1} \\times \\sin (${q1_deg}&deg;) = $y1.tofixed(2)} </div>';
-        output += "<div class='equation'>\\}{ y_2 = a_2 \\ sin(q_1 + q_2) = ${a2} \\times \\sin (${q1_deg}&deg;) + (${q2_deg}&deg;) = ${y2.tofixed(2)} </div>';
+        output += "<div class='equation'>Desglossant els càlculs:</div>";
+            output += `<div class='equation'>\\[ x_1 = a_1 \\cos(q_1) = ${a1} \\times \\cos(${q1_deg}°) = ${x1.toFixed(2)} \\]</div>`;
+            output += `<div class='equation'>\\[ x_2 = a_2 \\cos(q_1 + q_2) = ${a2} \\times \\cos(${q1_deg}° + ${q2_deg}°) = ${x2.toFixed(2)} \\]</div>`;
+            output += `<div class='equation'>\\[ y_1 = a_1 \\sin(q_1) = ${a1} \\times \\sin(${q1_deg}°) = ${y1.toFixed(2)} \\]</div>`;
+            output += `<div class='equation'>\\[ y_2 = a_2 \\sin(q_1 + q_2) = ${a2} \\times \\sin(${q1_deg}° + ${q2_deg}°) = ${y2.toFixed(2)} \\]</div>`;
         // Càlcul de les coordenades finals (x,y) de la mà del robot  
         let x = x1 + x2;
         let y = y1 + y2;
@@ -167,7 +168,7 @@ body {
             "id" haurien de ser 1, i son classes*/
         //Mosrtar el resultat
         document.getElementById('output').innerHTML = output;
-        MathJax.typeset(); //REnderitzar les fórmules matemàtiques amb MathJax
+        MathJax.typeset(); //REnderitzar les fórmules matemàtiques amb MathJax;}
 
     
             
