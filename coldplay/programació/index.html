@@ -82,7 +82,6 @@
 
         let audioContext, analyser, frequencyData;
         let currentShapeIndex = 0;
-        let cycleInterval;
 
         // Configuration for each song (easily scalable)
         const songConfig = {
@@ -95,7 +94,7 @@
                 durations: [4000, 8000, 6000, 10000, 999999]
             }
         };
-
+        
         fileInput.addEventListener('change', handleFileUpload);
         songSelect.addEventListener('change', resetVisualizer);
 
@@ -140,24 +139,24 @@
 
         function startCycleShapes() {
             const songData = songConfig[songSelect.value];
-            let totalTime = 0;
+            let currentIndex = 0;
 
-            songData.shapeOrder.forEach((shape, index) => {
-                setTimeout(() => {
-                    currentShapeIndex = index;
-                    updateShapeVisibility();
-                }, totalTime);
-                totalTime += songData.durations[index];
-            });
-
-            cycleInterval = setInterval(() => {
-                currentShapeIndex = (currentShapeIndex + 1) % songData.shapeOrder.length;
+            function cycle() {
+                if (currentIndex >= songData.shapeOrder.length) {
+                    currentIndex = 0; // Reset for continuous cycling
+                }
+                
+                currentShapeIndex = currentIndex;
                 updateShapeVisibility();
-            }, totalTime);
+
+                setTimeout(cycle, songData.durations[currentIndex]);
+                currentIndex++;
+            }
+
+            cycle(); // Start the first cycle
         }
 
         function resetVisualizer() {
-            clearInterval(cycleInterval);
             audioPlayer.currentTime = 0;
             audioPlayer.pause();
             updateShapeVisibility();
