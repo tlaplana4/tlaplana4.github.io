@@ -85,6 +85,17 @@ body {
 <h2>Sortides Digitals PWM</h2>
 <p>PwM significa "Modulació de l'ample de banda", en angles <i>"Pulse Width Modulation"</i>. Es una forma de conseguir una sortida analogica d'una digital.</p>
 <p>Es representa amb el simbol "〜", tal com podem veure a l'imatge seguent</p>
+<p>Aquests PWM són sortides analògiques de 8 bits, en el cas de Arduino Uno Rev3, d'acord amb el
+  <a href="https://store.arduino.cc/en-es/products/arduino-uno-rev3"> fabricant</a>, mentres en el cas
+d'Arduino Uno Rev4 és de 12 bits, segons el 
+  <a href="https://docs.arduino.cc/resources/datasheets/ABX00080-datasheet.pdf"> fabricant</a>  que l'anomena DAC, que vol dir Digital Analog 
+  Converter</p>
+<p>Tenir 8 o 12 bits en un convertidor digital analògic o DAC tipus PWM fa que tinguem 2<sup>8</sup>
+  o 2<sup>10</sup> nivells diferents de corrent, es a dir 256 nivells diferents o 2048 nivells  diferents</p>
+<p>Suposem que tant Arduino Uno Rev3 o Rev4 poden donar 5 volts com a màxim. Quina seria la resolució en milivolts
+de cada Arduino?</p>
+<p>5 volts dividit entre 256 dona 0.01953125 volts= 19,53125 milivolts per Arduino Uno Rev3</p>
+<p>5 volts dividit entre 2048 dona 0.00244140625 volts= 2,44140625 milivolts per Arduino Uno Rev4</p>
 <img src="/files/images/arduno.jpg">
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
