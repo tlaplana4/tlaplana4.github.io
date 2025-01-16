@@ -97,6 +97,39 @@ de cada Arduino?</p>
 <p>5 volts dividit entre 256 dona 0.01953125 volts= 19,53125 milivolts per Arduino Uno Rev3</p>
 <p>5 volts dividit entre 2048 dona 0.00244140625 volts= 2,44140625 milivolts per Arduino Uno Rev4</p>
 <img src="/files/images/arduno.jpg">
+<p>Els milivolts anterior són la resolució que aconseguim. Imaginem que volem regular la  intensitat d'un LED 
+   amb un Arduino Uno Rev3 aconseguim menys fluid i amb graons més grans, es a dir canvis més bruscs perque 256 canvis
+   són menys que 2048 volts. A continuació veurem una imatge que repreenta com combinant moltes senyals digitals 
+   ràpidament sembla que generem un senyal analògic, aixo és la base del PWM.</p>
+<img src="pmw.PNG" widht="600" height="450">
+<p>Quan major és l'amplada del pols vol dir que major és el temps que la sortida digital està en voltatge alt,
+   per exemple 5V i menys temps està a 0V, i per tant el promig  de tots els polsos és més alt. En canvi si 
+   per exemple si cada pols és més estret a 5V vol dir que estarà més temps a 0V, i per tant el promig  de
+   tots els polsos és més baix. A la imatge de a dalt es pot veure com s'encendria un LED o un motor 
+   funcionaria a una velocitat del 10%, 30%, 50%, 90%. Quin percentatge del senyal canviara en un cas i 
+   en un altre?</p>
+  <ul>
+    <li>(0,01953125/5)*100 = 0,390625%</li>
+    <li>(0,00244140625/5)*100 = 0,048828125%</li>
+  </ul>  
+<p>A la taula a continuació veuras els valors per defecte de la freqüència PWM en Arduino Uno Rev3</p>
+<table>
+  <thead>
+    <tr>
+      <th>PIN de Sortida</th><th>Freqüència PWM (Hz)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PINS: 3, 9, 10 i 11</td>
+      <td>490 Hz</td>
+    </tr>
+    <tr>
+      <td>PINS: 5 i 6</td>
+      <td>976 Hz</td>
+    </tr>
+  </tbody>
+</table>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
