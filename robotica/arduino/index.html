@@ -187,15 +187,18 @@ modificar amb CSS i fer la taula amb un estil propi</p>
     </tr>
   </tbody>
 </table>
+<p>A continuació tenim un codi general que pot servir per moltissimens coses diferents amb la capacitat d'un arduino de llegir de 0 a 1023 en una entrada analogica</p>
+<p>Si fos un ESP32S23 llegiria de 0 a 4095. Aixo es degut a que els ADC (Analog digital converter) tenen diferents quantitat de bits disponibles.</p>
+<p>Si un ADC te 10 bits significa que te 2<sup>10</sup>, es a dir, de 0 a 1023 nivells disponibles.</p>
 <pre><code>
-  int valorADC=0; 
-  voild setup(){         //9600 en Arduino
-  Serial.beguin(9600);   //115200 en S3
+  int valorADC=0;    //Int es un valor numeric sencer
+  void setup(){    //Codi que es fa al principi nomes una vegada          
+  Serial.begin(9600);    //Conectem l'arduino amb l'ordinador amb un valor determinat. 115200 en S3 o 9600 en Arduino. Aquest valor correspon als bits/segon que pasen per la conexió.
   }
-  voild loop(){
-  valorADC=analogRead(A0);  //34 en S3
-  Serial.print(valorADC);
-  delay (500);
+  void loop(){     //Codi que es repeteix quan s'acaba infinitaments fins que es desconecta o fins que ho especifiquem
+  valorADC=analogRead(A0);    //Llegim el valor int que llegeix l'arduino d'un complement i el guardem a la variable
+  Serial.print(valorADC);    //Imprimim el valor int que llegeix l'arduino
+  delay (500);    //Esperem 500 milisegons
   }
 </code></pre>
 </div>
