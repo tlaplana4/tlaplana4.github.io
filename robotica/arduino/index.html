@@ -165,6 +165,39 @@ modificar amb CSS i fer la taula amb un estil propi</p>
 <p>La freqüència és la inversa del període, 976Hz o cicles per segon correspon a un període de 1/976 segons, que són 1,024 milisegons.</p>
 <h2>Convertidor analògic digital</h2>
     <p>Apliquem el teorema de Nyquist, que diu que hem de fer el doble de mostres com a mínim que la freqüencia maxima per convertit una senyal analogiga a una digital</p>
+<img src="/files/images/nyquist.jpg" width="600" height="400">
+<p>Nyquist és important perque si en el codi poso una freqüencia de mostreig de 20Hz per un so no funcionarà perque la freqüencia mínima del so es de 20Hz i la màxima 20kHz perque es refereix al so audible en humans. 
+   Això es perque agafem mostres massa grans i no podem veure pujades i baixades de la senyal</p>
+<p>A continuació veurem una taula comparativa sobre els microcontroladors Arduino Uno i ESP32S3 i el circuit ADS1115</p>
+<table>
+  <thead>
+    <tr>
+      <th>Microcontrolador circuit</th><th>Nº bits (Nivells)</th><th>Voltatge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Arduino Uno</td><td>10 (0-1023)</td><td>0-5V; 0-3,3V</td>
+    </tr>
+    <tr>
+      <td>ESP32S3</td><td>12 (0-4095)</td><td>0-3,3V</td>
+    </tr>
+    <tr>
+      <td>ADS1115</td><td>16 (0-65536)</td><td>0-3,3V</td>
+    </tr>
+  </tbody>
+</table>
+<pre><code>
+  int valorADC=0; 
+  voild setup(){         //9600 en Arduino
+  Serial.beguin(9600);   //115200 en S3
+  }
+  voild loop(){
+  valorADC=analogRead(A0);  //34 en S3
+  Serial.print(valorADC);
+  delay (500);
+  }
+</code></pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
