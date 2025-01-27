@@ -201,6 +201,18 @@ modificar amb CSS i fer la taula amb un estil propi</p>
   delay (500);    //Esperem 500 milisegons
   }
 </code></pre>
+<p>Com podem veure a la foto de més amint d'arduino a la cantonada inferior dreta es troben els 6 ADCs o entrades analògiques amb les 
+        lletres d'A0 fins a A6, i a la part superior de l'arduino podem veure els pins que son els 6 DACs o sortides analògiques de tipus PWM
+        que estan senyalaeds amb ~ (Pins 3, 5, 6, 9, 10, 11).</p>
+        <p>En la imatge següent podem veure un esquema de ESP32S3</p>
+        <img src="files/images/esp32s3.jpg" width="800" height="600">
+        <p>Podem observar que a diferèndia d'Arduino Uno la gran majoria de pins son GPIO, que significa General Purpose Input Output, en català 
+        Pin d'Entrada i Sortida de Propòsit General, és a dir, que pot tenir moltes utilitats, entrada digital, sortida digital, entrada analògica, 
+        sortida analògica. Si volem veure un esquema dels pins podem escriure "pinout".</p>
+        <p>Alguns pins són RTC, que significa Real Time Clock, que és un rellotge intern que funciona mitjançant una pila interna que dona suficient 
+        energia perque vibri un cristall de quars que és el que compta el temps</p>
+        <p>En el codi tenenim un pin 34 que es un pin intern que no veu l'usuari perque esta dins de la placa base fent la funció SPIQ 
+        segons el datasheet el GPIO34 corespon al pin fisic 39 per tant sempre hem de mirar el pinout oficial.</p>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
