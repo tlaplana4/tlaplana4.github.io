@@ -14,4 +14,5 @@ Aquest es el codi font de la pagina [tlaplana4.github.io](https://tlaplana4.gith
 [Martí Cadenas](https://github.com/mcadenas4/mcadenas4.github.io)\
 [Alex Cruz](https://github.com/acruz4pompeu/acruz4pompeu.github.io)\
 [Joel Pizarro](https://github.com/jpizarro4/jpizarro4.github.io)\
-[Brayan Rivera](https://github.com/brivera4pompeu/brivera4pompeu.github.io)
+[Brayan Rivera](https://github.com/brivera4pompeu/brivera4pompeu.github.io)\
+[Freddy Pineda](https://github.com/fpineda4/fpineda4.github.io)
