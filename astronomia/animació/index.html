@@ -142,21 +142,6 @@
         let H0 = 71; // km/s/Mpc, basat en mesures recents
         let universeAge = 13700; // Edat inicial de l'univers (en milions d'anys)
 
-        // Definim la classe Galàxia
-	// Fins al any 2015 no existien les classes i per crear una classe s'utilitzava una funció "function"
-	// Dintre de la funció es posaven els paràmetres o arguments que volem controlar (posició X,Y i tamany)
-	// Utilitzem la paraula clau constructor per crear un tipus d'objecte i la paraula "this" per referirnos a arguments o
-        // parametres propis de la classe.
-	// X,Y i tamany és definirà més endevant en un codi en una altre funció d'inicialització "init".
-	// "Math.random" genera un número aleatori entre 0 i 1. Que passarà si multiplico per 2 "&pi;"?
-	// Em generarà un número aleatori entre 0 i 2 "&pi;".
-	// Com variarà la distancia a la meva simulació?
-	// Entre 50 i 200 pixels, per què?
-	// Perquè si multiplico un número aleatori entre 0 i 1 per 150 (Math.random() * 150) donarà sempre un número entre 0 i 150
-	// i si li sumo 50 serà entre 50 i 200.
-	// La velocitat variarà entre 0.01 i 0.03.
-	// Això que hem creat al 2015 va apareixer "ES6" que és la versió de javascript de 2015 i podem substituir la paraula
-	// function per class.
         function Galaxy(x, y, size) {
             this.x = x;
             this.y = y;
@@ -358,7 +343,23 @@
         let H0 = 71; // km/s/Mpc, basat en mesures recents
         let universeAge = 13700; // Edat inicial de l'univers (en milions d'anys)
 
+	// Definim la classe Galàxia
+	// Fins al any 2015 no existien les classes i per crear una classe s'utilitzava una funció "function"
+	// Dintre de la funció es posaven els paràmetres o arguments que volem controlar (posició X,Y i tamany)
+	// Utilitzem la paraula clau constructor per crear un tipus d'objecte i la paraula "this" per referirnos a arguments o
+        // parametres propis de la classe.
+	// X,Y i tamany és definirà més endevant en un codi en una altre funció d'inicialització "init".
+	// "Math.random" genera un número aleatori entre 0 i 1. Que passarà si multiplico per 2 "&pi;"?
+	// Em generarà un número aleatori entre 0 i 2 "&pi;".
+	// Com variarà la distancia a la meva simulació?
+	// Entre 50 i 200 pixels, per què?
+	// Perquè si multiplico un número aleatori entre 0 i 1 per 150 (Math.random() * 150) donarà sempre un número entre 0 i 150
+	// i si li sumo 50 serà entre 50 i 200.
+	// La velocitat variarà entre 0.01 i 0.03.
+	// Això que hem creat al 2015 va apareixer "ES6" que és la versió de javascript de 2015 i podem substituir la paraula
+	// function per class.
         // Definim la classe Galàxia
+	    
         function Galaxy(x, y, size) {
             this.x = x;
             this.y = y;
