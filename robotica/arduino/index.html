@@ -213,6 +213,35 @@ modificar amb CSS i fer la taula amb un estil propi</p>
         energia perque vibri un cristall de quars que és el que compta el temps</p>
         <p>En el codi tenenim un pin 34 que es un pin intern que no veu l'usuari perque esta dins de la placa base fent la funció SPIQ 
         segons el datasheet el GPIO34 corespon al pin fisic 39 per tant sempre hem de mirar el pinout oficial.</p>
+<h3> Com funciona les entrades analógiques dels microcontroladors?</h3>
+  <p> Els pins A0 fins A5 són entrades analógiques i allà podem connectar una série d'elements: </p>
+    <ul>
+      <li> Sensor de llum: LDR (light dependent resistor), Fotodiodes, Cél·lules solars</li>
+      <li> Sensors de temperatura: LM35 (té una sortida lineal, 10 milivolts és un grau centrigrads i un rang -55 +150 semblant a TMP36, té menys rang i és menys precís), DHT11 O DHT22, mesuren temperatura i humitat i el 22 és més precía que el 11, DS18820 té protocol one-wire</li>
+    </ul>
+  <h4> Exemple amb el sensor de temperatura LM35</h4>
+   <pre>
+     <code>
+ const int sensorPin= A0;
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  int value = analogRead(sensorPin);
+  float millivolts = (value / 1023.0) * 5000;
+  float celsius = millivolts / 10; 
+  Serial.print(celsius);
+  Serial.println(" C");
+  delay(1000);
+}       
+     </code>
+   </pre>
+<p>El codi de mes amunt funcionaria amb un sensor de temperatura LM35, però es podria adaptar per qualsevol sensor. Perque? L'unica cosa que fan els microcontroladors es llegir el
+senyal del sensor entre 0 i 1023</p>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
