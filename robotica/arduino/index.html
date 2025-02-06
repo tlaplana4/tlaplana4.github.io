@@ -242,6 +242,41 @@ void loop()
    </pre>
 <p>El codi de mes amunt funcionaria amb un sensor de temperatura LM35, però es podria adaptar per qualsevol sensor. Perque? L'unica cosa que fan els microcontroladors es llegir el
 senyal del sensor entre 0 i 1023</p>
+  <p> const int sensorPin= A0; Significa que el valor és cons o constant, i que no variarà en tot el codi, int que és
+  un variable que és de tipus integer o número enter, sensorPin és el nom que trio per identificar el pin anomenat A0
+  i podia haver triat qualsevol altre nom, com: sensorT, sonsorTemperatura, sensorLM35... Per tant la instruacció sencera
+  que fa? Estem donant un nom al pin A0 per identificar-lo i que sigui una constant en tot el codi que no pot variar, perque
+  si varia, canvia el número de pin</p>
+    <p>void setup()
+{
+  Serial.begin(9600);
+}
+ Tots els codis sempre tenen les mateixes parts, al principi es posarien les biblioteques necessaries, seguides de les variables
+    que necessiten (en aquest cas sensorPin) i a continuació va el bloc de codi o funció de configuració anomenada setup,
+      el setup s'executa una sola vegada i  Serial.begin(9600); el que fa és aplicar el mètode begin amb la sintaxi del punt 
+      (dot syntax) amb un argument o paràmetre que està entre parèntesis. Serial vol dir comunicació en serie a través d'una
+      cable USB, 9600 és la velocitat en bits per segon a través del cable USB. En un ESP32S3 es comunica una velocitat més alta
+      115200 bits per segon i aquesta velocitat no només ha d'estar al codi, sinó que ha de coincidir en el IDE o entorn de 
+      programació d'Arduino, concretament a la consola de sortida de comunicació sèrie. Si no ho faig poden sortir caràcters
+      extranys quan premo el botó superior dret de comunicació sèrie. El punt i coma final és molt important, prque indica que he 
+      acabat la instrucció. </p>
+  <p> Per finalitzar hi ha el codi principal o loop que es repeteix sense parar </p>
+    <p> int value = analogRead(sensorPin); int és integer i només agafa números enters, value és el nom que vull posar per
+    enmmagatzemar tots els valor que va agafant Arduino. Com els emmagatzemo? Amb la instrucció analogRead que llegeix de 
+    0 a 1023 i un cop llegit, el sensor pin (el paràmetre) el guarda dins de value.</p>
+    <p> <b>float millivolts = (value / 1023.0) * 5000; </b> float significa floating point number, o número decimal en anglés, millivolts
+    és el nom de la variable on emmagatzemem els mollivolts reals que està generant el sensor de temperatura. Perquè genera en 
+    millivolts? Perque l'Arduino Uno funciona a 5V o 5000mV, que passa si divideixo el valor entre 1023, que tinc el valor en tant
+    per 1, i si aquest valor en tant per 1 ho multiplico per 5000 em donen 1023 valors diferents entre 0 i 5000.
+    Posem diversos exemples: que passaria si el value és 0, que passaria si el value és 10? 10/1023x5000 = 49 millivolts, si 
+    fosin 100 = 488 millivolts, si fosin 500 donaria 500/1023x5000= 2443 millivolts. Això passaria amb tots els sensors</p>
+    <p> Com seria si fos un ESP32S3? Seria 3.3V i 4095, per tant el codi seria <b>float millivolts = (value / 4095.0) * 3300; </b>
+      i aconseguiriem millor resolució o presició, es a dir, el termometre o sensor agafaria més valors diferents (seria més precis).
+      value / 4095 sempre serà un número entre 0 i 1 perque value va enttre 0 i 4095, i si el multiplico per 3300 tindré un número de 0 a 3300 millivolts
+    <p><b> float celsius = millivolts / 10; </b>float demana un número decimal, millivolts sempre donarà entre 0 i 5000. Que passa si divideixo entre 10? Que converteix els els millivolts en graus, i van de 0 a 500 graus</p>
+    <p> <b>Serial.print(celsius);</b> Aquest codi imprimeix a la pantalla el valor de la variable Celcius que anirà des de 0 fins a 500 graus. </p>
+    <p> <b>Serial.println(" C");</b> imprimeix una línea (println significa print line), i si ho posem entre cometes la C ("C") ho imprimeix tal qual a diferencia de si no posem cometes com celcius que apareix el valor de la veriable, és a dir, és un número que canvia. Serial és una forma de communicar-se a través del USB o Comunicació Sèrie, i en molts llenguatges de programació existeix la biblioteca "Serial" o la classe Serial. Un llenguatge de programació és un conjunt de biblioteques, una biblioteca és un conjunt de classes, i una classe conté diferents funcions.</p>
+    <p> Per exemple, Arduino és i era una classe de llenguatge Processing, i s'utilitza molt més Arduino com a llenguatge de programació actualment. Si utilitzo processing i la biblioteca Arduino, l'avantatge que tinc és que puc utilitzar totes les biblioteques de visió per ordinador, d'intel·ligencia artificial de l'ordinador i fer aplicacions que només amb Arduino serien impossible</p>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
