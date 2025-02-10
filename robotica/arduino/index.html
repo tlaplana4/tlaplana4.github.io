@@ -280,7 +280,7 @@ senyal del sensor entre 0 i 1023</p>
     <img src="/files/images/lm35.png">
     <p> La imatge anterior procedeix de la fulla de característiques de LM35, i es veu que té una resposta lineal del voltatge i de la temperatura, de forma que a 2.9V ens donaria -55 graus i a 4.15V ens donaria 155 graus. Com fariem el codi de mapeig per això?</p>
      float temp = map (value,0,1023,2900,4150)
-     float celsius = map (value,2900,4150,-55,150)
+     float celsius = map (temp,2900,4150,-55,150)
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
