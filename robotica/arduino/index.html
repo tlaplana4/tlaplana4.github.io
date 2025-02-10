@@ -277,6 +277,10 @@ senyal del sensor entre 0 i 1023</p>
     <p> <b>Serial.print(celsius);</b> Aquest codi imprimeix a la pantalla el valor de la variable Celcius que anirà des de 0 fins a 500 graus. </p>
     <p> <b>Serial.println(" C");</b> imprimeix una línea (println significa print line), i si ho posem entre cometes la C ("C") ho imprimeix tal qual a diferencia de si no posem cometes com celcius que apareix el valor de la veriable, és a dir, és un número que canvia. Serial és una forma de communicar-se a través del USB o Comunicació Sèrie, i en molts llenguatges de programació existeix la biblioteca "Serial" o la classe Serial. Un llenguatge de programació és un conjunt de biblioteques, una biblioteca és un conjunt de classes, i una classe conté diferents funcions.</p>
     <p> Per exemple, Arduino és i era una classe de llenguatge Processing, i s'utilitza molt més Arduino com a llenguatge de programació actualment. Si utilitzo processing i la biblioteca Arduino, l'avantatge que tinc és que puc utilitzar totes les biblioteques de visió per ordinador, d'intel·ligencia artificial de l'ordinador i fer aplicacions que només amb Arduino serien impossible</p>
+    <img src="/files/images/lm35.png">
+    <p> La imatge anterior procedeix de la fulla de característiques de LM35, i es veu que té una resposta lineal del voltatge i de la temperatura, de forma que a 2.9V ens donaria -55 graus i a 4.15V ens donaria 155 graus. Com fariem el codi de mapeig per això?</p>
+     float temp = map (value,0,1023,2900,4150)
+     float celsius = map (value,2900,4150,-55,150)
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
