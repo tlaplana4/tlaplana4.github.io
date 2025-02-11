@@ -279,8 +279,29 @@ senyal del sensor entre 0 i 1023</p>
     <p> Per exemple, Arduino és i era una classe de llenguatge Processing, i s'utilitza molt més Arduino com a llenguatge de programació actualment. Si utilitzo processing i la biblioteca Arduino, l'avantatge que tinc és que puc utilitzar totes les biblioteques de visió per ordinador, d'intel·ligencia artificial de l'ordinador i fer aplicacions que només amb Arduino serien impossible</p>
     <img src="/files/images/lm35.png">
     <p> La imatge anterior procedeix de la fulla de característiques de LM35, i es veu que té una resposta lineal del voltatge i de la temperatura, de forma que a 2.9V ens donaria -55 graus i a 4.15V ens donaria 155 graus. Com fariem el codi de mapeig per això?</p>
-     float temp = map (value,0,1023,2900,4150)
+     float temp = map (value,0,1023,2900,4150);
+      <p>value és un valor que agafa amb la instrucció analogRead i va entre 0-1023 perque
+      es un conversor d'analògic a digital de 10 bits, que seria 2^10, el transforma en un
+      altre entre 2900-4150 milivolts</p>
      float celsius = map (temp,2900,4150,-55,150)
+      <p>La variable "temp" no conté temperatura sino que milivolts i els convertim d'aquesta
+      manera perque la fulla de característiques de LM35 diu que hi ha una resposta lineal
+      vista en el  gràfic de més amunt entre  els milivolts mesurats i la temperatura en celsius
+      </p>
+      <p>Que pasaria si utilitzo ESP32S3 i no Arduino, respecte a la mesura de la temperatura?
+      </p>
+      <p>El codi canviarà de la següent manera d'aquest codi "float temp = map (value,0,1023,2900,4150);"
+      a aquest altre: "float temp = map (value,0,4095,2900,4150);" perque hi ha 12  bits, que és 2^12,
+      que dona 4096 i s'hauria de connectar a 5 volts, ja que, es pot connectar tambè a 3,3 volts, però
+      no es llegiria correctament</p>
+      <p>Quina mesura donaria en un o altre controlador?</p>
+      <p>En ESP32 tenim 4096 nivells diferents, i tenim 1250 milivolts disponibles (4150-2900)</p>
+      <p>Quina és la resolució que tinc per cada nivell?</p>
+      <p>1250:4096, que dona 0.30517578125, que vol  dir que cada vegada que augmenta un número
+      de nivell augmenta 0,305 milivolts</p>
+      <p>0,305 milivolts quant seria en graus?</p>
+      <p>Tindriem 205 graus de diferència de temperatura, per tant, la resolució seria més baixa 
+      en el  cas de 1024 nivells, que en el cas de 4096 nivells, no importa el valor intermig</p>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
