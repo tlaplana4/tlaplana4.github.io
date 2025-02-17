@@ -302,6 +302,45 @@ senyal del sensor entre 0 i 1023</p>
       <p>0,305 milivolts quant seria en graus?</p>
       <p>Tindriem 205 graus de diferència de temperatura, per tant, la resolució seria més baixa 
       en el  cas de 1024 nivells, que en el cas de 4096 nivells, no importa el valor intermig</p>
+    <p> Què passaria si utilitzo ESP32S3 i no Arduino respecre als resultats de mesura de temperatura? </p>
+    <p> El codi canviarà de la seguent manera: </p>
+    
+  int value = analogRead(sensorPin);
+  float millivolts = (value / 4096.0) * 5000;
+  float celsius = millivolts / 12; 
+  Serial.print(celsius);
+  Serial.println(" C");
+  delay(1000);
+     float temp = map (value,0,4095,2900,4150); 
+     float celsius = map (temp,2900,4150,-55,150); 
+<p> Canvia ja que hi té 12 bits, que és 2^12 que dona 4095 i s'hauria de connectar a 5 volts, ja que és pot connectar també a 3.3 volts, però no es llegiria correctament.</p>
+<p> Quina mesura donaria en un o altre controlador?</p>
+  <p> En ESP32S3 tenim 4096 nivells diferents i tenim 1250 millivolts disponibles (4150 - 2900).</p>
+<p> Quina és la resolució que tinc per cada nivell?</p>
+  <p> 1250/4096, que dona 0.30517578125, que vol dir que cada vegada que augmenta un número de nivell augmenten 0.305 millivolts</p>
+<p> Això quant seria en graus?</p>
+  <p> Tindriem 205 graus de diferència de temperatura (sempre), per tant la resolució seria més baixa en el cas de 1024 nivells que en el cas de 4096 nivells, que seria més alt, no importa el valor intermig.</p>
+    <h1> Sensor LM35</h1>
+    <p> És un sensor de temperatura lineal que té 3 pins, com es pot veure a la imatge següent:</p>
+    <img src="sensor_lm35.png">
+    <p> A continuació tenim el gràfic de funcionament procedent del full de característiques</p>
+    <img src="lm35.png">
+    <p> Per últim veurem el cirquit físic d'Arduino: </p>
+    <img src="arduino_lm35.png"
+      <p> Hem vist que 2100 millivolts fins a 4350 millivolts la resposta de LM35 és lineal i va des de -55 fins a 150 graus. Com ho traduim al codi?</p>
+      <p> Primer hem d'entendre que Arduino la seva entrada analógica és A0 (o qualsevol fins a A5) és capaç de llegir el voltatge i sempre comença amb zero i acaba amb 5 volts. Com hi ha 1024 nivells diferents, la resolució és 5000/1024 = 4,88 millivolts. És a dir, la resolució en millivolts és 4,88 (5000 són millivoltsperque Arduino Uno funciona a 5v). </p>
+      <p> Comcomença a mesurar temperatures entre 29000 millivolts i 4100 millivolts hem de saber a què correspon aquests dos números en base 1024, (2900/5000)*1024 = 594 el nivell respecte 1024. (4100/5000)*1024 = 840 el nivell respecte 1024</p>
+      <p> Sabent això, com seria el mapeig?</p>
+      <pre>
+        <code>
+          int analogValue = analogRead (A0);
+          float volt = analogValue*(5000/1024);
+          float temp = map (analogValue,0,1023,-55,150); ÉS INCORRECTE
+          float temp = map (volt,594,840,-55,150); ÉS CORRECTE
+          // valors de volt des de 0 a 5000 perque 0*5000/1024 = 0 i 1024*5000/1024 = 5000
+          // 500 analogValue 
+        </code>
+      </pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
