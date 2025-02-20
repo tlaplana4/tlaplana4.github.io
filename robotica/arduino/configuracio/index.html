@@ -92,128 +92,223 @@
     </div>
 </nav>
 
-<p>This is the new board from Espressif, ESP32-S3 DevKit. ESP32-S3 is a dual-core XTensa LX7 MCU, capable of running at 240 MHz. Apart from its 512 KB of internal SRAM, it also comes with integrated 2.4 GHz, 802.11 b/g/n Wi-Fi and Bluetooth 5 (LE) connectivity that provides long-range support. It has 45 programmable GPIOs and supports a rich set of peripherals.</p>
-<p>You can work with different software as you can read under Microcontrollers>Software for microcontollers in this web as for example using the <a href="https://docs.platformio.org/en/latest/boards/espressif32/esp32-s3-devkitc-1.html" target="_blank">Ukrainian software PlatformIO for this board.</a></p>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview.jpeg"><img class="alignnone size-large wp-image-2211" src="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-1024x546.jpeg" alt="" width="474" height="253" srcset="https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-1024x546.jpeg 1024w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-300x160.jpeg 300w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-768x409.jpeg 768w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview.jpeg 1075w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout.png"><img class="alignnone size-large wp-image-2212" src="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-1024x459.png" alt="" width="474" height="212" srcset="https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-1024x459.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-300x135.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-768x344.png 768w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout.png 1113w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p>Copy and paste the link below into the Additional Boards Manager URLs option in the Arduino IDE preferences. You can follow this videotutorial:</p>
-<p><iframe width="474" height="356" src="https://www.youtube.com/embed/gAZPMqul7cs?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="arduino-esp32 2.0.3 add support for ESP32-S3, to develope in Arduino IDE."></iframe></p>
-<p>https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json</p>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png"><img class="alignnone size-full wp-image-2214" src="http://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png" alt="" width="794" height="353" srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png 794w, https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM-300x133.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM-768x341.png 768w" sizes="(max-width: 794px) 100vw, 794px" /></a></p>
-<p>The next step is to actually install the Board Support Package. Go to the Tools &gt; Board &gt; Board Manager submenu. A dialog should come up with various boards. Search for ESP32.</p>
-<p>Click the Install button and wait for it to finish. Once it is finished, you can close the dialog.</p>
-<p>In the Tools &gt; Board submenu you should see ESP32 Arduino and in that dropdown it should contain the ESP32 boards along with all the latest ESP32, including ESP-32 S3 Dev Module board.</p>
-<p>In the Tools &gt;Boards menu you should see the ESP32 Arduino menu. In the expanded menu, look for the menu option for our board, and click on it to choose it.</p>
-<p><strong>Drivers</strong></p>
-<p>Below is the list of USB to serial converter chips installed on most of the ESP32 boards produced by Espressif together with links to the drivers:</p>
-<p>CP210x: <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" rel="noopener noreferrer">CP210x USB to UART Bridge VCP Drivers</a></p>
-<p>FTDI: <a href="https://ftdichip.com/drivers/vcp-drivers/" target="_blank" rel="noopener noreferrer">FTDI Virtual COM Port Drivers</a></p>
-<p>Please check the board user guide for specific USB-to-UART bridge chip used. The drivers above are primarily for reference. Under normal circumstances, the drivers should be bundled with an operating system and automatically installed upon connecting the board to the PC.</p>
-<p>Choose the board, COM port, hold down the BOOT button, click upload and keep your finger on the BOOT button pressed. When the Arduino IDE starts sending the code, you can release the button and wait for the flashing process to be completed. Now, the ESP32 is flashed with the new firmware.</p>
-<p>Open the Arduino serial monitor from the icon on the top right or from the tools menu and select Tools &gt; Serial Monitor</p>
-<p>Along with the library you will find many examples included to test your ESP32-S3 capabilities.</p>
-<p>Remember to check ESP32-S3 in the menu, under Tools&gt;Boards&gt;ESP32S3 Dev Module (a check point must be visible to be sure it is chosen)</p>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/esp32-1.png"><img class="alignnone size-large wp-image-2718" src="http://blocs.xtec.cat/tecno/files/2022/07/esp32-1-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p>Remember to check port under Tools&gt;Port , in Windows COMx, being X a number (in this example COM6 containing a tick symbol).</p>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/esp32-2.png"><img class="alignnone size-large wp-image-2720" src="http://blocs.xtec.cat/tecno/files/2022/07/esp32-2-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p><strong>Hello word example</strong></p>
-<pre><code>
-void setup() {
-Serial.begin(115200); // Initialize serial communications with the PC
-while (!Serial);
-}
-void loop() {
-Serial.println("Hello World");
-delay(1000);
-}</code></pre>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/helloworld1.png"><img class="alignnone size-large wp-image-2716" src="http://blocs.xtec.cat/tecno/files/2022/07/helloworld1-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p>Remember to choose a speed of 155200 both in the code and in the Serial monitor.</p>
-<p>What would happen if you change the serial instruction from the void loop function to the void setup function?<br />
-What would happen if you delete the while instruction?<br />
-What would happen if you change the delay instruction argument or parameter from 1000 to 10000?</p>
-<p><strong style="text-align: right;">Testing the connection with a counter variable</strong><span style="text-align: right;">:</span></p>
-<pre><code>int Counter = 0;
-void setup(){
-Serial.begin(115200);
-}
-void loop(){
-Serial.print("Counter Value = ");
-Serial.println(Counter++);
-delay(1000);
-}</code></pre>
-<a href="Xiao.jpeg">
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/counter2.png"><img class="alignnone size-large wp-image-2726" src="http://blocs.xtec.cat/tecno/files/2022/07/counter2-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/counter2-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/counter2-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/counter2-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p><strong>Testing serial plotter</strong></p>
-<pre><code>
-int Sine_LUT[32] = {128,152,176,198,218,234,245,253,255,253,245,234,218,198,176,152,128,103,79,57,37,21,10,2,0,2,10,21,37,57,79,103};
-int i = 0;
-void setup(){
-  Serial.begin(115200);
-} 
-void loop(){
-  Serial.println(Sine_LUT[i++]);
-  if(i == 32)
-  {
-    i = 0;
-  }
-  delay(10);
-}
-</code></pre>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/sinus.png"><img class="alignnone size-large wp-image-2723" src="http://blocs.xtec.cat/tecno/files/2022/07/sinus-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/sinus-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/sinus-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/sinus-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p><strong>Testing the built-in RGB</strong></p>
-<pre><code>/* Simple Arduino LED blink example sketch for built-in  RGB 5050 LED on the ESP-S3*/
+<h1>Configuració</h1>
+    <p>This is the new board from Espressif, ESP32-S3 DevKit. ESP32-S3 is a dual-core XTensa LX7 MCU, capable of running
+        at 240 MHz. Apart from its 512 KB of internal SRAM, it also comes with integrated 2.4 GHz, 802.11 b/g/n Wi-Fi
+        and Bluetooth 5 (LE) connectivity that provides long-range support. It has 45 programmable GPIOs and supports a
+        rich set of peripherals.</p>
+    <p>La ESP32-S3 té un processador de doble nucli de la marca extensa MX7 MCU que processa dades a 240 MHz. Això pot supossar
+        aproxiadamet 240 milions d'operacions amb decimals o amb coma flotant o FLOPS per segon. Aquesta dada és crítica perquè
+        ens indica la potència de càlcul dels microcontroladors i dels processadors que controlen als robots. Fem una comparativa: 
+        Un Arduino UNO té una capacitat de processament de 16 MHz, respecte ESP32-S3 és 15 vegades més lent. Raspberry Pi 4 té 1,5 GHz, 
+        que és 6,25 més ràpid que ESP32-S3. <i>Tianhe-3 i El Capitan</i> són els superordinadors més potents en 2025 i han arribat a exaflops, 
+        és a dir, 1 trilió d'operacions matemàtiques per segon. És important decidir quin microcontrolador, ordinador o superordinador és 
+        adequat per cada aplicació, perquè no podré fer aplicacions que requereixin molt càlcul en un microcontrolador petit. </p>
+    <p>La memòria interna del ESP32-S3 també és un factor limitant, en aquest cas 512 kB, associada al processador Extensa. Arduino UNO 
+        té una meòria RAM més baixa, de 2 kB, que ès la que ve del seu processador AVR. RAM significa <i>Random Access Memory</i>, que és la 
+        memòria interna d'accès ràpid en la qual s'executen els programes. ESP32-S3 té 256 vegades més memòria, i un ordinador com el meu 
+        té 8 GB, que són més de 15000 vegades més que ESP32-S3.</p>
+    <p>La memòria ROM és <i>Read Only Memory</i> o el disc dur, que és la capacitat total de memòria del microcontrolador o de l'ordinador. 
+        L'Arduino UNO té 32 kB de memòria ROM, l'ESP32-S3 té 384 kB de memòria ROM i el meu ordinador té 119 GB de meòria, que són un gran 
+        número de vegades diferents.</p>
+    <p>Arduino UNO... </p>
+    <h1>Entrades GPIO</h1>
+    <h2>Protocols de comunicació</h2>
+    <h3>Comunicació sincrona</h3>
+    <p>Coordinació entre el receptor i el transmissor per enviar dades. Aixo fa possible la transmissió de rellotge, que indica quan s'ha d'escriure o llegir un bit.</p>
+    <p>Els principals protocols sincrons son: SPI i I2C</p>
+    <p>SPI es Serial Periferal Interface, I2C significa Inter-Integrated Circuit</p>
+    <h3>Comunicació asincrona</h3>
+    <p>No hi ha cap rellotge compartit, l'emisor i el transmissor funcionen de manera independent.</p>
+    <p>Cada byte porta uns bits d'inici i final que indiquen quan s'ha d'acabar la transmissió.</p>
+    <p>Els elements del circuit han d'acordar la velocitat de transmissió.</p>
+    <p>Exemples de protocols asincrons son: UART i ES232</p>
+    <p>UART significa Universal Asynchronous Reciver-Transmiter. i RS232 es el port serie</p>
 
-#define led_r_pin 5
-#define led_g_pin 6
-#define led_b_pin 7
-
-void setup() {
-Serial.begin(115200);
-
-pinMode(led_r_pin, OUTPUT);
-pinMode(led_g_pin, OUTPUT);
-pinMode(led_b_pin, OUTPUT);
-}
-void loop() {
-for (uint8_t i = 1; i &lt; 8; i++) {
-/* Get the rgb bits shifting the counter variable
-to the right and then masking with AND 0x1 */
-bool r = (i &gt;&gt; 2) &amp; 1;
-bool g = (i &gt;&gt; 1) &amp; 1;
-bool b = (i &gt;&gt; 0) &amp; 1; //shift 0, I know. Aesthetics and symmetry ;)
-
-Serial.printf("i= %d | rgb bits = r:%d, g:%d, b:%d,\n", i, r, g, b);
-
-digitalWrite(led_r_pin, r);
-digitalWrite(led_g_pin, g);
-digitalWrite(led_b_pin, b);
-delay(1000);
-digitalWrite(led_r_pin, LOW);
-digitalWrite(led_g_pin, LOW);
-digitalWrite(led_b_pin, LOW);
-delay(1000);
-}
-}</code></pre>
-<p><a href="http://blocs.xtec.cat/tecno/files/2022/07/rgb.png"><img class="alignnone size-large wp-image-2729" src="http://blocs.xtec.cat/tecno/files/2022/07/rgb-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/rgb-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/rgb-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/rgb-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-<p>Blinking LED</p>
-<p>int led = LED_BUILTIN;</p>
-<p>void setup() {<br />
-// Some boards work best if we also make a serial connection<br />
-Serial.begin(115200);</p>
-<p>// set LED to be an output pin<br />
-pinMode(led, OUTPUT);<br />
-}</p>
-<p>void loop() {<br />
-// Say hi!<br />
-Serial.println(&#8220;Hello!&#8221;);</p>
-<p>digitalWrite(led, HIGH); // turn the LED on (HIGH is the voltage level)<br />
-delay(500); // wait for a half second<br />
-digitalWrite(led, LOW); // turn the LED off by making the voltage LOW<br />
-delay(500); // wait for a half second<br />
-}</p>
-<p><a href="http://blocs.xtec.cat/ytecno/files/2022/07/blinking.png"><img class="alignnone size-large wp-image-2731" src="http://blocs.xtec.cat/tecno/files/2022/07/blinking-1024x640.png" alt="" width="474" height="296" srcset="https://blocs.xtec.cat/tecno/files/2022/07/blinking-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/blinking-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/blinking-768x480.png 768w" sizes="(max-width: 474px) 100vw, 474px" /></a><br />
-<iframe title="Blinking ESP32-S3" src="https://www.youtube.com/embed/9prlFXNvumE" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe><br />
-From 16/09/2022 it is possible to use <a href="https://blog.arduino.cc/2022/09/16/arduino-cloud-extends-esp32-support-to-s2-s3-c3-devices/" target="_blank">cloud Arduino IDE.</a></p>
+    <p>You can work with different software as you can read under Microcontrollers>Software for microcontollers in this
+        web as for example using the <a
+            href="https://docs.platformio.org/en/latest/boards/espressif32/esp32-s3-devkitc-1.html"
+            target="_blank">Ukrainian software PlatformIO for this board.</a></p>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview.jpeg"><img
+                class="alignnone size-large wp-image-2211"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-1024x546.jpeg"
+                alt="" width="474" height="253"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-1024x546.jpeg 1024w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-300x160.jpeg 300w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview-768x409.jpeg 768w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-Series-Kit-Component-Overview.jpeg 1075w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout.png"><img
+                class="alignnone size-large wp-image-2212"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-1024x459.png" alt=""
+                width="474" height="212"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-1024x459.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-300x135.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout-768x344.png 768w, https://blocs.xtec.cat/tecno/files/2022/07/ESP32-S3-DevKitC-1-Pin-Layout.png 1113w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p>Copy and paste the link below into the Additional Boards Manager URLs option in the Arduino IDE preferences. You
+        can follow this videotutorial:</p>
+    <p><iframe width="474" height="356" src="https://www.youtube.com/embed/gAZPMqul7cs?feature=oembed" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen title="arduino-esp32 2.0.3 add support for ESP32-S3, to develope in Arduino IDE."></iframe>
+    </p>
+    <p>https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json</p>
+    <p><a
+            href="http://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png"><img
+                class="alignnone size-full wp-image-2214"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png"
+                alt="" width="794" height="353"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM.png 794w, https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM-300x133.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32_s2_arduino_ide_setup_Screen_Shot_2021-04-19_at_3.14.19_PM-768x341.png 768w"
+                sizes="(max-width: 794px) 100vw, 794px" /></a></p>
+    <p>The next step is to actually install the Board Support Package. Go to the Tools &gt; Board &gt; Board Manager
+        submenu. A dialog should come up with various boards. Search for ESP32.</p>
+    <p>Click the Install button and wait for it to finish. Once it is finished, you can close the dialog.</p>
+    <p>In the Tools &gt; Board submenu you should see ESP32 Arduino and in that dropdown it should contain the ESP32
+        boards along with all the latest ESP32, including ESP-32 S3 Dev Module board.</p>
+    <p>In the Tools &gt;Boards menu you should see the ESP32 Arduino menu. In the expanded menu, look for the menu
+        option for our board, and click on it to choose it.</p>
+    <p><strong>Drivers</strong></p>
+    <p>Below is the list of USB to serial converter chips installed on most of the ESP32 boards produced by Espressif
+        together with links to the drivers:</p>
+    <p>CP210x: <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank"
+            rel="noopener noreferrer">CP210x USB to UART Bridge VCP Drivers</a></p>
+    <p>FTDI: <a href="https://ftdichip.com/drivers/vcp-drivers/" target="_blank" rel="noopener noreferrer">FTDI Virtual
+            COM Port Drivers</a></p>
+    <p>Please check the board user guide for specific USB-to-UART bridge chip used. The drivers above are primarily for
+        reference. Under normal circumstances, the drivers should be bundled with an operating system and automatically
+        installed upon connecting the board to the PC.</p>
+    <p>Choose the board, COM port, hold down the BOOT button, click upload and keep your finger on the BOOT button
+        pressed. When the Arduino IDE starts sending the code, you can release the button and wait for the flashing
+        process to be completed. Now, the ESP32 is flashed with the new firmware.</p>
+    <p>Open the Arduino serial monitor from the icon on the top right or from the tools menu and select Tools &gt;
+        Serial Monitor</p>
+    <p>Along with the library you will find many examples included to test your ESP32-S3 capabilities.</p>
+    <p>Remember to check ESP32-S3 in the menu, under Tools&gt;Boards&gt;ESP32S3 Dev Module (a check point must be
+        visible to be sure it is chosen)</p>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/esp32-1.png"><img class="alignnone size-large wp-image-2718"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/esp32-1-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-1-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p>Remember to check port under Tools&gt;Port , in Windows COMx, being X a number (in this example COM6 containing a
+        tick symbol).</p>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/esp32-2.png"><img class="alignnone size-large wp-image-2720"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/esp32-2-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/esp32-2-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p><strong>Hello word example</strong></p>
+    <pre><code>
+    void setup() {
+    Serial.begin(115200); // Initialize serial communications with the PC
+    while (!Serial);
+    }
+    void loop() {
+    Serial.println("Hello World");
+    delay(1000);
+    }</code></pre>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/helloworld1.png"><img
+                class="alignnone size-large wp-image-2716"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/helloworld1-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/helloworld1-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p>Remember to choose a speed of 155200 both in the code and in the Serial monitor.</p>
+    <p>What would happen if you change the serial instruction from the void loop function to the void setup
+        function?<br />
+        What would happen if you delete the while instruction?<br />
+        What would happen if you change the delay instruction argument or parameter from 1000 to 10000?</p>
+    <p><strong style="text-align: right;">Testing the connection with a counter variable</strong><span
+            style="text-align: right;">:</span></p>
+    <pre><code>int Counter = 0;
+    void setup(){
+    Serial.begin(115200);
+    }
+    void loop(){
+    Serial.print("Counter Value = ");
+    Serial.println(Counter++);
+    delay(1000);
+    }</code></pre>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/counter2.png"><img class="alignnone size-large wp-image-2726"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/counter2-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/counter2-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/counter2-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/counter2-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p><strong>Testing serial plotter</strong></p>
+    <pre><code>
+    int Sine_LUT[32] = {128,152,176,198,218,234,245,253,255,253,245,234,218,198,176,152,128,103,79,57,37,21,10,2,0,2,10,21,37,57,79,103};
+    int i = 0;
+    void setup(){
+      Serial.begin(115200);
+    } 
+    void loop(){
+      Serial.println(Sine_LUT[i++]);
+      if(i == 32)
+      {
+        i = 0;
+      }
+      delay(10);
+    }
+    </code></pre>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/sinus.png"><img class="alignnone size-large wp-image-2723"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/sinus-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/sinus-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/sinus-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/sinus-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p><strong>Testing the built-in RGB</strong></p>
+    <pre><code>/* Simple Arduino LED blink example sketch for built-in  RGB 5050 LED on the ESP-S3*/
+    
+    #define led_r_pin 5
+    #define led_g_pin 6
+    #define led_b_pin 7
+    
+    void setup() {
+    Serial.begin(115200);
+    
+    pinMode(led_r_pin, OUTPUT);
+    pinMode(led_g_pin, OUTPUT);
+    pinMode(led_b_pin, OUTPUT);
+    }
+    void loop() {
+    for (uint8_t i = 1; i &lt; 8; i++) {
+    /* Get the rgb bits shifting the counter variable
+    to the right and then masking with AND 0x1 */
+    bool r = (i &gt;&gt; 2) &amp; 1;
+    bool g = (i &gt;&gt; 1) &amp; 1;
+    bool b = (i &gt;&gt; 0) &amp; 1; //shift 0, I know. Aesthetics and symmetry ;)
+    
+    Serial.printf("i= %d | rgb bits = r:%d, g:%d, b:%d,\n", i, r, g, b);
+    
+    digitalWrite(led_r_pin, r);
+    digitalWrite(led_g_pin, g);
+    digitalWrite(led_b_pin, b);
+    delay(1000);
+    digitalWrite(led_r_pin, LOW);
+    digitalWrite(led_g_pin, LOW);
+    digitalWrite(led_b_pin, LOW);
+    delay(1000);
+    }
+    }</code></pre>
+    <p><a href="http://blocs.xtec.cat/tecno/files/2022/07/rgb.png"><img class="alignnone size-large wp-image-2729"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/rgb-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/rgb-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/rgb-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/rgb-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+    <p>Blinking LED</p>
+    <p>int led = LED_BUILTIN;</p>
+    <p>void setup() {<br />
+        // Some boards work best if we also make a serial connection<br />
+        Serial.begin(115200);</p>
+    <p>// set LED to be an output pin<br />
+        pinMode(led, OUTPUT);<br />
+        }</p>
+    <p>void loop() {<br />
+        // Say hi!<br />
+        Serial.println(&#8220;Hello!&#8221;);</p>
+    <p>digitalWrite(led, HIGH); // turn the LED on (HIGH is the voltage level)<br />
+        delay(500); // wait for a half second<br />
+        digitalWrite(led, LOW); // turn the LED off by making the voltage LOW<br />
+        delay(500); // wait for a half second<br />
+        }</p>
+    <p><a href="http://blocs.xtec.cat/ytecno/files/2022/07/blinking.png"><img class="alignnone size-large wp-image-2731"
+                src="http://blocs.xtec.cat/tecno/files/2022/07/blinking-1024x640.png" alt="" width="474" height="296"
+                srcset="https://blocs.xtec.cat/tecno/files/2022/07/blinking-1024x640.png 1024w, https://blocs.xtec.cat/tecno/files/2022/07/blinking-300x188.png 300w, https://blocs.xtec.cat/tecno/files/2022/07/blinking-768x480.png 768w"
+                sizes="(max-width: 474px) 100vw, 474px" /></a><br />
+        <iframe title="Blinking ESP32-S3" src="https://www.youtube.com/embed/9prlFXNvumE" width="640" height="360"
+            frameborder="0" allowfullscreen="allowfullscreen"></iframe><br />
+        From 16/09/2022 it is possible to use <a
+            href="https://blog.arduino.cc/2022/09/16/arduino-cloud-extends-esp32-support-to-s2-s3-c3-devices/"
+            target="_blank">cloud Arduino IDE.</a>
+    </p>
 	</div><!-- .entry-content -->
 </body>
 </html>
