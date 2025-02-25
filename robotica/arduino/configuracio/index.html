@@ -91,8 +91,8 @@
         </div>
     </div>
 </nav>
-
-<h1>Configuració</h1>
+    <div class="content-container">
+    <h1>Configuració</h1>
     <p>This is the new board from Espressif, ESP32-S3 DevKit. ESP32-S3 is a dual-core XTensa LX7 MCU, capable of running
         at 240 MHz. Apart from its 512 KB of internal SRAM, it also comes with integrated 2.4 GHz, 802.11 b/g/n Wi-Fi
         and Bluetooth 5 (LE) connectivity that provides long-range support. It has 45 programmable GPIOs and supports a
@@ -111,19 +111,94 @@
     <p>La memòria ROM és <i>Read Only Memory</i> o el disc dur, que és la capacitat total de memòria del microcontrolador o de l'ordinador. 
         L'Arduino UNO té 32 kB de memòria ROM, l'ESP32-S3 té 384 kB de memòria ROM i el meu ordinador té 119 GB de meòria, que són un gran 
         número de vegades diferents.</p>
-    <p>Arduino UNO... </p>
-    <h1>Entrades GPIO</h1>
-    <h2>Protocols de comunicació</h2>
-    <h3>Comunicació sincrona</h3>
-    <p>Coordinació entre el receptor i el transmissor per enviar dades. Aixo fa possible la transmissió de rellotge, que indica quan s'ha d'escriure o llegir un bit.</p>
-    <p>Els principals protocols sincrons son: SPI i I2C</p>
-    <p>SPI es Serial Periferal Interface, I2C significa Inter-Integrated Circuit</p>
-    <h3>Comunicació asincrona</h3>
-    <p>No hi ha cap rellotge compartit, l'emisor i el transmissor funcionen de manera independent.</p>
-    <p>Cada byte porta uns bits d'inici i final que indiquen quan s'ha d'acabar la transmissió.</p>
-    <p>Els elements del circuit han d'acordar la velocitat de transmissió.</p>
-    <p>Exemples de protocols asincrons son: UART i ES232</p>
-    <p>UART significa Universal Asynchronous Reciver-Transmiter. i RS232 es el port serie</p>
+    <h1> Entrades GPIO</h1>
+      <p> GPIO significa General Purpose Input Output, és a dir, entrades i sortides de pròposit general. Aquestes pins 
+        permeten ser utilitzats com entrades analógiques, entrades digitals, sortides analógiques, sortides digitals, i 
+        a vegades també com a rellotges o parts de protocols de comunicació. Les GTIO estan normalment en microcontroladors 
+        avançats o moderns, com ESP32S3 i també en microordenadors-microordenadors, com Raspberry Pi. Arduino Uno Rev 3
+        no té GPIO, però es poden utilitzar com a GPIOs les entrades analógiques de A0 a A5 i també es poden 
+        piratejar / modificar altres pins. </p>
+      <h2> Protocols de comunicació</h2>
+      <p> Diferents maneres que té una placa (Arduinno Uno o ESP32S3) de connectarse en qualsevol altre dispositiu, com: 
+      un sensor, el nostre portatil, una pantalla LCD, OLED, un targeta SD, etc.</p>
+        <h3> Comunicació síncrona</h3>
+        Coordinació entre el receptor i transmisor per enviar dades, això es fa per una transmisió o línia de rellotge que
+        es diu SCK o CLK serveix per a que a cada puls de rellotge indica que s'ha de llegir o escriure un bit, i el transmisor 
+        i el receptor es mouen al mateix ritme del rellotge que fa possible entre el microcontrolador i altres dispositius 
+        electronics, com: sensor, targetes SD, pantalles TFT, etc.</p>
+      
+      <p>Hi ha dos protocols principals síncrons: SPI i I2C </p>
+       <p> SPI significa Serial Periferal Interface i I2C significa Inter-Integrated Circuit</p>
+      <p> La comunicació / protocols síncrons és més ràpida i eficient en velocitats altes i és més precisa 
+        perque els dispositius estan sincronitzats, però necessitem posar més cables per al rellotge i altres senyals
+      <h3> Comunicació asíncrona</h3>
+        <p> No hi ha cap rellotge compartit, el emisor i el transmisor funcionen de forma totalment independents </p>
+      <p> Cada byte (conjunt de bits) o paquet de dades porta uns bits que es poden indentificar com a bits d'inici
+        i bits de final (convinació de 0 i 1 que és sempre igual, i que ens indica que ha començar o acabat la transmissió) </p>
+      <p> El transmisor i el receptor han d'acordar la velocitat de transmisió, e Arduino Uno Rev3 és 9600 bauds o bits per segon
+        i en ESP32S3 és 115200 bauds </p>
+      <p> Exemples de protocols asíncrons són UART i RS232 </p>
+      <p> UART vol dor Universal Asynchronous Receiver-Transmiter, i RS232 és el protocol o port sèrie antic </p>
+      <h5> Avantatges </h5>
+      <ul>
+        <li>  Més senzill de cablejar</li>
+        <li> Ideal per distancies llargues (de cable)</li>
+        <li> Comunicacions simples</li>
+      </ul>
+          <h5> Inconvenients </h5>
+      <ul>
+        <li>  Menys eficient a velocitats altes</li>
+        <li> Risc de desincronització si no respecta la velocitat acordada</li>
+      </ul>
+    <h4> SPI </h4>
+      <p> Exemple de SPI amb Arduino Uno </p>
+      <p> El pin 11 és un MOSI que significa Master Out Slave In, i el pin 12 és MISO Master In Slave Out </p>
+    <p> El pin MOSi envia dades des de l'Arduino (Mestre o master) cap els perifèrics (Slaves o esclaus). Per exemple, si conectem un mòdul SD
+        o tarjeta de memòria o una pantalla o display SPI significa que les dades s'enviarien pel pin 11 o MOSI. </p>
+        <p> El pin MISO farà el contrari que el pin MOSI, o sigui, rep dades des d'un esclau cap a l'Arduino i l'esclau pot ser el mateix
+            que l'anterior, conectem una tarjeta de memòria o una pantalla </p>
+        <p> A més s'utilitzen altres pins com el SCK (o pin 13 d'Arduino Uno) que significa Serial Clock, que enviarà un senyal de rellotge, que serveix per sincronitzar 
+            la comunicació, l'Arduino és el mestre que genera aquest senyal que segueixen tots els esclaus. </p>
+        <p> El pin 10 és el pin SS que significa Slave Select, diu quin esclau esta actiu en un moment determinat. </p>
+        <p> Es necessiten 2 pins més d'alimentació que són el VCC de 5v o el GND que és el terra, que tanca el circuit. </p>
+        <p> A continuació veurem un codi per comprovar si la targeta SD està connectada correctament. </p>
+
+          <pre><code>
+          #include <SPI.h> // Afegim la biblioteca de C++ Arduino que controla el protocol de la comunicació SPI.
+          #include <SD.h> // Afegim o importem la biblioteca que controlen els arxius per "Read Write Rewrite Delete" es a dir, per llegir arxius
+          //escriure'ls borrar-los...
+          const int chipSelect = 10; // Fem que el pin 10 sigui un número enter i constant i s'annomeni "chipSelect" perquè controlarà la
+          // selecció de la targeta SD. Aquest pin serveix per activar la targeta SD, quan l'Arduino vol comunicar-se amb ella.
+          void  setup(){
+          Serial.begin(9600); // 9600 són bauds, els bauds són la quantitat de simbols transmesos per segon, en la comunicació serie 
+          // 1 baud = 1 bit/segon, però en alguns casos 1 baud pot ser més de 1 bit/segon.
+          Serial.print("Inicialitzant la targeta SD...") // Això significa que sortirà a la consola aquest missatge.
+          if(!SD.Begin(chipSelect)){ // ! nega, vol dir que si no s'inicia la targeta SD.
+          Serial.println("Error: no s'ha detectat la targeta SD"); // Si es compleix la condició anterior, posa aquest missatge a la consola.
+          return; // Significa que acabi la funció setup si la targeta no està disponible
+              } // Aquesta clau tanca el condicional si no detecta la SD.
+          Serial.println("Targeta SD detectada correctament");
+          File fitxer = SD.open("dades.txt"); // File és una classe d'objectes que gestiona arxius i quan escric un nom al costat com "fitxer" declaro 
+          // una variable per gestionar un fitxer. Si el fitxer exsisteix i es pot obrir correctement la paraula fitxer serà valida, en cas contrari, el fitxer
+          // donarà com a resposta null.
+          if (fitxer){ // Vol dir si el fitxer s'ha pogut obrir perquè és vàlid, executa el codi següent, i si no passa directament per else i mostra un error.
+          Serial.println("Llegint dades.txt..."); // T'està dient que a començat a llegir el fitxer.
+          Serial.begin(9600); // 9600 són bauds  o  els bauds
+          while(fitxer.available()){ // "Mentre que hagi dades per llegir dintre del fitxer"
+          Serial.write(fitxer.read()); // El que faria és mostrar el contingut del fitxer. El mètode read el que fa amb la sintaxi del punt aplicada al fitxer
+          // va llegint caracter per caracter i el mostra al monitor sèrie fins que no hi ha més caràcters.
+          fitxer.close (); // Sempre s'ha de tancar el fitxer quan no es necessita, per evitar errors i alliberar memòria.
+              } // Aquesta clau tanca el bloc de configuració o setup.
+          void loop (){ // Aquesta part el codi és la que s'executaria tota l'estona de forma repetitiva. No posariem per exemple llegir un fitxer, ja que
+          // estaria llegint tota l'estona sense pausa
+            
+              }
+          
+              
+           </code></pre>
+
+            
+      
 
     <p>You can work with different software as you can read under Microcontrollers>Software for microcontollers in this
         web as for example using the <a
@@ -308,6 +383,7 @@
         From 16/09/2022 it is possible to use <a
             href="https://blog.arduino.cc/2022/09/16/arduino-cloud-extends-esp32-support-to-s2-s3-c3-devices/"
             target="_blank">cloud Arduino IDE.</a>
+
     </p>
 	</div><!-- .entry-content -->
 </body>
