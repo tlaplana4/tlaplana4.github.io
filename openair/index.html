@@ -1,0 +1,107 @@
+<html>
+  <head>
+    
+  </head>
+  <body>
+    <h1>Codis de R</h1>
+    <p>El primer que fem es instalar les biblioteques: Openair, per analisi i creació de grafiques de contaminació. Tidyverse, per ordenar les dades, i Lares, per un parell de funcions</p>
+    <pre><code>
+      install.packages(c("openair","tidyverse", "lares"))
+    </code></pre>
+    <p>Guardem les dades obtingudes de la generalitat dins d'una variable</p>
+    <pre><code>
+      city<-read.csv('tarragona_bonavista.csv')
+    </code></pre>
+    <p>Carreguem la llibreria Tidyverse</p>
+    <pre><code>
+      library (tidyverse)
+    </code></pre>
+    <p>Utilitzem la funció pivot_longer per passar unes columnes a files</p>
+    <pre><code>
+      city1<-pivot_longer(city,cols=c(h01,h02,h03,h04,h05,h06,h07,h08,h09,h10,h11,h12,h13,h14, h15,h16,h17,h18,h19,h20,h21,h22,h23,h24), names_to="hour", values_to = "value")
+    </code></pre>
+    <p>Creem un dataframe nou, on elimunem les columnes 1,2,4 i de la 6 a la 16</p>
+    <pre><code>
+      city2 <- city1[-c(1,2,4,6:16)]
+    </code></pre>
+    <p>Carreguem la llibreira dplyr</p>
+    <pre><code>
+      library(dplyr)
+    </code></pre>
+    <p>Cambiem el nom i la posició de les columnes amb l'operador pipe (%>%) de dplyr, que encadena varies operacions a la vegada</p>
+    <pre><code>
+      city2 <- city2 %>% mutate(date=paste0(data, " ", hour))
+    </code></pre>
+    <p>Utilitzem la funció colnames per coneixer el nom de les columnes del dataframe</p>
+    <pre><code>
+      colnames (city2)
+    </code></pre>
+    <p>Eliminem i reordenem algunes columnes</p>
+    <pre><code>
+      city2 <- city2[-c(1,3)]
+      city2 <- city2[,c(3,1,2)]
+    </code></pre>
+    <p>Canviem el nom de les columnes</p>
+    <pre><code>
+      colnames (city2)<-c("date","pollutant","value")
+    </code></pre>
+    <p>Comprovem el nom i la classe de les columnes</p>
+    <pre><code>
+      colnames(city2)
+      class (city2)
+    </code></pre>
+    <p>Fem que la variable sigui un dataframe</p>
+    <pre><code>
+      city2 <- as.data.frame(city2)
+    </code></pre>
+    <p>Carreguem la llibreria Lares</p>
+    <pre><code>
+      library (lares)
+    </code></pre>
+    <p>Substituim les hores per les mateixes pero seguint l'estandard horari</p>
+    <pre><code>
+      city2<-replaceall(city2, c("T00:00:00.000 h01", "T00:00:00.000 h02","T00:00:00.000 h03","T00:00:00.000 h04","T00:00:00.000 h05","T00:00:00.000 h06","T00:00:00.000 h07","T00:00:00.000 h08","T00:00:00.000 h09","T00:00:00.000 h10","T00:00:00.000 h11","T00:00:00.000 h12","T00:00:00.000 h13","T00:00:00.000 h14","T00:00:00.000 h15","T00:00:00.000 h16","T00:00:00.000 h17","T00:00:00.000 h18","T00:00:00.000 h19","T00:00:00.000 h20","T00:00:00.000 h21","T00:00:00.000 h22","T00:00:00.000 h23","T00:00:00.000 h24"), c(" 01:00:00", " 02:00:00", " 03:00:00", " 04:00:00"," 05:00:00", " 06:00:00"," 07:00:00", " 08:00:00"," 09:00:00", " 10:00:00"," 11:00:00", " 12:00:00"," 13:00:00", " 14:00:00"," 15:00:00", " 16:00:00"," 17:00:00", " 18:00:00"," 19:00:00", " 20:00:00"," 21:00:00", " 22:00:00"," 23:00:00", " 00:00:00"))
+    </code></pre>
+    <p>Carreguem la llibreria Openair</p>
+    <pre><code>
+      library(openair)
+    </code></pre>
+    <p>Comprovem les classes de les columnes</p>
+    <pre><code>
+      class (city2$date)
+      class (city2$pollutant)
+      class (city2$value)
+    </code></pre>
+    <p>Canviem el format de la data a POSIXct</p>
+    <pre><code>
+      city2$date<-as.POSIXct(city2$date,"%Y-%m-%d %H:%M:%S", tz="Europe/Madrid")
+    </code></pre>
+    <p>Coomprovem la columna date</p>
+    <pre><code>
+      class(city2$date)
+    </code></pre>
+    <p>Canviem el pollutant a factor</p>
+    <pre><code>
+      city2$pollutant <- as.factor(city2$pollutant)
+    </code></pre>
+    <p>Comprovem la classe i els noms dels pollutants</p>
+    <pre><code>
+      class(city2$pollutant)
+      levels(city2$pollutant)
+    </code></pre>
+    <p>Fem un pivot_wider amb els pollutats a una nova variable</p>
+    <pre><code>
+      city3<-pivot_wider(city2,names_from = pollutant, values_from = value)
+    </code></pre>
+    
+
+
+    <h1>Codis de Python</h1>
+    <p></p>
+    <pre>
+      <code>
+        
+      </code>
+    </pre>
+  </body>
+</html>
