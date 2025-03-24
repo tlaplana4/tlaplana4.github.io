@@ -8,6 +8,19 @@
     <style>
 body {
     padding: 0; /* Elimina l'espai extra al voltant del cos */
+    font-family: Arial, sans-serif; line-height: 1.6; margin: 20px;
+}
+pre { background: #f4f4f4; padding: 10px; overflow-x: auto; position: relative; }
+code { font-family: monospace; }
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #007bff;
 }
 .container-fluid {
     max-width: 100%; /* Assegura que la navbar ocupa tota l'amplada */
@@ -55,6 +68,15 @@ tbody tr:hover{
 }
 
     </style>
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.nextElementSibling.innerText;
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => { button.innerHTML = '<i class="fas fa-copy"></i>'; }, 2000);
+            });
+        }
+    </script>
 </head>
 <body>
 <!-- Navbar -->
