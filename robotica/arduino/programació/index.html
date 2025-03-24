@@ -94,247 +94,95 @@ tbody tr:hover{
 </nav>
 <!-- Contingut principal -->
 <div class="content-container">
-<pre><code>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    //El meu primer codi: Blink
-    void setup() { //Codi que s'executa una vegada i és la configuració.
-    pinMode(13, OUTPUT); //Estem dient que el pin 13 és una sortida de corrent o OUTPUT on puc connectar un led.
+<h3>El meu primer codi: Blink</h3>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+//El meu primer codi: Blink
+void setup() { //Codi que s'executa una vegada i és la configuració.
+  pinMode(13, OUTPUT); //Estem dient que el pin 13 és una sortida de corrent o OUTPUT on puc 
+    // connectar un led.
 }
 
-    void loop() { //És un codi que s'executa sense parar fins que desconnecto l'Arduino o li dono una instrucció de parada.
-    digitalWrite(13, HIGH); // <b>digitalWrite</b> és una sortida digital i permet encendre i apagar. Només té 2 valors, HIGH i LOW (Encès i apagat)
-    delay(500);//És el temps en milisegons que ha d'estar, en aquest cas encès.
-    digitalWrite(13, LOW);//Aqui <b>digitalWrite</b> fa que s'apagui
-    delay(500);
+void loop() { //És un codi que s'executa sense parar fins que desconnecto l'Arduino o li dono una 
+    // instrucció de parada.
+ digitalWrite(13, HIGH); // <b>digitalWrite</b> és una sortida digital i permet encendre i apagar
+    // Només té 2 valors, HIGH i LOW (Encès i apagat)
+ delay(500);//És el temps en milisegons que ha d'estar, en aquest cas encès.
+ digitalWrite(13, LOW);//Aqui <b>digitalWrite</b> fa que s'apagui
+ delay(500);
 }
-</code></pre>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    //Blink amb dos variables globals
-    //Avantatge principal: Quan canvio un número al principi canviarà tot el codi. 
-    //Segon avantatge: També s'enten millor perquè jo poso els noms de les variables
-    //Desavantatge: És una mica més llarg. 
-    int ledPin = 13;
-    int delayPeriod = 500; //Declarem 2 variables globals com a números enters
+    </code></pre>
 
-    void setup() {
-      pinMode(ledPin, OUTPUT);
-    }
+    </div>
 
-    void loop() {
-     digitalWrite(ledPin, HIGH);
-     delay(delayPeriod);
-     digitalWrite(ledPin, LOW); //Utilitzo una variable global
-     delay(delayPeriod); //Utilitzo una altra variable global
-    }
-</code></pre>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    //Codi Blink amb un condicional
-
-    int ledPin = 13;
-    int delayPeriod = 100;
-
-    void setup() {
-      pinMode(ledPin, OUTPUT);
-    }
-
-    void loop() {
-     digitalWrite(ledPin, HIGH);
-     delay(delayPeriod);
-     digitalWrite(ledPin, LOW);
-     delay(delayPeriod);
-     delayPeriod = delayPeriod + 100; //Augmenta el temps 100 milisegons cada vegada
-     if (delayPeriod == 1000) { //Quan arriba a 1000 milisegons torna a començar, això significa que quan arriba a 1000 torna a començar perquè hem posat que el delayPeriod sigui 100 de nou. 
-    //Cada vegada és més lent perquè el temps que triga en encendre i apagar-se és major.
-    //Si vulgues que cada vegada sigui més ràpid, i s'hauria de canviar varies coses: al principi del codi canviar la variable de 
-    //int delayPeriod = 1000, a final de codi posar el menys a "delayPeriod = delayPeriod - 100", i finalment canviar el condicional per:
-    //if (delayPeriod == 100); delayPeriod = 1000;
-    //Si vull que el canvi sigui més lent s'hauria de posar un número més alt en "delayPeriod = delayPeriod + X"
-    //Si vull que el canvi sigui més ràpid s'hauria de posar un número més petit en "delayPeriod = delayPeriod + X"
-  delayPeriod = 100;
- }
-}
-</code></pre>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-//Operacions matemàtiques (Útils per sensors o per problemes matemàtics)
-void setup() {
-  Serial.begin(9600);//Hem de connectar l'Arduino a la consola sèrie a 9600 bauds, que són 9600 símbols per segon
-    //I poden ser aproximadament 9600 bits per segon, però, en alguns casos, necessitem més d'un bit per un símbol
-  int a = 2;
-  int b = 2;
-  int c = a + b;//Llenguatge arduino accepta les operacions matemàtiques bàsiques
-  Serial.println(c); 
-}
-void loop() {}
-</code></pre>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-//Exemple de temperatura amb operacions matemàtiques
-
-void setup() {
-  Serial.begin(9600);
-  int degC = 20; //Representa que el sensor ja ha agafat 20 graus i els volem convertir a Fahrenheit
-  int degF;
-  degF = degC * 9 / 5 + 32;
-  Serial.println(degF); //Fes una impressió a la consola de l'ordinador en una línea println el valor de la variable fahrenheit.
-}
-void loop(){}
-</code></pre>
-
-<p> En el següent codi podem veure com definim unes variables globals i les apliquem moltes vegades repetides dins del mateix 
-    codi. Es un codi molt repetitiu </p>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-// 02_07_blink_20 (Encendre i apagar manualment o Hard coded)
-// variables globals, que s'utilitzaran moltes vegades repetides.
-//avantatges: Es pot canviar el periode i el nombre de pin al principi (Variable global) i afecta a moltes linees
-//de codi diferent. 
-
-int ledPin = 13;
-int delayPeriod = 250;
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
-
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
-
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
-
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- digitalWrite(ledPin, HIGH);
- delay(delayPeriod);
- digitalWrite(ledPin, LOW);
- delay(delayPeriod);
- 
- 
- delay(3000);
-}
-
-</code></pre>
-<p> Amb el següent codi, aconseguim el mateix resultat que més amunt, es a dir, 
-encendre i apagar 20 vegades amb un delay de 250 milisegons, peró no ho escribim 20 
-vegades, si no que fem un cicle for.</p>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    // 02_08_blik_20_for
-
-int ledPin = 13;
-int delayPeriod = 250;
-
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-
-void loop() {
-  for (int i = 0; i < 20; i ++) { //Dintre del cicle for, tenim les condicions que ha de complir el cicle
-      //que són des de i = 0 fins a i = 20, ves augmentant un en un. O sigui i++ que es el mateix que i = i + 1
-      //Si volgués podria canviar les condicions. fent que els numeros augmentesin diferent
-      //(Per exemple i = i + 5)
-      
-   digitalWrite(ledPin, HIGH);
-   delay(delayPeriod);
-   digitalWrite(ledPin, LOW);
-   delay(delayPeriod);
-  }
- delay(3000);
-}
-</code></pre>
-<p> En el codi anterior, hem dit que repeteixi 20 vegades però es repeteix infinites vegades perqué es repeteix
-20 vegades en un void loop. En el següent codi, posarem un contador i quan arribi a 20 repeticions s'aturarà</p>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-// 02_09_blink_20_loop (Aqui es nota perqué
-
+    <div class="content-container">
+        <h3>Codi Blink amb un condicional</h3>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+//Codi Blink amb un condicional
+        
 int ledPin = 13;
 int delayPeriod = 100;
-int count = 0;
+        
+void setup() {
+    pinMode(ledPin, OUTPUT);
+}
+        
+void loop() {
+    digitalWrite(ledPin, HIGH);
+    delay(delayPeriod);
+    digitalWrite(ledPin, LOW);
+    delay(delayPeriod);
+    delayPeriod = delayPeriod + 100; //Augmenta el temps 100 milisegons cada vegada
+    if (delayPeriod == 1000) { //Quan arriba a 1000 milisegons torna a començar, això significa que quan arriba a 1000 torna a començar 
+        //perquè hem posat que el delayPeriod sigui 100 de nou. 
+        //Cada vegada és més lent perquè el temps que triga en encendre i apagar-se és major.
+        //Si vulgues que cada vegada sigui més ràpid, i s'hauria de canviar varies coses: al principi del codi canviar la variable de 
+        //int delayPeriod = 1000, a final de codi posar el menys a "delayPeriod = delayPeriod - 100", i finalment canviar el condicional per:
+        //if (delayPeriod == 100); delayPeriod = 1000;
+        //Si vull que el canvi sigui més lent s'hauria de posar un número més alt en "delayPeriod = delayPeriod + X"
+        //Si vull que el canvi sigui més ràpid s'hauria de posar un número més petit en "delayPeriod = delayPeriod + X"
+    delayPeriod = 100;
+    }
+}
+    </code></pre>
+
+    </div>
+    <div class="content-container">
+        <h3>Operacions matemàtiques (Útils per sensors o per problemes matemàtics)</h3>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            //Operacions matemàtiques (Útils per sensors o per problemes matemàtics)
+            void setup() {
+              Serial.begin(9600);//Hem de connectar l'Arduino a la consola sèrie a 9600 bauds, que són 9600 símbols per segon
+                //I poden ser aproximadament 9600 bits per segon, però, en alguns casos, necessitem més d'un bit per un símbol
+              int a = 2;
+              int b = 2;
+              int c = a + b;//Llenguatge arduino accepta les operacions matemàtiques bàsiques
+              Serial.println(c); 
+            }
+            void loop() {}
+            </code></pre>
+    </div>
+    <div class="content-container">
+        <h3>Exemple de temperatura amb operacions matemàtiques</h3>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            //Exemple de temperatura amb operacions matemàtiques
+            
+            void setup() {
+              Serial.begin(9600);
+              int degC = 20; //Representa que el sensor ja ha agafat 20 graus i els volem convertir a Fahrenheit
+              int degF;
+              degF = degC * 9 / 5 + 32;
+              Serial.println(degF); //Fes una impressió a la consola de l'ordinador en una línea println el valor de la variable fahrenheit.
+            }
+            void loop(){}
+            </code></pre>
+    </div>
+    <div class="content-container">
+        <p>En el següent codi podem veure com definir unes variables globals i les apliquem moltes vegades repetides
+            dins del mateix codi. És un codi molt repetitiu.</p>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+
+int ledPin = 13;
+int delayPeriod = 250;
 
 void setup() {
   pinMode(ledPin, OUTPUT);
@@ -345,52 +193,248 @@ void loop() {
  delay(delayPeriod);
  digitalWrite(ledPin, LOW);
  delay(delayPeriod);
- count ++; //"Count" es una variable global que podria ser local, perquè només afecta al loop.
-    //si escric "int count; count ++;" estaria definint una variable local dintre del loop, i no es pot usar en una altre funció que jo defineixi o
-    //al setup
- if (count == 20) { //Quan el comtador arriba a 20 deixa de fer parpadeigs de 100 milisegons i fa una aturada de 3 segons abans de tornar a començar
-   count = 0;
-   delay(3000);
- }
-}
- // Dos iguals vol dir que es exactament igual. Si posem 3 iguals "===" es una comparació estricta es a dir una comparació
-// estricta, que compara també el tipus de variable. Si posem un igual "=" és una assignació que pot ser temporal o constant
-// si es posa "const" davant es 
-</code></pre>
-<p> El següent codi es el primer exemple de creació d'una funció. Una funció es com un programa dins dins d'un programa.</p>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    // 03_01_blink_function
 
-const int ledPin = 13;
-const int delayPeriod = 250;
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
 
-void setup() {
-  pinMode(ledPin, OUTPUT);
-}
-// Aquest codi es el principal, anomenat com a "main" en alguns llenguatges. És el que s'aplica continuadament. En aquest cas el "void loop()"
-// el loop repeteix 20 vegades el flash.
-// Com cridem una funció?
-// Només cal posar el nom de la funció dintre del loop per cridar-la i que s'executi sempre.
-void loop() {
-  for (int i = 0; i < 20; i ++) {
-    flash();
-  }
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ digitalWrite(ledPin, HIGH);
+ delay(delayPeriod);
+ digitalWrite(ledPin, LOW);
+ delay(delayPeriod);
+ 
+ 
  delay(3000);
 }
-// per crear una funció només cal escriure el nom de la funció i uns parentesis. Si hagués alguna cosa entre parentesi
-//serian els parametres o arguments de la funció. La paraula "void" en aquest cas es equivalent a la paraula "function" de javascript.
-//triem un nom explicatiu del que fa la funció, i dintre de les claus posem les linees de codi que s'han d'executar quan la cridem pel seu
-//nom dintre del void loop (per exemple). 
-void flash() { 
-   digitalWrite(ledPin, HIGH);
-   delay(delayPeriod);
-   digitalWrite(ledPin, LOW);
-   delay(delayPeriod);
-}
 </code></pre>
-<p>A continuació veurem el codi flash però amb paràmetres. </p>
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    // 03_03_blink_functrion_params
+    </div>
+    <div class="content-container">
+        <p> Amb el següent codi, aconseguim el mateix resultat que més amunt, es a dir,
+            encendre i apagar 20 vegades amb un delay de 250 milisegons, peró no ho escribim 20
+            vegades, si no que fem un cicle for.</p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            // 02_08_blik_20_for
+        
+        int ledPin = 13;
+        int delayPeriod = 250;
+        
+        void setup() {
+          pinMode(ledPin, OUTPUT);
+        }
+        
+        void loop() {
+          for (int i = 0; i < 20; i ++) { //Dintre del cicle for, tenim les condicions que ha de complir el cicle
+              //que són des de i = 0 fins a i = 20, ves augmentant un en un. O sigui i++ que es el mateix que i = i + 1
+              //Si volgués podria canviar les condicions. fent que els numeros augmentesin diferent
+              //(Per exemple i = i + 5)
+              
+           digitalWrite(ledPin, HIGH);
+           delay(delayPeriod);
+           digitalWrite(ledPin, LOW);
+           delay(delayPeriod);
+          }
+         delay(3000);
+        }
+        </code></pre>
+    </div>
+    <div class="content-container">
+        <p> En el codi anterior, hem dit que repeteixi 20 vegades però es repeteix infinites vegades perqué es repeteix
+            20 vegades en un void loop. En el següent codi, posarem un contador i quan arribi a 20 repeticions s'aturarà
+        </p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+        // 02_09_blink_20_loop (Aqui es nota perqué)
+        
+        int ledPin = 13;
+        int delayPeriod = 100;
+        int count = 0;
+        
+        void setup() {
+          pinMode(ledPin, OUTPUT);
+        }
+        
+        void loop() {
+         digitalWrite(ledPin, HIGH);
+         delay(delayPeriod);
+         digitalWrite(ledPin, LOW);
+         delay(delayPeriod);
+         count ++; //"Count" es una variable global que podria ser local, perquè només afecta al loop.
+            //si escric "int count; count ++;" estaria definint una variable local dintre del loop, i no es pot usar en una altre funció que jo defineixi o
+            //al setup
+         if (count == 20) { //Quan el comtador arriba a 20 deixa de fer parpadeigs de 100 milisegons i fa una aturada de 3 segons abans de tornar a començar
+           count = 0;
+           delay(3000);
+         }
+        }
+         // Dos iguals vol dir que es exactament igual. Si posem 3 iguals "===" es una comparació estricta es a dir una comparació
+        // estricta, que compara també el tipus de variable. Si posem un igual "=" és una assignació que pot ser temporal o constant
+        // si es posa "const" davant es 
+        </code></pre>
+    </div>
+    <div class="content-container">
+        <p> El següent codi es el primer exemple de creació d'una funció. Una funció es com un programa dins dins d'un
+            programa.</p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            // 03_01_blink_function
+        
+        const int ledPin = 13;
+        const int delayPeriod = 250;
+        
+        void setup() {
+          pinMode(ledPin, OUTPUT);
+        }
+        // Aquest codi es el principal, anomenat com a "main" en alguns llenguatges. És el que s'aplica continuadament. En aquest cas el "void loop()"
+        // el loop repeteix 20 vegades el flash.
+        // Com cridem una funció?
+        // Només cal posar el nom de la funció dintre del loop per cridar-la i que s'executi sempre.
+        void loop() {
+          for (int i = 0; i < 20; i ++) {
+            flash();
+          }
+         delay(3000);
+        }
+        // per crear una funció només cal escriure el nom de la funció i uns parentesis. Si hagués alguna cosa entre parentesi
+        //serian els parametres o arguments de la funció. La paraula "void" en aquest cas es equivalent a la paraula "function" de javascript.
+        //triem un nom explicatiu del que fa la funció, i dintre de les claus posem les linees de codi que s'han d'executar quan la cridem pel seu
+        //nom dintre del void loop (per exemple). 
+        void flash() { 
+           digitalWrite(ledPin, HIGH);
+           delay(delayPeriod);
+           digitalWrite(ledPin, LOW);
+           delay(delayPeriod);
+        }
+        </code></pre>
+    </div>
+    <div class="content-container">
+        <p>A continuació veurem el codi flash però amb paràmetres. </p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            // 03_03_blink_functrion_params
+        
+        const int ledPin = 13;
+        const int delayPeriod = 250;
+        
+        void setup() {
+          pinMode(ledPin, OUTPUT);
+        }
+        
+        void loop() {
+          flash(20, delayPeriod);
+          delay(3000);
+        }
+        // Podem veure que la funció te dos paràmetres que son 2 nombres enters i que s'anomenen "numFlashes" i "d"
+        // numFlashes no esta definit com a variable global, és una variable local definida dins de la funció "flash"
+        // i no te un valor predeterminat, només ha de complir que sigui un valor enter. El mateix per a la variable "d"
+        void flash(int numFlashes, int d) {
+            for (int i = 0; i &lt; numFlashes; i++) {
+            digitalWrite(ledPin, HIGH);
+            delay(d);
+            digitalWrite(ledPin, LOW);
+            delay(d);
+            }
+            }
+
+        </code></pre>
+    </div>
+    
+        <div class="content-container">
+            <h1>Funcions en Arduino</h1>
+            <p>Les funcions d'arduino són semblants a les funcions que veiem a cinemàtica directa i inversa. En el cas de la cinemàtica robòtica 
+                utilitzavem funcions Javascript dintre d'un codi HTML. Avans cada funció com per exemple, calculatePosition () era una funció 
+                sense arguments o paràmetres que estava identificada amb un bloc de codianomenat function i s'executava quan clicavem un botó. 
+                Dintre d'aquest bloc hi havien instruccions que permeten fer càlculs matemàtics. En el següent codi d'arduino, tenim una funcion 
+                flash amb dos peràmetres que eren números enters anomenat ledPin i de delayPeriod que identifiquen el pin que està connectat i el 
+                temps que ha d'estar encès o apagat.
+            </p>
+            <p> Ara farem que un bucle for ss'executi 20 o x vegades dintre d'unbucle for localitzat dintre d'un bucle infinit loop. Ho aconseguim 
+                amb la paraula clau static, que fa que una variable s'inicialitzi una vegada que correm el codi  i mai més. La paraula static es deriva 
+                del llenguatge C i Arduino és un derviat de C++ i Processing, </p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+            // 03_03_blink_20_faulty
 
 const int ledPin = 13;
 const int delayPeriod = 250;
@@ -400,22 +444,123 @@ void setup() {
 }
 
 void loop() {
-  flash(20, delayPeriod);
-  delay(3000);
-}
-// Podem veure que la funció te dos paràmetres que son 2 nombres enters i que s'anomenen "numFlashes" i "d"
-// numFlashes no esta definit com a variable global, és una variable local definida dins de la funció "flash"
-// i no te un valor predeterminat, només ha de complir que sigui un valor enter. El mateix per a la variable "d"
-void flash(int numFlashes, int d) {
-  for (int i = 0; i < numFlashes; i ++) {
-    digitalWrite(ledPin, HIGH);
-    delay(d);
-    digitalWrite(ledPin, LOW);
-    delay(d);
+  int count = 0;
+  digitalWrite(ledPin, HIGH);
+  delay(delayPeriod);
+  digitalWrite(ledPin, LOW);
+  delay(delayPeriod);
+  count ++;
+  if (count == 20) {
+    count = 0;
+    delay(3000);
   }
 }
-</code></pre>
+            </code></pre>
+        </div>
 
+        <div class="content-container">
+            <h1>Arrays i Strings</h1>
+            <p>Una Array és una forma de contenir un llistat de valors, moltes vegades són valors enters i s'accedeix amb ells per la 
+                seva posició, sent la primera posició [0] del array o element 0. El codi següent el que fa és a la primera linia defineix una 
+                array amb 9 valors, i els imprimeix en el monitor sèrie els seus valors. Serà útil pel nostre codi morse.
+            </p>
+            <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+                
+int durations[] = {200, 200, 200, 500, 500, 500, 200, 200, 200};
+
+void setup() {
+  Serial.begin(9600);  
+  for (int i = 0; i < 9; i++) {
+    Serial.println(durations[i]);
+  }
+}
+
+void loop() {
+
+}
+            </code></pre>
+        </div>
+        
+        <div class="content-container">
+            <p>El codi següent ja és un codi morse, perquè combina una array, un bucle for que llegeix l'array i l'aplica a la funció flash, 
+                d'aquesta forma és com si escrivis flash(200), flash(200), flash(200), flash(500), flash(500), flash(500), flash(200), flash(200), flash(200).
+            </p>
+        <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+const int ledPin = 13;
+
+int durations[] = {200, 200, 200, 500, 500, 500, 200, 200, 200};
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+}
+
+void loop()  {
+  for (int i = 0; i < 9; i++) {
+    flash(durations[i]);
+  }
+  delay(1000);
+}
+
+void flash(int duration) {
+   digitalWrite(ledPin, HIGH);
+   delay(duration);
+   digitalWrite(ledPin, LOW);
+   delay(duration);
+}
+        </code></pre>
+        </div>
+
+        <div class="content-container">
+            <p>Puc crear una funció que em serveix per quatre lletres i nomès quan la crido he de posar el número de repeticions com 
+                paràmetres o arguments</p>
+        </div>
+
+        <div class="content-container">
+            <h1>Normes internacionals de codi Morse</h1>
+            <ul>
+                <li>Una línia (dash) és igual a tres punts</li>
+                <li>L'espai entre les parts d'una meteixa lletra és igual a un punt (dot). (S = ···, l'espai entre cada punt és un punt)</li>
+                <li>L'espai entre dues lletres de la mateixa paraula són tres punts (Per exemple entre las S i la O de SOS)</li>
+                <li>L'espai entre dues parules és igual a set punts (Pa ······· tomàquet)</li> 
+            </ul>
+            <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+                void eosz (int numFlashes) {
+                    for (int i = 0; i < numFlashes; i++) {
+                        digitalWrite(ledPin, HIGH);
+                        delay(200);
+                        digitalWrite(ledPin, LOW);
+                        delay(200);
+                    }
+                }
+
+                void loop(){
+                    eosz(1); // Això és la lletra e
+                    eosz(3); // Això és la lletra s
+                    eosz(2); // Això és la lletra o
+                }
+            </code></pre>
+
+            <p>Crearem una funció que serà vàlida pels punts repetits i per les linies repetides amb dos paràametres.</p>
+
+            <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+
+
+                void eosztmo (int numFlashes, int d) {
+                    for (int i = 0; i < numFlashes; i++) {
+                        digitalWrite(ledPin, HIGH);
+                        delay(d);
+                        digitalWrite(ledPin, LOW);
+                        delay(d);
+                    }
+                }
+
+                void loop(){
+                    eosztmo(1, 600); //Això és la t
+                    eosztmo(3, 600); //Això és la o
+                    eosztmo(3, 200); //Això és la s
+                    eosztmo(1, 200); //Això és la e
+                }
+            </code></pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
