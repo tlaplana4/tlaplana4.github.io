@@ -651,6 +651,15 @@ void flash(int duration) {
             <p>El "Problema" que te es que pot provocar errors a la memoria o accesos no permesos si no saps com fer funcionar correctament el punter</p>
             <p>Els dos símbols per utilitzar punters son: L'arterisc "*", que serveix per llegir el contingut de l'adreça de memoria. I l'ampersand "&", que llegieix la posició de l'adreça de memoria</p>
             <p>La memoria de l'ordinador la podem imaginar com caixes d'una llista on cada caixa te un valor unic assignat en hexadecimal que comença per 0x. Cada caixa te un contingut que pot ser buit (0) o pot contenir un valor</p>
+            
+            <h4>Operacions avançades amb punters</h4>
+            <ul>
+                <li><b>Accés directe a la memoria:</b> Permet modificar valors en posicions especifiques.</li>
+                <li><b>Manipulació eficient d'arrays i strings (cadenes):</b> L'array esencialment es una llista adreçes amb principi i final amb un punter al primer element.</li>
+                <li><b>Passar grans quantitats de dades a funcions:</b> En lloc de copiar valors, els punters passen la seva adreça, estalviant memoria i temps. Aquest es un dels motius per els que C i derivats son mes rapids que python o JS.</li>
+                <li><b>Creació d'estructures dinamiques:</b> Es pot crear coses com grafics o llistes enllaçades de forma facil</li>
+                <li><b>Interacció amb microcontroladors senzilla:</b> Els microcontroladors utilitzen llenguatges de baix nivell (low-level languages) que son mes properes al hardware. Encara que, gracies a l'augment de la memoria, s'han pogut crear llenguatges com micropython o circutpython.</li>
+            </ul>
             <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
                 const int ledPin = 13;
 const int dotDelay = 200;
