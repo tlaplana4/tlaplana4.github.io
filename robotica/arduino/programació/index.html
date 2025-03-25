@@ -586,6 +586,131 @@ void flash(int duration) {
                     eosztmo(1, 200); //Això és la e
                 }
             </code></pre>
+            <table>
+            <thead>
+                <tr>
+                    <th>ASCII</th>
+                    <th>DECIMAL</th>
+                    <th>BINARI</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A-Z</td>
+                    <td>65-90</td>
+                    <td>1000001-1011010</td>
+                </tr>
+                <tr>
+                    <td>a-z</td>
+                    <td>97-122</td>
+                    <td>1100001-1111010</td>
+                </tr>
+                <tr>
+                    <td>0-9</td>
+                    <td>48-57</td>
+                    <td>110000-111001</td>
+                </tr>
+                <tr>
+                    <td>espai</td>
+                    <td>32</td>
+                    <td>100000</td>
+                </tr>
+            </tbody>
+            </th>
+        </table>
+                    <p>ASCII significa American Standard Code for Information Interchange i va ser descrit a l'any 1967 amb l'objectiu 
+            d'intercambiar informació amb ordinadors</p>
+        <p>UTF8 és un sistema Unicode Transformation Format que permet escriure més d'un milió de caràcters diferents
+            “🙂” U+1F642</p>
+            <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+                // sketch 05-03
+
+                char message[] = "Hello"; //Hi ha una array simbolitzada per "[]" que conté caràcters "char". Cada caracter d'ASCII te assignat un valor de 7 bits.
+                                          //Un valor de 7 bits va de 0 a 127 ja que 2^7 es 128. La "H" es 72, la "e" 101, etc...
+                                          //Per especificar el final de paraula posem un 0
+                
+                void setup() {
+                  Serial.begin(9600);
+                  message[0] = 'h';
+                }
+                
+                void loop() {
+                  Serial.println(message);
+                  delay(1000);
+                }
+            </code></pre>
+
+            <h3>Importància dels punters + Exemple de codi Morse</h3>
+            <p>Hi ha llenguatges amb i sense punters.</p> 
+            <ul>
+                <li>Exemples de llenguatges amb punters: C i els seus derivats com arduino</li>
+                <li>Exemples de llenguatges sense punters: Python i Javascript</li>
+            </ul>
+            <p>El punter llegeix el contingut d'una adreça de memoria i tambe la posició de la mateixa adreça i pot manipular-la. Hi ha posicions d'adreçes especials, com els sectors d'arrancada.</p>
+            <p>El punter serveix per tenir el control total per part del programador de la memoria i els recursos de l'ordinador</p>
+            <p>El "Problema" que te es que pot provocar errors a la memoria o accesos no permesos si no saps com fer funcionar correctament el punter</p>
+            <p>Els dos símbols per utilitzar punters son: L'arterisc "*", que serveix per llegir el contingut de l'adreça de memoria. I l'ampersand "&", que llegieix la posició de l'adreça de memoria</p>
+            <p>La memoria de l'ordinador la podem imaginar com caixes d'una llista on cada caixa te un valor unic assignat en hexadecimal que comença per 0x. Cada caixa te un contingut que pot ser buit (0) o pot contenir un valor</p>
+            <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+                const int ledPin = 13;
+const int dotDelay = 200;
+
+char* letters[] = {
+  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",    // A-I
+  ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.",  // J-R
+  "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."          // S-Z
+};
+
+char* numbers[] = {
+  "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----."};
+
+void setup() {
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  char ch;
+  if (Serial.available() > 0) {
+    ch = Serial.read();
+    if (ch >= 'a' && ch <= 'z') {
+      flashSequence(letters[ch - 'a']);
+    }
+    else if (ch >= 'A' && ch <= 'Z') {
+      flashSequence(letters[ch - 'A']);
+    }
+    else if (ch >= '0' && ch <= '9') {
+      flashSequence(numbers[ch - '0']);
+    }
+    else if (ch == ' ') {
+      delay(dotDelay * 4);  // gap between words  
+    }
+  }
+}
+
+void flashSequence(char* sequence) {
+  int i = 0;
+  while (sequence[i] != NULL) {
+    flashDotOrDash(sequence[i]);
+    i++;
+  }
+  delay(dotDelay * 3);    // gap between letters
+}
+
+void flashDotOrDash(char dotOrDash) {
+  digitalWrite(ledPin, HIGH);
+  if (dotOrDash == '.') {
+    delay(dotDelay);           
+  }
+  else { 
+    // must be a dash 
+    delay(dotDelay * 3);           
+  }
+  digitalWrite(ledPin, LOW);    
+  delay(dotDelay); // gap between flashes
+}
+            </code></pre>
+
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
