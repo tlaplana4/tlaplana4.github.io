@@ -58,7 +58,7 @@ code { font-family: monospace; }
         }
 table{
     width: 50%;
-    bodrder-collapse: collapse;
+    border-collapse: collapse;
     margin: 20px auto;
 }
 th,td{
@@ -726,6 +726,30 @@ void flashDotOrDash(char dotOrDash) {
   delay(dotDelay); // gap between flashes
 }
             </code></pre>
+<h3>Input i Output</h3>
+<p>Les entrades i sortides poden ser Analogiques o Digitals. Depenent del microcontrolador, les entrades i sortides accepten fins a 3,3V o 5V</p>
+
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino"></code>
+const int outPin = 3;
+
+void setup() {
+  pinMode(outPin, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Enter 1 or 0");
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    char ch = Serial.read();
+    if (ch == '1') {
+      digitalWrite(outPin, HIGH);
+    }
+    else if (ch == '0') {
+      digitalWrite(outPin, LOW);
+    }
+  }
+}
+</code></pre>
 
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
