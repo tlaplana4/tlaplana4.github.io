@@ -6,8 +6,33 @@
   <!-- Incloem la biblioteca p5.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.js"></script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- and it's easy to individually load additional languages -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+
+<script>hljs.highlightAll();</script>
 </head>
 <body>
+  <h2>Programació orientada a objectes</h2>
+  <p>Llenguatges de programació com C++, Javascrypt o Python sôn POO, en canvi, C, no es orientada a objectes</p>
+  <p>En el exemple que veurem, construirem una classe "Mosca", les classes acostumen a tenir noms en Majùscula, i, dintre seu, hi ha diferents parts.</p>
+  <p>La primera part, utilitzem la paraula clau "constructor" per formar la propia classe, que actua com a motlle. Dintre del constructor, introduim arguments que afecten a la propia classe designats amb la paraula "this".</p>
+  <p>Al principi donem valors inicals als parametres/propitats de la classe. Analitzarem la classe mosca:</p>
+  <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-javascript">
+      class Mosca {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        // La mida base determina la grandària de la mosca
+        this.mida = random(10, 20);
+        this.velocitat = random(1, 3);
+        // Offsets per al moviment suau amb noise
+        this.offsetX = random(1000);
+        this.offsetY = random(1000);
+      }
+  </code></pre>
   <script src="sketch.js"></script>
 </body>
 </html>
