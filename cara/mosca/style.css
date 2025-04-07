@@ -1,1 +1,37 @@
+pre { background: #f4f4f4; padding: 10px; overflow-x: auto; position: relative; }
+code { font-family: monospace; }
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #007bff;
+}
+.container-fluid {
+    max-width: 100%; /* Assegura que la navbar ocupa tota l'amplada */
+}   
+    .navbar {
+    padding-left: 0; /* Elimina el padding esquerra de la navbar */
+}
+
+.logo {
+    margin-right: 20px; /* Ajustar el marge si vols separar el logo del text */
+    margin-left: 0; /* Assegurar que no hi hagi marge a l'esquerra */
+}
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+.brand-text {
+    white-space: nowrap; /* Això assegura que el text no es trenqui en múltiples línies */
+    font-size: 1.25rem; /* Ajusta la mida de la font si és necessari */
+}  
+.content-container {
+            margin-left: 10px;
+            margin-right: 10px; /* Marges laterals ajustats */
+            margin-top: 20px; /* Afegeix espai superior entre el contingut i la barra de menú */
+        }
 body { margin: 0; overflow: hidden; }
