@@ -52,9 +52,12 @@ code { font-family: monospace; }
     font-size: 1.25rem; /* Ajusta la mida de la font si és necessari */
 }  
 .content-container {
-            margin-left: 10px;
-            margin-right: 10px; /* Marges laterals ajustats */
-            margin-top: 20px; /* Afegeix espai superior entre el contingut i la barra de menú */
+           /* margin-left: 10px;
+            margin-right: 10px; */ /* Marges laterals ajustats */
+           /* margin-top: 20px; */ /* Afegeix espai superior entre el contingut i la barra de menú */
+            margin: 120px auto 50px auto;
+            padding: 40px;
+            max-width: 900px;
         }
 table{
     width: 50%;
@@ -314,8 +317,6 @@ void loop() {
  delay(3000);
 }
 </code></pre>
-    </div>
-    <div class="content-container">
         <p> Amb el següent codi, aconseguim el mateix resultat que més amunt, es a dir,
             encendre i apagar 20 vegades amb un delay de 250 milisegons, peró no ho escribim 20
             vegades, si no que fem un cicle for.</p>
@@ -343,8 +344,6 @@ void loop() {
          delay(3000);
         }
         </code></pre>
-    </div>
-    <div class="content-container">
         <p> En el codi anterior, hem dit que repeteixi 20 vegades però es repeteix infinites vegades perqué es repeteix
             20 vegades en un void loop. En el següent codi, posarem un contador i quan arribi a 20 repeticions s'aturarà
         </p>
@@ -376,8 +375,6 @@ void loop() {
         // estricta, que compara també el tipus de variable. Si posem un igual "=" és una assignació que pot ser temporal o constant
         // si es posa "const" davant es 
         </code></pre>
-    </div>
-    <div class="content-container">
         <p> El següent codi es el primer exemple de creació d'una funció. Una funció es com un programa dins dins d'un
             programa.</p>
         <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
@@ -410,8 +407,6 @@ void loop() {
            delay(delayPeriod);
         }
         </code></pre>
-    </div>
-    <div class="content-container">
         <p>A continuació veurem el codi flash però amb paràmetres. </p>
         <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
             // 03_03_blink_functrion_params
@@ -438,11 +433,7 @@ void loop() {
             delay(d);
             }
             }
-
         </code></pre>
-    </div>
-    
-        <div class="content-container">
             <h1>Funcions en Arduino</h1>
             <p>Les funcions d'arduino són semblants a les funcions que veiem a cinemàtica directa i inversa. En el cas de la cinemàtica robòtica 
                 utilitzavem funcions Javascript dintre d'un codi HTML. Avans cada funció com per exemple, calculatePosition () era una funció 
@@ -477,9 +468,6 @@ void loop() {
   }
 }
             </code></pre>
-        </div>
-
-        <div class="content-container">
             <h1>Arrays i Strings</h1>
             <p>Una Array és una forma de contenir un llistat de valors, moltes vegades són valors enters i s'accedeix amb ells per la 
                 seva posició, sent la primera posició [0] del array o element 0. El codi següent el que fa és a la primera linia defineix una 
@@ -500,9 +488,6 @@ void loop() {
 
 }
             </code></pre>
-        </div>
-        
-        <div class="content-container">
             <p>El codi següent ja és un codi morse, perquè combina una array, un bucle for que llegeix l'array i l'aplica a la funció flash, 
                 d'aquesta forma és com si escrivis flash(200), flash(200), flash(200), flash(500), flash(500), flash(500), flash(200), flash(200), flash(200).
             </p>
@@ -529,14 +514,8 @@ void flash(int duration) {
    delay(duration);
 }
         </code></pre>
-        </div>
-
-        <div class="content-container">
             <p>Puc crear una funció que em serveix per quatre lletres i nomès quan la crido he de posar el número de repeticions com 
                 paràmetres o arguments</p>
-        </div>
-
-        <div class="content-container">
             <h1>Normes internacionals de codi Morse</h1>
             <ul>
                 <li>Una línia (dash) és igual a tres punts</li>
@@ -744,8 +723,6 @@ void loop() {
   }
 }
 </code></pre>
-    </div>
-    <div class="content-container">
     // Quan tenim una entrada hem de possar mode input i en comptes de fer un digitalWrite que fem a les sortides
     // hem de fer un digitalRead per obtenir l'entrada, que només pot ser un valor digital de 0 o 1 (binari)
     // Si el voltatge és menor a 2,5 volts es traduirà com un 0, en canvi si és superior com un 1
@@ -763,9 +740,6 @@ void loop() {
       delay(1000);
     }
     </code></pre>  
-    </div>
-    
-    <div class="content-container">
     // El pullup estabilitza la senyal que rep per a que la transcripció a binari (0 i 1) sigui correcta. Si analitzem el que
     // passa amb un oscil·loscopi (mesura les oscil·lacions de la corrent) si mirem un oscil·loscopi unveurem que hi han 
     // pujades i baixades quan premo el botó no baixa de forma ideal sinó que té alguns pics que es diuen rebots 
@@ -785,9 +759,6 @@ void loop() {
       delay(1000);
     }
     </code></pre>
-    </div>
-
-    <div class="content-container">
     // El togger 
     <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
     const int inputPin = 5;
@@ -806,8 +777,6 @@ void loop() {
       }
     }
     </code></pre>
-    </div>
-    <div class="content-container">
         <h2>Negació</h2>
         <p>El signe d'admiració "!" significa negar la variable que es posa després del signe.</p>
 <p> Hi ha dos variables inicials, que son constants per definició del codi. La variable ledPin es el pin el qual conectem
