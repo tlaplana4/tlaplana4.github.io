@@ -846,7 +846,7 @@ l'apaguem perqué la variable switchOpen que estava a 1 es transforma a !switchO
   }
 }
 </code></pre>
-<a href = "https://www.tinkercad.com/things/86T8et3hc5Z-epic-bigery-trug" target = "_blank"> <img src = "image.png"> </a>
+<a href = "https://www.tinkercad.com/things/86T8et3hc5Z-epic-bigery-trug" target = "_blank"> <img src = "image.png" width="100%"> </a>
 
 <p>solució amb llibreria </p>
 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
@@ -868,14 +868,14 @@ l'apaguem perqué la variable switchOpen que estava a 1 es transforma a !switchO
     }
 </code></pre>
 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-         #include <Bounce2.h>
-        const int inputPin = 5;
-        const int ledPin = 13;
-        int ledValue = LOW;
-        Bounce bouncer = Bounce(); 
+#include <Bounce2.h>
+const int inputPin = 5;
+const int ledPin = 13;
+int ledValue = LOW;
+Bounce bouncer = Bounce(); 
 
-        void setup() {
-        pinMode(inputPin, INPUT_PULLUP);
+void setup() {
+pinMode(inputPin, INPUT_PULLUP);
         pinMode(ledPin, OUTPUT);
         bouncer.attach(inputPin);
         // bouncer.interval(50); // interval in ms
@@ -896,10 +896,10 @@ l'apaguem perqué la variable switchOpen que estava a 1 es transforma a !switchO
 de una modulació de l'ample del pols. Es a dir, es modula el temps que es 0 o que es 1, aconseguint que en 0 s'apagui i en 1 s'encengui.
 Nosaltres no observem que s'encengui o que s'apagui perque es molt rapid el canvi i la nostra visió no ens permet veure-ho. Nosaltres veiem
 la llum en un percentatge que depen del percentatge de temps que ha estat ences la sortida </p>
-<img src = "pwm.png">
+<img src = "pwm.png" width="100%">
 
 <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-    const int outputPin = 3;
+const int outputPin = 3;
 
 void setup() {
   pinMode(outputPin, OUTPUT);
