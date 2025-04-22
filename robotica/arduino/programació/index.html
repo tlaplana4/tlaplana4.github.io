@@ -726,15 +726,20 @@ void flashDotOrDash(char dotOrDash) {
   delay(dotDelay); // gap between flashes
 }
             </code></pre>
-<h3>Input i Output</h3>
-<p>Les entrades i sortides poden ser Analogiques o Digitals. Depenent del microcontrolador, les entrades i sortides accepten fins a 3,3V o 5V</p>
+<h2>Input i Output: Entrades i sortides</h2>
+<p>Les entrades i sortdes poden ser de dues maneres diferents, digitals o analògiques, les digitals poden 
+ser de 0 voltso de 3,3 volts i en altres plaques arduino, poden ser 0 volts i 5 volts. Les analògiques
+serien graduals, de 0 a 3,3 volts o 5 volts en 2**n pasos, sent "n" el número de bits.</p>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
 
-<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino"></code>
 const int outPin = 3;
-
+// pinMode és una funció predeterminada o "built-in", vol dir que està predefinida en el llenguatje
+// arduino i sempre ha de rebre 2 argument o parametres, el primer sempre ha de ser un númer enter o "int"
+// (integer) que correspon al número de pin que volem conectar (en aquet cas 3), el segon argument és el mode
+// que pot ser OUTPUT que significa sortida, o INPUT que significa entrada, també existeix INPUT_PULLUP
 void setup() {
   pinMode(outPin, OUTPUT);
-  Serial.begin(9600);
+  Serial.begin(9600); //Miguel Angel
   Serial.println("Enter 1 or 0");
 }
 
@@ -750,7 +755,194 @@ void loop() {
   }
 }
 </code></pre>
+    </div>
+    <div class="content-container">
+    // Quan tenim una entrada hem de possar mode input i en comptes de fer un digitalWrite que fem a les sortides
+    // hem de fer un digitalRead per obtenir l'entrada, que només pot ser un valor digital de 0 o 1 (binari)
+    // Si el voltatge és menor a 2,5 volts es traduirà com un 0, en canvi si és superior com un 1
+    <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    
+    void setup() {
+      pinMode(inputPin, INPUT);
+      Serial.begin(9600);
+    }
+    
+    void loop() {
+      int reading = digitalRead(inputPin);
+      Serial.println(reading);
+      delay(1000);
+    }
+    </code></pre>  
+    </div>
+    
+    <div class="content-container">
+    // El pullup estabilitza la senyal que rep per a que la transcripció a binari (0 i 1) sigui correcta. Si analitzem el que
+    // passa amb un oscil·loscopi (mesura les oscil·lacions de la corrent) si mirem un oscil·loscopi unveurem que hi han 
+    // pujades i baixades quan premo el botó no baixa de forma ideal sinó que té alguns pics que es diuen rebots 
+    // (bouncing / debouncing) en el cas de debouncing és més correcte ja que el senyal per defecte és inestable i el que fem
+    // és estabilitzar-lo -> desrebotar.
+    <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    
+    void setup() {
+      pinMode(inputPin, INPUT_PULLUP);
+      Serial.begin(9600);
+    }
+    
+    void loop() {
+      int reading = digitalRead(inputPin);
+      Serial.println(reading);
+      delay(1000);
+    }
+    </code></pre>
+    </div>
 
+    <div class="content-container">
+    // El togger 
+    <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    const int ledPin = 13;
+    int ledValue = LOW;
+    
+    void setup()  {
+      pinMode(inputPin, INPUT_PULLUP);
+      pinMode(ledPin, OUTPUT);
+    }
+    
+    void loop()  {
+      if (digitalRead(inputPin) == LOW) {
+         ledValue = ! ledValue;
+         digitalWrite(ledPin, ledValue);
+      }
+    }
+    </code></pre>
+    </div>
+    <div class="content-container">
+        <h2>Negació</h2>
+        <p>El signe d'admiració "!" significa negar la variable que es posa després del signe.</p>
+<p> Hi ha dos variables inicials, que son constants per definició del codi. La variable ledPin es el pin el qual conectem
+el led, que es 13 normalment. I el pin 5 es un pin on conectem un interruptor per entrada de dades. El pin 5 esta encés per defecte
+perque li hem dit que es un input pull-up, significa que l'interruptor deixa pasar la corrent per defecte. Si fos un input només 
+estaria a 0, es a dir, l'interruptor estaria obert. La variable switch open esta al principi amb valor 1 i quan movem el botó, 
+l'apaguem perqué la variable switchOpen que estava a 1 es transforma a !switchOpen que esta a 0. I si li torno a negar, sortira 1.</p>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    const int ledPin = 13
+    void setup() {
+     pinMode(ledPin, OUTPUT);
+     pinMode(inputPin, INPUT_PULLUP);
+    }
+    void loop() {
+     int switchOpen = digitalRead(inputPin);
+     digitalWrite(ledPin, ! switchOpen);
+    }
+    </code></pre>
+<p> Clica a la imatge següent per veure la simulació </p>
+<a href = "https://www.tinkercad.com/things/6kmvYJBnQFx-circuit-54-monk" target = "_blank"> <img src = "54.png"> </a>
+<p> Toggles. </p>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    const int ledPin = 13;
+    int ledValue = LOW;
+
+    void setup()  {
+    pinMode(inputPin, INPUT_PULLUP);
+    pinMode(ledPin, OUTPUT);
+    }
+    void loop()  {
+    if (digitalRead(inputPin) == LOW) {
+     ledValue = ! ledValue;
+     digitalWrite(ledPin, ledValue);
+  }
+}
+</code></pre>
+<a href = "https://www.tinkercad.com/things/ijQ7CKiIRbu-circuit-55-monk" target = "_blank"> <img src = "55.png"> </a>
+
+<p>solució amb llibreria </p>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int inputPin = 5;
+    const int ledPin = 13;
+    int ledValue = LOW;
+    
+    void setup()  {
+    pinMode(inputPin, INPUT_PULLUP);
+    pinMode(ledPin, OUTPUT);
+    }
+    
+    void loop() {
+    if (digitalRead(inputPin) == LOW) {
+     ledValue = ! ledValue;
+     digitalWrite(ledPin, ledValue);
+     delay(500);
+    }
+    }
+</code></pre>
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+         #include <Bounce2.h>
+        const int inputPin = 5;
+        const int ledPin = 13;
+        int ledValue = LOW;
+        Bounce bouncer = Bounce(); 
+
+        void setup() {
+        pinMode(inputPin, INPUT_PULLUP);
+        pinMode(ledPin, OUTPUT);
+        bouncer.attach(inputPin);
+        // bouncer.interval(50); // interval in ms
+        }
+
+        void loop() {
+        if (bouncer.update() && bouncer.read() == LOW) {
+          ledValue = ! ledValue;
+          digitalWrite(ledPin, ledValue);
+        // El rebot de contacte (Contact Bounce) esta present en reles (Interruptors que canvia de estat depenent de l'electricitat), interruptors, contactes de bateria. Tots aquests
+        // Estan fets per metalls elastics, de forma que quan yo apreto un interruptor mecanic, el metall rebota diverses vegades sobre el contacte, provocant una inestabilitat al
+        // contacte
+        }
+        }
+ </code>
+</pre>
+<p> Algunes sortides d'arduino i altres microcontroladors són PWM (Pulse Width Modulation). Com podem veure a la imatge de sota, es tracta
+de una modulació de l'ample del pols. Es a dir, es modula el temps que es 0 o que es 1, aconseguint que en 0 s'apagui i en 1 s'encengui.
+Nosaltres no observem que s'encengui o que s'apagui perque es molt rapid el canvi i la nostra visió no ens permet veure-ho. Nosaltres veiem
+la llum en un percentatge que depen del percentatge de temps que ha estat ences la sortida </p>
+<img src = "pwm.png">
+
+<pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    const int outputPin = 3;
+
+void setup() {
+  pinMode(outputPin, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Enter Volts 0 to 5");
+}
+
+void loop() {
+  if (Serial.available() > 0) {
+    float volts = Serial.parseFloat();
+    int pwmValue = volts * 255.0 / 5.0;
+    analogWrite(outputPin, pwmValue);
+  }
+}
+</code></pre>
+<p> El "const int outputPin" defineix el pin de sortida constant que no es pot canviar. Després de definir
+el pin de sortida 3 i en output (sortida) i la velocitat bauds (9600), el codi demana que escrigui a la consola
+del programa Arduino IDE: Enter volts 0-5.</p>
+<p> Al loop principal comprova que hi hagi caràcters escrits a la consola, després agafa el valor que hem 
+donat i el guarda en la variable volts. El valor pot ser en decimals perquè posa float ("Floating point number").
+El mètode parseFloat l'apliquem amb la sintaxi del punt al objecte Serial (Que es posa en majúscula, normalment
+seria una classe en majúscula) i agafa el valor de la consola sèrie</p>
+<p> La variable pwmValue és entera (int o "integer") i el que fa és convertir el valor de volts (0-5) a valors
+de 0-255, que és el numero de bits (2^8=256). Si fos un ESP32-S3 de 14 bits tal com indica el data
+sheet o fulla de caracteristiques de el ESP32-S3la linea de codi seria:
+"Serial.println("Enter Volts 0-3.3")
+"int pwmValue = volts * 16384.0 / 3.3" </p>
+
+<p> El ESP32-S3 te l'avantatge de tenir més resolució, es a dir,  pot donar 16384 valors diferents entre 0-3,3 volts
+Aixó pot que no es noti en un led, peró es nota en un motor, on l'ESP32 permet accedir a més velocitats diferents. Els
+motors poden arribar a 16 bits, que es 2^16 o 65536 valors diferents, depenent del tipus de motor, pot ser observat o no
+</p>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
