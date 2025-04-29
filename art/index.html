@@ -205,91 +205,21 @@
           translate(width/2, height/2);
           noFill();
           strokeWeight(4);
-
-          switch (dominant) {
-            case "happy":
-              // Dibuix de la cara base
-              fill(79, 130, 149); // Color de fons per la cara feliç
-              ellipse(0, 0, 250, 300); // Cap
-              fill(11, 62, 94); // Color ulls
-              ellipse(-50, -50, 50, 20); // Ull esquerre
-              ellipse(50, -50, 50, 20); // Ull dret
-
-              // Dibuix de la boca que canvia amb el volum
-              fill(255, 4, 0); // Color boca
-              // Mapejem el nivell del mic (0 a 1 usualment) a una alçada desitjada per la boca
-              // Per exemple, de 10 (silenci) a 120 (volum màxim)
-              let baseMouthHeight = 10; // Alçada mínima de la boca
-              let maxMouthHeightAddition = 110; // Alçada màxima que s'afegeix
-              // Fem servir map() per escalar el valor de micLevel
-              // Afegim una mica de suavitzat (lerp) per evitar salts bruscos (opcional)
-              let targetMouthHeight = map(currentMicLevel, 0, 0.5, baseMouthHeight, baseMouthHeight + maxMouthHeightAddition, true); // true = clamp, no passa de 0.5
-              // let smoothedMouthHeight = lerp(previousMouthHeight, targetMouthHeight, 0.2); // Caldria guardar previousMouthHeight
-              // Per ara, fem servir directament:
-              let mouthHeight = targetMouthHeight;
-
-
-              // La variable 'h' de l'arc original s'ha eliminat/reemplaçat
-              arc(0, 50, 120, mouthHeight, 0, PI, CHORD); // Boca feliç
-              break;
-
-            // ... (la resta de casos es mantenen igual)
-            case "sad":
-              stroke(50, 100, 200, 150);
-              for (let x = -400; x <= 400; x += 30) { // línies més llargues i més denses
-                line(x, -400, x, 400);
-              }
-              break;
-
-            case "angry":
-              stroke(200, 0, 0, 150);
-              beginShape();
-              for (let x = -400; x <= 400; x += 20) {
-                let y = (x % 40 === 0) ? -300 : 300; // oscil·lació vertical més gran
-                vertex(x, y * intensity);
-              }
-              endShape();
-              break;
-
-            case "fearful":
-              stroke(100, 100, 100, 150);
-              beginShape();
-              for (let x = -400; x <= 400; x += 10) {
-                let y = 100 * sin(x * 0.1 * intensity); // ona més gran
-                vertex(x, y);
-              }
-              endShape();
-              break;
-
-            case "surprised":
-              stroke(0, 150, 255, 150);
-              for (let i = 1; i <= 8; i++) {
-                ellipse(random(-30, 30), random(-30, 30), i * 60 * intensity, i * 60 * intensity); // cercles més grans
-              }
-              break;
-
-            case "disgusted":
-              stroke(0, 150, 0, 150);
-              beginShape();
-              for (let x = -400; x <= 400; x += 15) {
-                let y = random(-100, 100) * intensity; // deformació més gran
-                vertex(x, y);
-              }
-              endShape();
-              break;
-
-            default: // neutral
-              stroke(150, 150, 150, 150);
-              for (let i = -300; i <= 300; i += 60) {
-                for (let j = -300; j <= 300; j += 60) {
-                  rect(i, j, 50, 50); // quadrats més grans i separats
+                switch(dominant) {
+                    case "happy":
+                    for (let i = 1; i <= 10; i++) {
+                        stroke(random(200,255), random(200,255),0,150)
+                        ellipse(0,0,i*20*intensity, i*20*intensity)
+                    }
+                    break
+                    case "sad":
+                    stroke(50,100,200,150)
+                    for(let x=-200; x <= 200; x += 40) {
+                        line(x, -200,x,200)
+                    }
+                    break
                 }
-              }
-          }
-
-          pop();
-        }
-
-    </script>
-  </body>
+            }
+        </script>
+    </body>
 </html>
