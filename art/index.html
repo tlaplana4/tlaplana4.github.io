@@ -70,7 +70,61 @@
                 function faceReady() {
                     faceapi.detect(gotFaces);
                 }
+                function windowResized() {
+                    resizeCanvas(windowWidth, windowHeight)
+                }
+                function gotFaces(error, result) {
+                    if(error) {
+                        console.error(error)
+                        return
+                    }
+                    detections = result
+                    if(!modelsMostrats) {
+                        document.getElementById("loading-screen").style.display = "none"
+                        modelsMostrats = true
+                    }
+                    faceapi.detect(gotFaces)
+                }
+            function draw() {
+                background(255)
+                let dominant = "neutre"
+                let intensity = 0
+
+                if(detections && detections.length > 0) {
+                    let expr = detections[0].expressions
+                    dominant = Object.keys(expr).reduce((a,b) => expr[a]>expr[b] ? a : b)
+                    intensity = expr[dominant]
+                }
+                drawDifferentArt(dominant,intensity)
+                noStroke()
+                fill(44,169,225)
+                textSize(48)
+                textAlign(CENTER, CENTER)
+                text("Expressió: " + dominant, width/2,50)
+                if(detections && detections.length > 0) {
+                    image(video, width - miniWidth - 20, height - miniHeight - 20, miniWidth, miniHeight)
+                }
             }
+            function drawDifferentArt(dominant, intensity) {
+                translate(width/2, height/2)
+                noFill()
+                strokeWeighy(4)
+                switch(dominant) {
+                    case "happy":
+                    for (let i = 1; i <= 10; i++) {
+                        stroke(random(200,255), random(200,255),0,150)
+                        ellipse(0,0,i*20*intensity, i*20*intensity)
+                    }
+                    break
+                    case "sad":
+                    stroke(50,100,200,150)
+                    for(let x=-200; x <= 200; x += 40) {
+                        line(x, -200,x,200)
+                    }
+                    break
+                }
+            }
+        }
         </script>
     </body>
 </html>
