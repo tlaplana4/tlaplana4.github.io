@@ -1,130 +1,295 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Art Geometric</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5js/1.11.3/p5.js"></script>
-        <script src=""></script>
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-                background-color: #f4f4f4;
-                display: flex;
-                flex-direction: column;
-                align-items:center;
-            }
-            #loading-screen {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(255,255,255,0.9);
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                font-family: Arial, sans-serif;
-                font-size: 18px;
-                color: #333;
-                z-index: 10;
-            }
-            .loader {
-                width: 50px;
-                height: 50px;
-                border: 6px solid #3498db;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-                margin-bottom: 10px;
-            }
-            @keyframes spin {
-                0% {transform: rotate(0deg);}
-                100% {transform: rotate(360deg);}
-            }
-        </style>
-    </head>
-    <body>
-        <div id="loading-screen">
-            <div class="loader"></div>
-            <p>Carregant models, si us plau, espera...</p>
-        </div>
-        <script>
-            let faceapi;
-            let detections = [];
-            let video;
-            let modelsMostrats = false;
-            const miniWidth = 120;
-            const miniHeight = 120;
-            function setup() {
-                createCanvas(windowWidth, windowHeight);
-                video = createCapture(VIDEO);
-                video.size(480, 480);
-                video.hide();
-                const faceOptions = {
-                    withLandmarks: true,
-                    withExpressions: true,
-                    withDescriptors: false,
-                    minConfidence: 0.5
-                };
-                faceapi = ml5.faceApi(video, faceOptions, faceReady);
-                function faceReady() {
-                    faceapi.detect(gotFaces);
-                }
-                function windowResized() {
-                    resizeCanvas(windowWidth, windowHeight)
-                }
-                function gotFaces(error, result) {
-                    if(error) {
-                        console.error(error)
-                        return
-                    }
-                    detections = result
-                    if(!modelsMostrats) {
-                        document.getElementById("loading-screen").style.display = "none"
-                        modelsMostrats = true
-                    }
-                    faceapi.detect(gotFaces)
-                }
-            function draw() {
-                background(255)
-                let dominant = "neutre"
-                let intensity = 0
+  <head>
+    <meta charset="UTF-8">
+    <title>Art Geomètric amb Mini Cara i Text Gran</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ml5js/Intro-ML-Arts-IMA@ml5-build-10-7-19/ml5_build/ml5.min.js"></script>
 
-                if(detections && detections.length > 0) {
-                    let expr = detections[0].expressions
-                    dominant = Object.keys(expr).reduce((a,b) => expr[a]>expr[b] ? a : b)
-                    intensity = expr[dominant]
-                }
-                drawDifferentArt(dominant,intensity)
-                noStroke()
-                fill(44,169,225)
-                textSize(48)
-                textAlign(CENTER, CENTER)
-                text("Expressió: " + dominant, width/2,50)
-                if(detections && detections.length > 0) {
-                    image(video, width - miniWidth - 20, height - miniHeight - 20, miniWidth, miniHeight)
-                }
-            }
-            function drawDifferentArt(dominant, intensity) {
-                translate(width/2, height/2)
-                noFill()
-                strokeWeighy(4)
-                switch(dominant) {
-                    case "happy":
-                    for (let i = 1; i <= 10; i++) {
-                        stroke(random(200,255), random(200,255),0,150)
-                        ellipse(0,0,i*20*intensity, i*20*intensity)
-                    }
-                    break
-                    case "sad":
-                    stroke(50,100,200,150)
-                    for(let x=-200; x <= 200; x += 40) {
-                        line(x, -200,x,200)
-                    }
-                    break
-                }
-            }
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        font-size: 18px;
+        color: #333;
+        z-index: 10;
+      }
+
+      .loader {
+        width: 50px;
+        height: 50px;
+        border: 6px solid #3498db;
+        border-top: 6px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 10px;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <p>Carregant models, si us plau, espera...</p>
+      <p><i>Pot ser que el navegador demani permís per accedir a la càmera i al micròfon.</i></p>
+    </div>
+
+    <script>
+      let faceapi;
+      let detections = [];
+      let video;
+      let modelsMostrats = false;
+      const miniWidth = 120;
+      const miniHeight = 120;
+
+      // Variables pel micròfon
+      let mic;
+      let micLevel = 0; // Variable per guardar el nivell del micro
+
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        video = createCapture(VIDEO);
+        video.size(480, 480);
+        video.hide();
+
+        const faceOptions = {
+          withLandmarks: true,
+          withExpressions: true,
+          withDescriptors: false,
+          minConfidence: 0.5
+        };
+
+        // Inicialitzem el micròfon
+        mic = new p5.AudioIn();
+        // Iniciem el micròfon. Això pot provocar una sol·licitud de permís del navegador.
+        // És necessari que l'usuari interactuï (clic, etc.) per activar l'àudio en alguns navegadors.
+        // Per asegurar compatibilitat, sovint es posa mic.start() dins una funció mousePressed()
+        // però per aquest exemple, intentem iniciar-lo aquí.
+        userStartAudio().then(function() {
+            mic.start();
+            console.log("Micròfon iniciat.");
+        });
+
+
+        faceapi = ml5.faceApi(video, faceOptions, faceReady);
+
+        // Missatge per si cal interacció de l'usuari per l'audio
+        let audioMessage = createP("Clica a la pantalla si el micròfon no funciona.");
+        audioMessage.position(10, 10);
+        audioMessage.style('color', 'gray');
+        audioMessage.style('font-family', 'sans-serif');
+        audioMessage.id('audio-message'); // Donem un ID per poder-lo treure després
+      }
+
+     // Funció per gestionar l'inici de l'àudio requerit per alguns navegadors
+     function mousePressed() {
+       if (getAudioContext().state !== 'running') {
+          getAudioContext().resume().then(() => {
+             console.log("AudioContext reprès per interacció.");
+             if (!mic.enabled) { // Comprova si el mic ja estava iniciat
+                mic.start(() => {
+                   console.log("Micròfon iniciat amb clic.");
+                }, (err) => {
+                   console.error("Error iniciant micròfon amb clic:", err);
+                });
+             }
+             // Treiem el missatge un cop s'ha clicat
+             let msg = select('#audio-message');
+             if (msg) {
+               msg.remove();
+             }
+          });
+       } else {
+          // Si l'AudioContext ja anava, potser només cal treure el missatge
+          let msg = select('#audio-message');
+          if (msg) {
+             msg.remove();
+          }
+       }
+     }
+
+
+      function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+      }
+
+      function faceReady() {
+        faceapi.detect(gotFaces);
+      }
+
+      function gotFaces(error, result) {
+        if (error) {
+          console.error(error);
+          return;
         }
-        </script>
-    </body>
+
+        detections = result;
+
+        if (!modelsMostrats && detections.length > 0) {
+          document.getElementById("loading-screen").style.display = "none";
+          modelsMostrats = true;
+        }
+
+        faceapi.detect(gotFaces);
+      }
+
+      function draw() {
+        background(255);
+
+        let dominant = "neutre";
+        let intensity = 0;
+
+        if (detections && detections.length > 0) {
+          let expr = detections[0].expressions;
+          dominant = Object.keys(expr).reduce((a, b) => expr[a] > expr[b] ? a : b);
+          intensity = expr[dominant];
+
+          // Obtenim el nivell del micròfon NOMÉS si l'expressió és happy
+          if (dominant === "happy" && mic && mic.enabled) {
+              micLevel = mic.getLevel();
+          } else {
+              micLevel = 0; // Resetejem si no és happy o el micro no està llest
+          }
+
+        } else {
+            micLevel = 0; // Resetejem si no hi ha deteccions
+        }
+
+        // Passem el nivell del micròfon a la funció de dibuix
+        drawDifferentArt(dominant, intensity, micLevel);
+
+        noStroke();
+        fill(44, 169, 225);
+        textSize(48);
+        textAlign(CENTER, CENTER);
+        text("Expressió: " + dominant, width/2, 50);
+
+        // Mostra el nivell del micròfon per debugging (opcional)
+        // fill(0);
+        // textSize(16);
+        // text("Mic Level: " + nf(micLevel, 1, 3), width/2, 80);
+
+
+        if (detections && detections.length > 0) {
+          image(video, width - miniWidth - 20, height - miniHeight - 20, miniWidth, miniHeight);
+        }
+      }
+
+      // Modifiquem la funció per acceptar micLevel
+      function drawDifferentArt(dominant, intensity, currentMicLevel) {
+          push();
+          translate(width/2, height/2);
+          noFill();
+          strokeWeight(4);
+
+          switch (dominant) {
+            case "happy":
+              // Dibuix de la cara base
+              fill(79, 130, 149); // Color de fons per la cara feliç
+              ellipse(0, 0, 250, 300); // Cap
+              fill(11, 62, 94); // Color ulls
+              ellipse(-50, -50, 50, 20); // Ull esquerre
+              ellipse(50, -50, 50, 20); // Ull dret
+
+              // Dibuix de la boca que canvia amb el volum
+              fill(255, 4, 0); // Color boca
+              // Mapejem el nivell del mic (0 a 1 usualment) a una alçada desitjada per la boca
+              // Per exemple, de 10 (silenci) a 120 (volum màxim)
+              let baseMouthHeight = 10; // Alçada mínima de la boca
+              let maxMouthHeightAddition = 110; // Alçada màxima que s'afegeix
+              // Fem servir map() per escalar el valor de micLevel
+              // Afegim una mica de suavitzat (lerp) per evitar salts bruscos (opcional)
+              let targetMouthHeight = map(currentMicLevel, 0, 0.5, baseMouthHeight, baseMouthHeight + maxMouthHeightAddition, true); // true = clamp, no passa de 0.5
+              // let smoothedMouthHeight = lerp(previousMouthHeight, targetMouthHeight, 0.2); // Caldria guardar previousMouthHeight
+              // Per ara, fem servir directament:
+              let mouthHeight = targetMouthHeight;
+
+
+              // La variable 'h' de l'arc original s'ha eliminat/reemplaçat
+              arc(0, 50, 120, mouthHeight, 0, PI, CHORD); // Boca feliç
+              break;
+
+            // ... (la resta de casos es mantenen igual)
+            case "sad":
+              stroke(50, 100, 200, 150);
+              for (let x = -400; x <= 400; x += 30) { // línies més llargues i més denses
+                line(x, -400, x, 400);
+              }
+              break;
+
+            case "angry":
+              stroke(200, 0, 0, 150);
+              beginShape();
+              for (let x = -400; x <= 400; x += 20) {
+                let y = (x % 40 === 0) ? -300 : 300; // oscil·lació vertical més gran
+                vertex(x, y * intensity);
+              }
+              endShape();
+              break;
+
+            case "fearful":
+              stroke(100, 100, 100, 150);
+              beginShape();
+              for (let x = -400; x <= 400; x += 10) {
+                let y = 100 * sin(x * 0.1 * intensity); // ona més gran
+                vertex(x, y);
+              }
+              endShape();
+              break;
+
+            case "surprised":
+              stroke(0, 150, 255, 150);
+              for (let i = 1; i <= 8; i++) {
+                ellipse(random(-30, 30), random(-30, 30), i * 60 * intensity, i * 60 * intensity); // cercles més grans
+              }
+              break;
+
+            case "disgusted":
+              stroke(0, 150, 0, 150);
+              beginShape();
+              for (let x = -400; x <= 400; x += 15) {
+                let y = random(-100, 100) * intensity; // deformació més gran
+                vertex(x, y);
+              }
+              endShape();
+              break;
+
+            default: // neutral
+              stroke(150, 150, 150, 150);
+              for (let i = -300; i <= 300; i += 60) {
+                for (let j = -300; j <= 300; j += 60) {
+                  rect(i, j, 50, 50); // quadrats més grans i separats
+                }
+              }
+          }
+
+          pop();
+        }
+
+    </script>
+  </body>
 </html>
