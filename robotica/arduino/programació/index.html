@@ -958,10 +958,6 @@ motors poden arribar a 16 bits, que es 2^16 o 65536 valors diferents, depenent d
     <li>\(m = 16\)</li>
     <li>\(X_0 = 7\)</li>
   </ul>
-  <p>
-    When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are
-    \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}.\]
-  </p>
   <ol>
     <li>
       \(X_1 = (5 \times 7 + 3) \bmod 16 = 38 \bmod 16 = 6\)
@@ -982,49 +978,29 @@ motors poden arribar a 16 bits, que es 2^16 o 65536 valors diferents, depenent d
   <p><strong>Seqüència completa:</strong> 7, 6, 1, 8, 11, 10</p>
 
   <h2>2. Arduino: random(), randomSeed() i LCG</h2>
-    <p>
-      Arduino implementa un LCG similar al de C. La funció <code>random()</code> crida internament un LCG, i <code>randomSeed()</code> estableix <em>X₀</em>.
-    </p>
-  
-    <h3>Pas 1: Sense llavor (seed) — seqüència fixa</h3>
-    <pre><code>void setup() {
-    Serial.begin(9600);
-    // No cridem randomSeed(): X₀ per defecte → seqüència sempre igual
-    for (int i = 0; i < 5; i++) {
-      Serial.println(random(0, 100));
+  <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+    void setup() {
+      Serial.begin(9600);
     }
-  }
-  void loop() {}</code></pre>
-  
-    <h3>Pas 2: Llavor aleatòria amb soroll analògic</h3>
-    <pre><code>void setup() {
-    Serial.begin(9600);
-    // Utilitza la lectura analògica per generar soroll: X₀ diferent cada reinici
-    randomSeed(analogRead(A0));
-    for (int i = 0; i < 5; i++) {
-      Serial.println(random(0, 100));
+    
+    void loop() {
+      int number = random(1, 7);
+      Serial.println(number);
+      delay(500); 
     }
-  }
-  void loop() {}</code></pre>
-  
-    <h3>Pas 3: Llavor fixa per reproduir seqüències</h3>
-    <pre><code>void setup() {
-    Serial.begin(9600);
-    // Llavor fixa = seqüència sempre reproduïble
-    randomSeed(1234);
-    for (int i = 0; i < 5; i++) {
-      Serial.println(random(0, 100));
-    }
-  }
-  void loop() {}</code></pre>
-  
-    <h2>3. Observacions Finals</h2>
-    <ul>
-      <li>Sense <code>randomSeed()</code>, Arduino usa una llavor per defecte i la seqüència és sempre la mateixa.</li>
-      <li>Amb <code>randomSeed()</code> basada en soroll (analogRead), la seqüència canvia cada reinici.</li>
-      <li>Amb llavor fixa, obtens seqüències reproduïbles per a proves.</li>
-      <li>Aquest mètode és molt ràpid i Lleuger però <strong>no apte</strong> per a criptografia forta.</li>
-    </ul>
+  </pre></code>
+  <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
+      void setup() {
+        Serial.begin(9600);
+        randomSeed(analogRead(0));
+      }
+      
+      void loop() {
+        int number = random(1, 7);
+        Serial.println(number);
+        delay(500); 
+      }
+  </code></pre>
 </div>      
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
