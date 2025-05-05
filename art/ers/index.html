@@ -206,125 +206,92 @@
         }
       }
       
-      // Funció per dibuixar art geomètric en funció de l'expressió facial detectada
       function drawDifferentArt(dominant, intensity) {
-        push();
-        // Guarda l'estat actual de les transformacions gràfiques
-        
-        translate(width/2, height/2);
-        // Trasllada l'origen del sistema de coordenades al centre del canvas
-        
-        noFill();
-        // Es desactiva el farcit (no es pinta amb color les formes interiors)
-        
-        strokeWeight(4);
-        // Defineix l'amplada del traç (línia de dibuix) en 4 píxels
-        
-        // Utilitza una estructura switch per triar el dibuix en funció del sentiment detectat
-        switch (dominant) {
-          case "happy":
-            beginShape();
-vertex(244-360, 517.1875);
-vertex(367-360, 652.1875);
-vertex(421-360, 672.1875);
-vertex(467-360, 662.1875);
-vertex(497-360, 587.1875);
-vertex(563-360, 412.1875);
-vertex(574-360, 253.1875);
-vertex(459-360, 84.1875);
-vertex(364-360, 28.1875);
-vertex(308-360, 20.1875);
-vertex(247-360, 27.1875);
-vertex(199-360, 49.1875);
-vertex(169-360, 76.1875);
-vertex(143-360, 116.1875);
-vertex(127-360, 162.1875);
-vertex(119-360, 205.1875);
-vertex(118-360, 266.1875);
-vertex(124-360, 308.1875);
-vertex(132-360, 334.1875);
-vertex(177-360, 414.1875);
-vertex(224-360, 454.1875);
-endShape(CLOSE);
+      noFill();
+      strokeWeight(4);
+
+      switch (dominant) {
+        case "happy":
+          stroke(255, 200, 0);
+          beginShape();
+          vertex(244, 517.1875);
+          vertex(367, 652.1875);
+          vertex(421, 672.1875);
+          vertex(467, 662.1875);
+          vertex(497, 587.1875);
+          vertex(563, 412.1875);
+          vertex(574, 253.1875);
+          vertex(459, 84.1875);
+          vertex(364, 28.1875);
+          vertex(308, 20.1875);
+          vertex(247, 27.1875);
+          vertex(199, 49.1875);
+          vertex(169, 76.1875);
+          vertex(143, 116.1875);
+          vertex(127, 162.1875);
+          vertex(119, 205.1875);
+          vertex(118, 266.1875);
+          vertex(124, 308.1875);
+          vertex(132, 334.1875);
+          vertex(177, 414.1875);
+          vertex(224, 454.1875);
+          endShape(CLOSE);
           break;
-          case "sad":
-            // Cas: expressió "sad" (trist) → es dibuixen línies verticals
-            stroke(50, 100, 200, 150);
-            // Traç amb un color blau fosc translúcid
-            for (let x = -200; x <= 200; x += 40) {
-              // Dibuixa línies verticals espaiades cada 40 píxels des del -200 fins a 200 en l'eix X
-              line(x, -200, x, 200);
-            }
-            break;
-          case "angry":
-            // Cas: expressió "angry" (enfadat) → dibuix d'un zigzag agressiu
-            stroke(200, 0, 0, 150);
-            // Traç de color vermell amb certa transparència
-            beginShape();
-            // Inicia la definició d'una forma complexa definida per diversos vèrtexs
-            for (let x = -250; x <= 250; x += 20) {
-              // Recorre l'eix X des de -250 fins a 250 amb increments de 20 píxels
-              let y = (x % 40 === 0) ? -150 : 150;
-              // Alterna el valor de y entre -150 i 150 per crear efecte zigzag (la condició mira si x és múltiple de 40)
-              vertex(x, y * intensity);
-              // Es posa un punt a la forma amb la coordenada (x, y ajustada per la intensitat)
-            }
-            endShape();
-            // Acaba la definició de la forma complexa
-            break;
-          case "fearful":
-            // Cas: expressió "fearful" (por) → dibuixa una línia ondulada
-            stroke(100, 100, 100, 150);
-            // Traç de color gris amb transparència
-            beginShape();
-            for (let x = -250; x <= 250; x += 10) {
-              // Recorre l'eix X des de -250 fins a 250, amb increments de 10 píxels
-              let y = 50 * sin(x * 0.1 * intensity);
-              // Calcula la coordenada y com la funció sinus per crear l'efecte ondulat (multiplicant per 50 i l'intensitat)
-              vertex(x, y);
-              // Afegeix aquest punt a la forma ondulada
-            }
-            endShape();
-            break;
-          case "surprised":
-            // Cas: expressió "surprised" (sobtada) → cercles concèntrics amb petites variacions
-            stroke(0, 150, 255, 150);
-            // Traç de color blau clar amb transparència
-            for (let i = 1; i <= 8; i++) {
-              // Dibuixa 8 cercles concèntrics
-              ellipse(random(-10, 10), random(-10, 10), i * 30 * intensity, i * 30 * intensity);
-              // Cada cercle té una petita variació en la seva posició (aleatòria en un interval de -10 a 10)
-            }
-            break;
-          case "disgusted":
-            // Cas: expressió "disgusted" (disgustat) → dibuix abstracte amb línies irregulars
-            stroke(0, 150, 0, 150);
-            // Traç de color verd amb transparència
-            beginShape();
-            for (let x = -250; x <= 250; x += 15) {
-              // Recorre l'eix X amb increments de 15 píxels
-              let y = random(-50, 50) * intensity;
-              // La coordenada y és un valor aleatori (multiplicat per la intensitat)
-              vertex(x, y);
-              // Afegeix aquest punt a la forma abstracta
-            }
-            endShape();
-            break;
-          default:
-            // Cas per a l'estat "neutre" o qualsevol altre que no coincideixi amb els casos anteriors
-            // Dibuixa una quadrícula simple
-            stroke(150, 150, 150, 150);
-            // Traç de color gris per a la quadrícula
-            for (let i = -200; i <= 200; i += 40) {
-              for (let j = -200; j <= 200; j += 40) {
-                rect(i, j, 30, 30);
-                // Dibuixa petits quadrats de 30x30 píxels en cada intersecció de la quadrícula
+
+        default:
+          push();
+          translate(width / 2, height / 2);
+          switch (dominant) {
+            case "sad":
+              stroke(50, 100, 200, 150);
+              for (let x = -200; x <= 200; x += 40) {
+                line(x, -200, x, 200);
               }
-            }
-        }
-        pop();
-        // Restaura l'estat de les transformacions gràfiques al que era abans de fer el translate i altres canvis
+              break;
+            case "angry":
+              stroke(200, 0, 0, 150);
+              beginShape();
+              for (let x = -250; x <= 250; x += 20) {
+                let y = (x % 40 === 0) ? -150 : 150;
+                vertex(x, y * intensity);
+              }
+              endShape();
+              break;
+            case "fearful":
+              stroke(100, 100, 100, 150);
+              beginShape();
+              for (let x = -250; x <= 250; x += 10) {
+                let y = 50 * sin(x * 0.1 * intensity);
+                vertex(x, y);
+              }
+              endShape();
+              break;
+            case "surprised":
+              stroke(0, 150, 255, 150);
+              for (let i = 1; i <= 8; i++) {
+                ellipse(random(-10, 10), random(-10, 10), i * 30 * intensity, i * 30 * intensity);
+              }
+              break;
+            case "disgusted":
+              stroke(0, 150, 0, 150);
+              beginShape();
+              for (let x = -250; x <= 250; x += 15) {
+                let y = random(-50, 50) * intensity;
+                vertex(x, y);
+              }
+              endShape();
+              break;
+            default:
+              stroke(150, 150, 150, 150);
+              for (let i = -200; i <= 200; i += 40) {
+                for (let j = -200; j <= 200; j += 40) {
+                  rect(i, j, 30, 30);
+                }
+              }
+          }
+          pop();
       }
+    }
       /* Fi del codi JavaScript */
     </script>
   </body>
