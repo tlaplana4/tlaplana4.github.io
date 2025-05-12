@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ca">
+    <head>
+        <meta charset="UTF-8">
+        <Title>Art Geometric</Title>
+        <script src="https://cdnjs.cloudfare.com/ajax/libs/p5.js/1.11.3/p5.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/ml5js/Intro-ML-Arts-IMA@ml5-build-10-7-19/ml5_build/ml5.min.js"></script>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+            #loading-screen{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.9);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                font-size: 18px;
+                color: #333;
+                z-index: 10;
+            }
+            .loader{
+                width: 50px;
+                height: 50px;
+                border: 6px solid #3498db;
+                border-top: 6px solid transparent;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin-bottom: 10px;
+            }
+            @keyframes spin {
+                0% {transform: rotate(0deg);}
+                100% {transform: rotate(360deg);}
+            }
+        </style>
+    </head>
+    <body>
+        <div id="loading-screen">
+            <div class="loader"></div>
+            <p>Vinicius estafa</p>
+        </div>
+        <script>
+            let faceapi, detections = [], video;
+            let modelsMostrats = false;
+            const VIRTUAL_W = 800;
+            const VIRTUAL_H = 600;
+
+            function setup(){
+                createCanvas(windowWidth, windowHeight);
+                video = createCapture(VIDEO);
+                video.size(480,480);
+                video.hide();
+
+                const options = {
+                    withLandmarks: true,
+                    withExpressions: true,
+                    withDescriptors: false
+                };
+                faceapi = ml5.faceApi(video, options, modelReady);
+            }
+
+            function windowResized() {
+                resizeCanvas(windowWidth, windowHeight);
+            }
+
+            function modelReady() {
+                faceapi.detect(gotResults);
+            }
+
+            function gotResults(err, result) {
+                if (err) return console.error(err)
+                detections = result
+                if (!modelsMostrats) {
+                    document.getElementById("loading-screen").style.display = "none";
+                    modelsMostrats = true
+                }
+                faceapi.detect(gotResults);
+            }
+
+            function draw() {
+                background(255);
+
+                let dominant = "neutral", intensity = 0;
+                if (detections.length > 0) {
+                    let expr = detections[0].expressions;
+                    dominant = Object.keys(expr).reduce((a, b) => expr[a] > expr[b] ? a : b);
+                    intensity = expr[dominant];
+                }
+
+                let scaleFactor = min(width / VIRTUAL_W, height / VIRTUAL_H);
+                let offsetX = (width - VIRTUAL_W * scaleFactor) / 2;
+                let offsetY = (height - VIRTUAL_H * scaleFactor) / 2;
+
+                push();
+                translate(offsetX, offsetY);
+                scale(scaleFactor);
+                drawArt(dominant, intensity);
+                pop();
+
+                noStroke();
+                fill(44,169,225);
+                textSize(32);
+                textAlign(CENTER, TOP);
+                text("Expressió: " + dominant, width / 2, 10);
+
+                if (detections.length > 0) {
+                    image(video, width - 140, height - 140, 120, 120);
+                }
+            }
+
+            function drawArt(dominant, intensity) {
+                noFill();
+                strokeWeight(4);
+
+                switch (dominant) {
+                    case 'happy':
+                        stroke(255,200,0);
+                        beginShape();
+                        for (let a = 0; a < TWO_PI; a += PI/8) {
+                            let r = 100 + 25 * sin(a * 8);
+                            let x = VIRTUAL_W/2 + r * cos(a);
+                            let y = VIRTUAL_H/2 + r * sin(a);
+                            vertex(x, y);
+                        }
+                        endShape(CLOSE);
+                    break;
+
+                    case 'sad':
+                        stroke(50,100,200,150);
+                        beginShape();
+                        for (let x = 0; x <= 400; x += 40)
+                            vertex(200 + x, 300 + 100 * intensity);
+                        for (let x = 400; x >= 0; x -= 40)
+                            vertex(200 + x, 300 - 50 * intensity);
+                        endShape(CLOSE);
+                    break;
+
+                    case 'angry':
+                        stroke(200,0,0,150);
+                        beginShape();
+                        for (let i = 0; i < 16; i++) {
+                        let angle = map(i, 0, 16, 0, TWO_PI);
+                        let r = i % 2 ? 100 : 175;
+                        let x = VIRTUAL_W/2 + r * cos(angle);
+                        let y = VIRTUAL_H/2 + r * sin(angle);
+                        vertex(x, y);
+                        }
+                        endShape(CLOSE);
+                    break;
+
+                    case 'fearful':
+                        stroke(100,100,100,150);
+                        beginShape();
+                        for (let x = 0; x <= VIRTUAL_W; x += 10) {
+                            let y = VIRTUAL_H/2 + 50 * sin((x - VIRTUAL_W/2) * 0.05) * intensity;
+                            vertex(x, y);
+                        }
+                        endShape();
+                    break;
+
+                    case 'surprised':
+                        stroke(0,150,255,150);
+                        beginShape();
+                        for (let i = 0; i < 20; i++) {
+                            let angle = random(TWO_PI);
+                            let r = 50 + 100 * intensity;
+                            let x = VIRTUAL_W/2 + r * cos(angle);
+                            let y = VIRTUAL_H/2 + r * sin(angle);
+                            vertex(x, y);
+                        }
+                        endShape(CLOSE);
+                    break;
+
+                    case 'disgusted':
+                        stroke(0,150,0,150);
+                        beginShape();
+                        for (let i = 0; i < 12; i++) {
+                            let angle = map(i, 0, 12, 0, TWO_PI);
+                            let r = 75 + random(-50, 50) * intensity;
+                            let x = VIRTUAL_W/2 + r * cos(angle);
+                            let y = VIRTUAL_H/2 + r * sin(angle);
+                            vertex(x, y);
+                        }
+                        endShape(CLOSE);
+                    break;
+
+                    default:
+                        stroke(150,150,150,150);
+                        beginShape();
+                        vertex(0, 0);
+                        vertex(VIRTUAL_W, 0);
+                        vertex(VIRTUAL_W, VIRTUAL_H);
+                        vertex(0, VIRTUAL_H);
+                        endShape(CLOSE);
+                    
+                }
+            }
+        </script>
+    </body>
+</html>
