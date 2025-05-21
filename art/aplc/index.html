@@ -138,7 +138,7 @@
       textSize(32);
       textAlign(CENTER, TOP);
       text("Expressió: " + dominant, width / 2, 10);
-      text("Intensitat: "+ intensity*100+"5",width/2,50)
+      text("Intensitat: "+ Math.round(intensity*100) + "%",width/2,50)
 
       // Mostra el vídeo si hi ha detecció
       if (detections.length > 0) {
@@ -363,7 +363,7 @@ vertex(332, 272.1875);
 vertex(341, 282.1875);
 vertex(348, 290.1875);
 endShape(CLOSE);
-  fill(map(noise(frameCount*10*intensity),0,1,0,255,sin(frameCount*10*intensity),cos(frameCount*10*intensity)))
+  fill(map(noise(frameCount*10*intensity),0,1,0,255),sin(frameCount*10*intensity),cos(frameCount*10*intensity))
   beginShape();
 vertex(296, 263.1875);
 vertex(282, 266.1875);
@@ -395,7 +395,7 @@ vertex(413, 297.1875);
 endShape(CLOSE);
   
   //ull dret
-  fill(map(noise(frameCount*10*intensity),0,1,0,255,sin(frameCount*10*intensity),cos(frameCount*10*intensity)))
+  fill(map(noise(frameCount*10*intensity),0,1,0,255),sin(frameCount*10*intensity),cos(frameCount*10*intensity))
   beginShape();
 vertex(438, 263.1875);
 vertex(446, 267.1875);
