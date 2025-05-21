@@ -154,14 +154,7 @@
       switch (dominant) {
         case 'happy':
           stroke(255,200,0); // groc
-          beginShape();
-          for (let a = 0; a < TWO_PI; a += PI/8) {
-            let r = 100 + 25 * sin(a * 8);
-            let x = VIRTUAL_W/2 + r * cos(a);
-            let y = VIRTUAL_H/2 + r * sin(a);
-            vertex(x, y); // vèrtex positiu
-          }
-          endShape(CLOSE);
+          outline();
           break;
 
         case 'sad':
@@ -227,39 +220,7 @@
           stroke(0); // gris suau
 strokeWeight(5)
   fill(255)
-  beginShape();
-vertex(406, 56.1875);
-vertex(425, 85.1875);
-vertex(514, 225.1875);
-vertex(503, 291.1875);
-vertex(507, 326.1875);
-vertex(503, 364.1875);
-vertex(420, 572.1875);
-vertex(399, 586.1875);
-vertex(379, 591.1875);
-vertex(352, 590.1875);
-vertex(328, 582.1875);
-vertex(239, 500.1875);
-vertex(217, 468.1875);
-vertex(210, 391.1875);
-vertex(167, 372.1875);
-vertex(150, 345.1875);
-vertex(131, 313.1875);
-vertex(114, 284.1875);
-vertex(100, 261.1875);
-vertex(90, 221.1875);
-vertex(88, 179.1875);
-vertex(94, 137.1875);
-vertex(112, 80.1875);
-vertex(131, 48.1875);
-vertex(161, 10.1875);
-vertex(203, 6.1875);
-vertex(246, 6.1875);
-vertex(296, 6.1875);
-vertex(334, 10.1875);
-vertex(376, 27.1875);
-endShape(CLOSE);
-
+  outline();
   //cella esquerra
   beginShape();
 vertex(252, 226.1875);
@@ -449,6 +410,41 @@ vertex(197, 300.1875);
 endShape();
       }
     }
+
+  function outline() {
+    beginShape();
+vertex(406, 56.1875);
+vertex(425, 85.1875);
+vertex(514, 225.1875);
+vertex(503, 291.1875);
+vertex(507, 326.1875);
+vertex(503, 364.1875);
+vertex(420, 572.1875);
+vertex(399, 586.1875);
+vertex(379, 591.1875);
+vertex(352, 590.1875);
+vertex(328, 582.1875);
+vertex(239, 500.1875);
+vertex(217, 468.1875);
+vertex(210, 391.1875);
+vertex(167, 372.1875);
+vertex(150, 345.1875);
+vertex(131, 313.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+endShape(CLOSE);
+  }
   </script>
 </body>
 </html>
