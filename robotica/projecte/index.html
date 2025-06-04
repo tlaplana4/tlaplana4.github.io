@@ -146,24 +146,23 @@ tbody tr:hover{
     <img src="tk.png" alt="Recreació del cablejat a tinkercad" width="100%">
     <p>Recreació del cablejat a tinkercad</p>
     <h2>Codi</h2>
-    <p>El Codi:</p>
     <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
 void setup()
     {
-        pinMode(D8, OUTPUT);
+        pinMode(D8, OUTPUT); //Indiquem que utilitzarem el pin D8 (El pin 8 en mode digital) com a output
     }
           
 void loop()
     {
-        tone(D8, 523.25);
-        delay(600);
-        tone(D8, 880);
+        tone(D8, 523.25); //El tone fa que l'altaveu emiteixi la frequencia especificada, en aquest cas, 523.25
+        delay(600); //Fem que el codi esperi 600 mil·lisegons
+        tone(D8, 880); //Emitim una altre frequencia
         delay(150);
         tone(D8, 783.99);
         delay(300);
         tone(D8, 523.25);
         delay(1150);
-        noTone(D8);
+        noTone(D8); //Fem que l'altaveu no emiteixi ningun to
         delay(200);
         tone(D8, 523.25);
         delay(600);
@@ -221,8 +220,7 @@ void loop()
         delay(200);
         tone(D8, 587.33);
         delay(200);
-    }
-    </code></pre>
+    }</code></pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
