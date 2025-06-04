@@ -55,8 +55,8 @@ code { font-family: monospace; }
            /* margin-left: 10px;
             margin-right: 10px; */ /* Marges laterals ajustats */
            /* margin-top: 20px; */ /* Afegeix espai superior entre el contingut i la barra de menú */
-            margin: 50px auto 25px auto;
-            padding: 40px;
+            margin: 25px auto 25px auto;
+            padding: 20px;
             max-width: 900px;
         }
 table{
@@ -148,78 +148,80 @@ tbody tr:hover{
     <h2>Codi</h2>
     <p>El Codi:</p>
     <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button><code class="language-arduino">
-        void setup() {
-            pinMode(D8, OUTPUT);
-          }
+void setup()
+    {
+        pinMode(D8, OUTPUT);
+    }
           
-          void loop() {
-            tone(D8, 523.25);
-            delay(600);
-            tone(D8, 880);
-            delay(150);
-            tone(D8, 783.99);
-            delay(300);
-            tone(D8, 523.25);
-            delay(1150);
-            noTone(D8);
-            delay(200);
-            tone(D8, 523.25);
-            delay(600);
-            tone(D8, 880);
-            delay(150);
-            tone(D8, 783.99);
-            delay(300);
-            tone(D8, 587.33);
-            delay(650);
-            noTone(D8);
-            delay(100);
-            tone(D8, 587.33);
-            delay(300);
-            tone(D8, 523.25);
-            delay(250);
-            noTone(D8);
-            delay(50);
-            tone(D8, 523.25);
-            delay(600);
-            tone(D8, 880);
-            delay(150);
-            tone(D8, 783.99);
-            delay(300);
-            tone(D8, 523.25);
-            delay(950);
-            noTone(D8);
-            delay(100);
-            tone(D8, 659.26);
-            delay(150);
-            noTone(D8);
-            delay(150);
+void loop()
+    {
+        tone(D8, 523.25);
+        delay(600);
+        tone(D8, 880);
+        delay(150);
+        tone(D8, 783.99);
+        delay(300);
+        tone(D8, 523.25);
+        delay(1150);
+        noTone(D8);
+        delay(200);
+        tone(D8, 523.25);
+        delay(600);
+        tone(D8, 880);
+        delay(150);
+        tone(D8, 783.99);
+        delay(300);
+        tone(D8, 587.33);
+        delay(650);
+        noTone(D8);
+        delay(100);
+        tone(D8, 587.33);
+        delay(300);
+        tone(D8, 523.25);
+        delay(250);
+        noTone(D8);
+        delay(50);
+        tone(D8, 523.25);
+        delay(600);
+        tone(D8, 880);
+        delay(150);
+        tone(D8, 783.99);
+        delay(300);
+        tone(D8, 523.25);
+        delay(950);
+        noTone(D8);
+        delay(100);
+        tone(D8, 659.26);
+        delay(150);
+        noTone(D8);
+        delay(150);
           
-            //loop4
-            tone(D8, 659.26);
-            delay(200);
-            tone(D8, 523.25);
-            delay(200);
-            tone(D8, 587.33);
-            delay(200);
-            tone(D8, 659.26);
-            delay(200);
-            tone(D8, 523.25);
-            delay(200);
-            tone(D8, 587.33);
-            delay(200);
-            tone(D8, 659.26);
-            delay(200);
-            tone(D8, 523.25);
-            delay(200);
-            tone(D8, 587.33);
-            delay(200);
-            tone(D8, 659.26);
-            delay(200);
-            tone(D8, 523.25);
-            delay(200);
-            tone(D8, 587.33);
-            delay(200);
-          }
+        //loop4
+        tone(D8, 659.26);
+        delay(200);
+        tone(D8, 523.25);
+        delay(200);
+        tone(D8, 587.33);
+        delay(200);
+        tone(D8, 659.26);
+        delay(200);
+        tone(D8, 523.25);
+        delay(200);
+        tone(D8, 587.33);
+        delay(200);
+        tone(D8, 659.26);
+        delay(200);
+        tone(D8, 523.25);
+        delay(200);
+        tone(D8, 587.33);
+        delay(200);
+        tone(D8, 659.26);
+        delay(200);
+        tone(D8, 523.25);
+        delay(200);
+        tone(D8, 587.33);
+        delay(200);
+    }
     </code></pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
