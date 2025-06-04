@@ -321,7 +321,7 @@
         // Dibuixa l'art interactiu al centre del canvas:
         push();
         // Guarda l'estat actual del context gràfic.
-        translate(width / 3, height/4);
+        translate(width / 3, height/8);
         // Trasllada el sistema de coordenades perquè (0,0) sigui el centre de la finestra.
         const scaleFactor = min(width, height) / 800;
         // Calcula un factor d'escala per adaptar els dibuixos a la mida de la finestra.
@@ -361,111 +361,10 @@
         switch (dominant) {
 
           case 'happy':
-            // Cas per a l'emoció "happy" (feliç)
-            stroke(255, 204, 0);
-            // Defineix que el contorn sigui de color groc (RGB: 255, 204, 0)
-            fill(255, 230, 100, 150 * smoothIntensity);
-            // Omple la forma amb un groc clar. El valor 150 * smoothIntensity controla la transparència.
-            beginShape();
-            // Inicia la definició d'una forma complexa (múltiples punts)
-            for (let i = 0; i < 10; i++) {
-              // Bucle per generar 10 punts (vertex) al voltant d’un cercle
-              const angle = map(i, 0, 10, 0, TWO_PI);
-              // Converteix l'índex actual en un angle, repartint-los uniformement al voltant d’un cercle (de 0 a 2π)
-              const radius = baseSize * (0.8 + sin(t + angle * 2) * 0.2);
-              // Calcula el radi per cada punt, afegint una oscil·lació amb sin() per aconseguir un efecte ondulatori
-              vertex(centerX + cos(angle) * radius, centerY + sin(angle) * radius);
-              // Defineix un vertex de la forma convertint coordenades polars a cartesianes
-            }
-            endShape(CLOSE);
-            // Tanca la forma, connectant el darrer vertex amb el primer per completar el contorn
-            break;
-
-          case 'sad':
-            // Cas per a l'emoció "sad" (trist)
-            stroke(70, 130, 230);
-            // Contorn amb un to blau moderat (RGB: 70, 130, 230)
-            fill(100, 180, 255, 100 * smoothIntensity);
-            // Omple la figura amb un blau més clar i transparència segons la intensitat
-            beginShape();
-            vertex(centerX - baseSize, centerY);
-            // Defineix el primer punt a l'esquerra del centre
-            bezierVertex(
-              centerX - baseSize / 2, centerY + baseSize * 1.5,
-              centerX + baseSize / 2, centerY + baseSize * 1.5,
-              centerX + baseSize, centerY
-            );
-            // Dibuixa una corba de Bézier per formar la part inferior de la figura
-            bezierVertex(
-              centerX + baseSize / 2, centerY - baseSize * 0.3,
-              centerX - baseSize / 2, centerY - baseSize * 0.3,
-              centerX - baseSize, centerY
-            );
-            // Dibuixa la corba superior per tancar la figura
-            endShape(CLOSE);
-            break;
-
-          case 'angry':
-            // Cas per a l'emoció "angry" (enfadat)
-            stroke(200, 50, 50);
-            // Defineix el contorn en vermell intens (RGB: 200, 50, 50)
-            fill(255, 100, 100, 200 * smoothIntensity);
-            // Omple la forma amb un vermell més suau, amb transparència dependenta de la intensitat
-            beginShape();
-            for (let i = 0; i < 6; i++) {
-              // Bucle per generar 6 vertex de la figura (forma irregular)
-              const angle = map(i, 0, 6, 0, TWO_PI);
-              // Converteix l'índex "i" en un angle distribuint 6 punts de manera uniforme al voltant del cercle
-              const radius = baseSize * (0.7 + noise(t + i) * 0.3);
-              // Calcula el radi amb noise() per afegir variacions aleatòries a la forma
-              vertex(centerX + cos(angle) * radius, centerY + sin(angle) * radius);
-              // Defineix cada vertex a partir de coordenades polars convertides a cartesianes
-            }
-            endShape(CLOSE);
-            break;
-
-          case 'surprised':
-            // Cas per a l'emoció "surprised" (sorprès)
-            stroke(100, 200, 255);
-            // Defineix el contorn amb un blau cel (RGB: 100, 200, 255)
-            fill(200, 240, 255, 150 * smoothIntensity);
-            // Omple la figura amb un blau molt clar, amb transparència variable segons la intensitat
-            const circles = 5 + floor(smoothIntensity * 8);
-            // Calcula el nombre de cercles concèntrics a dibuixar depenent de la intensitat
-            for (let i = 0; i < circles; i++) {
-              // Bucle per dibuixar cada cercle
-              const radius = baseSize * (0.2 + i / circles);
-              // Calcula el radi del cercle actual, augmentant gradualment amb cada iteració
-              ellipse(centerX, centerY, radius * 2, radius * 2);
-              // Dibuixa el cercle amb el diàmetre doble del radi
-            }
-            break;
-
-          case 'disgusted':
-            // Cas per a l'emoció "disgusted" (fastiguejat)
-            stroke(100, 150, 50);
-            // Defineix el contorn amb un to verd fosc (RGB: 100, 150, 50)
-            fill(150, 200, 100, 150 * smoothIntensity);
-            // Omple amb un verd suau, amb opacitat ajustada segons la intensitat
-            beginShape();
-            for (let i = 0; i < 8; i++) {
-              // Bucle per generar 8 vertex per la forma
-              const angle = map(i, 0, 8, 0, TWO_PI);
-              // Distribueix 8 punts de manera uniforme al voltant del cercle
-              const radius = baseSize * (0.5 + noise(t + i * 0.5) * 0.5);
-              // Calcula el radi variable amb una combinació de valor base i la funció noise() per crear irregularitats
-              vertex(centerX + cos(angle) * radius, centerY + sin(angle) * radius);
-              // Defineix cada vertex amb coordenades convertides de polars a cartesianes
-            }
-            endShape(CLOSE);
-            break;
-
-          default:
           stroke(0); // gris suau
 strokeWeight(5)
   fill(255)
   outline();
-  //cella esquerra
   beginShape();
 vertex(252, 226.1875);
 vertex(299, 231.1875);
@@ -478,28 +377,900 @@ vertex(394, 247.1875);
 vertex(437, 229.1875);
 vertex(514, 225.1875);
 endShape();
-  
-  //Nas
+  //boca
+  noFill()
+strokeWeight(2)
 beginShape();
-vertex(394, 295.1875);
-vertex(425, 400.1875);
-vertex(451, 412.1875);
-vertex(454, 433.1875);
-vertex(427, 446.1875);
-vertex(389, 452.1875);
-vertex(340, 452.1875);
-vertex(319, 446.1875);
-vertex(312, 423.1875);
-vertex(323, 402.1875);
-vertex(342, 399.1875);
+vertex(321, 501.1875 - (smoothIntensity * 10));
+vertex(317, 513.1875);
+vertex(331, 519.1875);
+vertex(347, 524.1875);
+vertex(362, 527.1875);
+vertex(377, 529.1875);
+vertex(393, 527.1875);
+vertex(404, 522.1875);
+vertex(422, 514.1875);
+vertex(423, 500.1875 - (smoothIntensity * 10));
 endShape();
   
-    beginShape();
-vertex(356, 267.1875);
-vertex(365, 285.1875);
-vertex(386, 412.1875);
+beginShape();
+vertex(342, 502.1875);
+vertex(342, 497.1875);
+vertex(361, 492.1875);
+vertex(380, 496.1875);
+vertex(393, 489.1875);
+vertex(412, 505.1875);
+endShape();
+
+fill(255,10,10)
+  triangle(342, 502.1875, 412, 505.1875, 380,505 + (smoothIntensity*50));
+  
+  noFill()
+  
+    strokeWeight(5)
+  beginShape();
+vertex(321, 501.1875 - (smoothIntensity * 10));
+vertex(342, 502.1875);
+vertex(412, 505.1875);
+vertex(423, 500.1875 - (smoothIntensity * 10));
+endShape();
+
+  //pupila esquerra
+  beginShape();
+vertex(241, 271.1875);
+vertex(258, 260.1875);
+vertex(278, 252.1875);
+vertex(301, 250.1875);
+vertex(321, 257.1875);
+vertex(335, 268.1875);
+vertex(345, 283.1875);
+vertex(348, 290.1875);
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(256, 291.1875);
+vertex(246, 281.1875);
+endShape(CLOSE);
+  
+  //ULL esq
+  beginShape();
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(257, 278.1875);
+vertex(270, 263.1875);
+vertex(288, 257.1875);
+vertex(305, 259.1875);
+vertex(320, 265.1875);
+vertex(332, 272.1875);
+vertex(341, 282.1875);
+vertex(348, 290.1875);
+endShape(CLOSE);
+      fill(0)
+  beginShape();
+vertex(296, 263.1875);
+vertex(282, 266.1875);
+vertex(277, 276.1875);
+vertex(274, 287.1875);
+vertex(289, 300.1875);
+vertex(297, 303.1875);
+vertex(312, 296.1875);
+vertex(319, 281.1875);
+vertex(310, 267.1875);
+endShape(CLOSE);
+  
+  //pupila dret
+  noFill()
+  beginShape();
+vertex(400, 284.1875);
+vertex(410, 269.1875);
+vertex(429, 256.1875);
+vertex(439, 251.1875);
+vertex(462, 254.1875);
+vertex(479, 263.1875);
+vertex(492, 276.1875);
+vertex(489, 292.1875);
+vertex(477, 298.1875);
+vertex(463, 304.1875);
+vertex(443, 306.1875);
+vertex(428, 302.1875);
+vertex(413, 297.1875);
+endShape(CLOSE);
+  
+  //ull dret
+  fill(0)
+  beginShape();
+vertex(438, 263.1875);
+vertex(446, 267.1875);
+vertex(451, 271.1875);
+vertex(453, 275.1875);
+vertex(455, 281.1875);
+vertex(453, 289.1875);
+vertex(447, 295.1875);
+vertex(439, 298.1875);
+vertex(430, 296.1875);
+vertex(424, 288.1875);
+vertex(424, 278.1875);
+vertex(428, 268.1875);
+endShape(CLOSE);
+  
+    fill(255)
+beginShape()
+  vertex(397, 77.1875);
+vertex(317, 219.1875);
+vertex(306, 195.1875);
+vertex(279, 241.1875);
+vertex(270, 229.1875);
+vertex(263, 241.1875);
+vertex(242, 249.1875);
+vertex(225, 242.1875);
+vertex(215, 258.1875);
+vertex(190, 234.1875);
+vertex(162, 222.1875);
+vertex(141, 242.1875);
+vertex(123, 266.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+  vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+  vertex(406, 56.1875);
+endShape(CLOSE);
+
+  beginShape();
+vertex(274, 459.1875);
+vertex(197, 300.1875);
+endShape();
+            break;
+
+          case 'sad':
+          stroke(0); // gris suau
+strokeWeight(5)
+  fill(255)
+  outline();
+  
+beginShape();
+vertex(252, 226.1875);
+vertex(299, 231.1875);
+vertex(340, 249.1875);
 endShape();
   
+  //cella dreta
+  beginShape();
+vertex(394, 247.1875);
+vertex(437, 229.1875);
+vertex(map(smoothIntensity,0,5,514,503), map(smoothIntensity,0,5,225.1875,291.1875));
+endShape();
+  //boca
+  noFill()
+strokeWeight(2)
+beginShape();
+vertex(321, 501.1875 + (smoothIntensity * 10));
+vertex(317, 513.1875);
+vertex(331, 519.1875);
+vertex(347, 524.1875);
+vertex(362, 527.1875);
+vertex(377, 529.1875);
+vertex(393, 527.1875);
+vertex(404, 522.1875);
+vertex(422, 514.1875);
+vertex(423, 500.1875 + (smoothIntensity * 10));
+endShape();
+  
+beginShape();
+vertex(342, 502.1875);
+vertex(342, 497.1875);
+vertex(361, 492.1875);
+vertex(380, 496.1875);
+vertex(393, 489.1875);
+vertex(412, 505.1875);
+endShape();
+  
+    strokeWeight(5)
+  beginShape();
+vertex(321, 501.1875 + (smoothIntensity * 10));
+vertex(342, 502.1875);
+vertex(412, 505.1875);
+vertex(423, 500.1875 + (smoothIntensity * 10));
+endShape();
+  //pupila esquerra
+  beginShape();
+vertex(241, 271.1875);
+vertex(258, 260.1875);
+vertex(278, 252.1875);
+vertex(301, 250.1875);
+vertex(321, 257.1875);
+vertex(335, 268.1875);
+vertex(345, 283.1875);
+vertex(348, 290.1875);
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(256, 291.1875);
+vertex(246, 281.1875);
+endShape(CLOSE);
+  
+  //ULL esq
+  beginShape();
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(257, 278.1875);
+vertex(270, 263.1875);
+vertex(288, 257.1875);
+vertex(305, 259.1875);
+vertex(320, 265.1875);
+vertex(332, 272.1875);
+vertex(341, 282.1875);
+vertex(348, 290.1875);
+endShape(CLOSE);
+      fill(0)
+  beginShape();
+vertex(296, 263.1875);
+vertex(282, 266.1875);
+vertex(277, 276.1875);
+vertex(274, 287.1875);
+vertex(289, 300.1875);
+vertex(297, 303.1875);
+vertex(312, 296.1875);
+vertex(319, 281.1875);
+vertex(310, 267.1875);
+endShape(CLOSE);
+//LLAGRIMA
+fill(10,10,255)
+beginShape()
+  vertex(340-30,325)
+  vertex(355-30+map(smoothIntensity,0,1,0,10),365+map(smoothIntensity,0,1,0,10))
+    vertex(340-30,375+map(smoothIntensity,0,1,0,10))
+  vertex(325-30-map(smoothIntensity,0,1,0,10),365+map(smoothIntensity,0,1,0,10))
+  endShape(CLOSE)
+  //pupila dret
+  noFill()
+  beginShape();
+vertex(400, 284.1875);
+vertex(410, 269.1875);
+vertex(429, 256.1875);
+vertex(439, 251.1875);
+vertex(462, 254.1875);
+vertex(479, 263.1875);
+vertex(492, 276.1875);
+vertex(489, 292.1875);
+vertex(477, 298.1875);
+vertex(463, 304.1875);
+vertex(443, 306.1875);
+vertex(428, 302.1875);
+vertex(413, 297.1875);
+endShape(CLOSE);
+  
+  //ull dret
+  fill(0)
+  beginShape();
+vertex(438, 263.1875);
+vertex(446, 267.1875);
+vertex(451, 271.1875);
+vertex(453, 275.1875);
+vertex(455, 281.1875);
+vertex(453, 289.1875);
+vertex(447, 295.1875);
+vertex(439, 298.1875);
+vertex(430, 296.1875);
+vertex(424, 288.1875);
+vertex(424, 278.1875);
+vertex(428, 268.1875);
+endShape(CLOSE);
+  
+    fill(255)
+beginShape()
+  vertex(397, 77.1875);
+vertex(317, 219.1875);
+vertex(306, 195.1875);
+vertex(279, 241.1875);
+vertex(270, 229.1875);
+vertex(263, 241.1875);
+vertex(242, 249.1875);
+vertex(225, 242.1875);
+vertex(215, 258.1875);
+vertex(190, 234.1875);
+vertex(162, 222.1875);
+vertex(141, 242.1875);
+vertex(123, 266.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+  vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+  vertex(406, 56.1875);
+endShape(CLOSE);
+
+  beginShape();
+vertex(274, 459.1875);
+vertex(197, 300.1875);
+endShape();
+            break;
+
+          case 'angry':
+          stroke(0); // gris suau
+strokeWeight(5)
+  fill(230,100,100)
+  outline();
+  beginShape();
+vertex(252, 226.1875);
+vertex(299, 231.1875);
+vertex(340, 249.1875 + smoothIntensity*10);
+endShape();
+  
+  //cella dreta
+  beginShape();
+vertex(394, 247.1875+ smoothIntensity*10);
+vertex(437, 229.1875);
+vertex(514, 225.1875);
+endShape();
+  //boca
+    noFill()
+strokeWeight(2)
+beginShape();
+vertex(321, 501.1875 + smoothIntensity*5);
+vertex(317, 513.1875);
+vertex(331, 519.1875);
+vertex(347, 524.1875);
+vertex(362, 527.1875);
+vertex(377, 529.1875);
+vertex(393, 527.1875);
+vertex(404, 522.1875);
+vertex(422, 514.1875);
+vertex(423, 500.1875 + smoothIntensity*5);
+endShape();
+  
+beginShape();
+vertex(342, 502.1875);
+vertex(342, 497.1875);
+vertex(361, 492.1875);
+vertex(380, 496.1875);
+vertex(393, 489.1875);
+vertex(412, 505.1875);
+endShape();
+  
+    strokeWeight(5)
+  beginShape();
+vertex(321, 501.1875 + smoothIntensity*5);
+vertex(342, 502.1875);
+vertex(412, 505.1875);
+vertex(423, 500.1875 + smoothIntensity*5);
+endShape();
+
+fill(255);
+  
+  //pupila esquerra
+  beginShape();
+vertex(241, 271.1875);
+vertex(258, 260.1875);
+vertex(278, 252.1875);
+vertex(301, 250.1875);
+vertex(321, 257.1875);
+vertex(335, 268.1875);
+vertex(345, 283.1875);
+vertex(348, 290.1875);
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(256, 291.1875);
+vertex(246, 281.1875);
+endShape(CLOSE);
+  noFill()
+  //ULL esq
+  beginShape();
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(257, 278.1875);
+vertex(270, 263.1875);
+vertex(288, 257.1875);
+vertex(305, 259.1875);
+vertex(320, 265.1875);
+vertex(332, 272.1875);
+vertex(341, 282.1875);
+vertex(348, 290.1875);
+endShape(CLOSE);
+  fill(0)
+  beginShape();
+vertex(296, 263.1875);
+vertex(282, 266.1875);
+vertex(277, 276.1875);
+vertex(274, 287.1875);
+vertex(289, 300.1875);
+vertex(297, 303.1875);
+vertex(312, 296.1875);
+vertex(319, 281.1875);
+vertex(310, 267.1875);
+endShape(CLOSE);
+fill(255);
+  //pupila dret
+  fill(255)
+  beginShape();
+vertex(400, 284.1875);
+vertex(410, 269.1875);
+vertex(429, 256.1875);
+vertex(439, 251.1875);
+vertex(462, 254.1875);
+vertex(479, 263.1875);
+vertex(492, 276.1875);
+vertex(489, 292.1875);
+vertex(477, 298.1875);
+vertex(463, 304.1875);
+vertex(443, 306.1875);
+vertex(428, 302.1875);
+vertex(413, 297.1875);
+endShape(CLOSE);
+  noFill()
+  //ull dret
+  fill(0)
+  beginShape();
+vertex(438, 263.1875);
+vertex(446, 267.1875);
+vertex(451, 271.1875);
+vertex(453, 275.1875);
+vertex(455, 281.1875);
+vertex(453, 289.1875);
+vertex(447, 295.1875);
+vertex(439, 298.1875);
+vertex(430, 296.1875);
+vertex(424, 288.1875);
+vertex(424, 278.1875);
+vertex(428, 268.1875);
+endShape(CLOSE);
+  
+fill(200,20,20)
+beginShape()
+  vertex(397, 77.1875);
+vertex(317, 219.1875);
+vertex(306, 195.1875);
+vertex(279, 241.1875);
+vertex(270, 229.1875);
+vertex(263, 241.1875);
+vertex(242, 249.1875);
+vertex(225, 242.1875);
+vertex(215, 258.1875);
+vertex(190, 234.1875);
+vertex(162, 222.1875);
+vertex(141, 242.1875);
+vertex(123, 266.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+  vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+  vertex(406, 56.1875);
+endShape(CLOSE);
+
+  beginShape();
+vertex(274, 459.1875);
+vertex(197, 300.1875);
+endShape();
+            break;
+
+
+
+
+
+          case 'surprised':
+          stroke(0); // gris suau
+strokeWeight(5)
+  fill(255)
+  outline();
+  beginShape();
+vertex(252, 226.1875);
+vertex(299, 231.1875);
+vertex(340, 249.1875);
+endShape();
+  
+  //cella dreta
+  beginShape();
+vertex(394, 247.1875);
+vertex(437, 229.1875);
+vertex(514, 225.1875);
+endShape();
+  //boca
+    noFill()
+strokeWeight(2)
+beginShape();
+vertex(321, 501.1875);
+vertex(317, 513.1875 + smoothIntensity*10);
+vertex(331, 519.1875 + smoothIntensity*10);
+vertex(347, 524.1875 + smoothIntensity*10);
+vertex(362, 527.1875 + smoothIntensity*10);
+vertex(377, 529.1875 + smoothIntensity*10);
+vertex(393, 527.1875 + smoothIntensity*10);
+vertex(404, 522.1875 + smoothIntensity*10);
+vertex(422, 514.1875 + smoothIntensity*10);
+vertex(423, 500.1875);
+endShape();
+  
+beginShape();
+vertex(342, 502.1875 - smoothIntensity*10);
+vertex(342, 497.1875 - smoothIntensity*10);
+vertex(361, 492.1875 - smoothIntensity*10);
+vertex(380, 496.1875 - smoothIntensity*10);
+vertex(393, 489.1875 - smoothIntensity*10);
+vertex(412, 505.1875 - smoothIntensity*10);
+endShape();
+  
+    strokeWeight(5)
+  beginShape();
+vertex(321, 501.1875);
+vertex(342, 502.1875 + smoothIntensity*10);
+vertex(412, 505.1875 + smoothIntensity*10);
+vertex(423, 500.1875);
+endShape();
+beginShape();
+vertex(321, 501.1875);
+vertex(342, 502.1875 - smoothIntensity*10);
+vertex(412, 505.1875 - smoothIntensity*10);
+vertex(423, 500.1875);
+endShape();
+
+fill(255);
+  
+  //pupila esquerra
+  beginShape();
+vertex(241, 271.1875);
+vertex(258, 260.1875);
+vertex(278, 252.1875);
+vertex(301, 250.1875);
+vertex(321, 257.1875);
+vertex(335, 268.1875);
+vertex(345, 283.1875);
+vertex(348, 290.1875);
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(256, 291.1875);
+vertex(246, 281.1875);
+endShape(CLOSE);
+  noFill()
+  //ULL esq
+  beginShape();
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(257, 278.1875);
+vertex(270, 263.1875);
+vertex(288, 257.1875);
+vertex(305, 259.1875);
+vertex(320, 265.1875);
+vertex(332, 272.1875);
+vertex(341, 282.1875);
+vertex(348, 290.1875);
+endShape(CLOSE);
+  fill(0)
+  beginShape();
+vertex(296, 263.1875);
+vertex(282, 266.1875);
+vertex(277, 276.1875);
+vertex(274, 287.1875);
+vertex(289, 300.1875);
+vertex(297, 303.1875);
+vertex(312, 296.1875);
+vertex(319, 281.1875);
+vertex(310, 267.1875);
+endShape(CLOSE);
+fill(255);
+  //pupila dret
+  noFill()
+  beginShape();
+vertex(400, 284.1875);
+vertex(410, 269.1875);
+vertex(429, 256.1875);
+vertex(439, 251.1875);
+vertex(462, 254.1875);
+vertex(479, 263.1875);
+vertex(492, 276.1875);
+vertex(489, 292.1875);
+vertex(477, 298.1875);
+vertex(463, 304.1875);
+vertex(443, 306.1875);
+vertex(428, 302.1875);
+vertex(413, 297.1875);
+endShape(CLOSE);
+  noFill()
+  //ull dret
+  fill(0)
+  beginShape();
+vertex(438, 263.1875);
+vertex(446, 267.1875);
+vertex(451, 271.1875);
+vertex(453, 275.1875);
+vertex(455, 281.1875);
+vertex(453, 289.1875);
+vertex(447, 295.1875);
+vertex(439, 298.1875);
+vertex(430, 296.1875);
+vertex(424, 288.1875);
+vertex(424, 278.1875);
+vertex(428, 268.1875);
+endShape(CLOSE);
+  
+fill(255)
+beginShape()
+  vertex(397, 77.1875);
+vertex(317, 219.1875);
+vertex(306, 195.1875);
+vertex(279, 241.1875);
+vertex(270, 229.1875);
+vertex(263, 241.1875);
+vertex(242, 249.1875);
+vertex(225, 242.1875);
+vertex(215, 258.1875);
+vertex(190, 234.1875);
+vertex(162, 222.1875);
+vertex(141, 242.1875);
+vertex(123, 266.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+  vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+  vertex(406, 56.1875);
+endShape(CLOSE);
+
+  beginShape();
+vertex(274, 459.1875);
+vertex(197, 300.1875);
+endShape();
+            break;
+
+          case 'disgusted':
+          stroke(0); // gris suau
+strokeWeight(5)
+  fill(255)
+  outline();
+  beginShape();
+vertex(252, 226.1875);
+vertex(299, 231.1875);
+vertex(340, 249.1875);
+endShape();
+  
+  //cella dreta
+  beginShape();
+vertex(394, 247.1875);
+vertex(437, 229.1875);
+vertex(514, 225.1875);
+endShape();
+  //boca
+    noFill()
+strokeWeight(2)
+beginShape();
+vertex(321, 501.1875);
+vertex(317, 513.1875);
+vertex(331, 519.1875);
+vertex(347, 524.1875);
+vertex(362, 527.1875);
+vertex(377, 529.1875);
+vertex(393, 527.1875);
+vertex(404, 522.1875);
+vertex(422, 514.1875);
+vertex(423, 500.1875);
+endShape();
+  
+beginShape();
+vertex(342, 502.1875);
+vertex(342, 497.1875);
+vertex(361, 492.1875);
+vertex(380, 496.1875);
+vertex(393, 489.1875);
+vertex(412, 505.1875);
+endShape();
+  
+    strokeWeight(5)
+  beginShape();
+vertex(321, 501.1875);
+vertex(342, 502.1875);
+vertex(412, 505.1875);
+vertex(423, 500.1875);
+endShape();
+
+fill(20,200,20)
+beginShape();
+vertex(342, 502.1875);
+vertex(330, map(smoothIntensity,0,1,505.1875,547.1875));
+vertex(343, map(smoothIntensity,0,1,505.1875,539.1875));
+vertex(369, map(smoothIntensity,0,1,505.1875,548.1875));
+vertex(379, map(smoothIntensity,0,1,505.1875,540.1875));
+vertex(369, map(smoothIntensity,0,1,505.1875,522.1875));
+vertex(397, map(smoothIntensity,0,1,505.1875,527.1875));
+vertex(417, map(smoothIntensity,0,1,505.1875,546.1875));
+vertex(412, 505.1875);
+endShape(CLOSE);
+noFill()
+  
+  //pupila esquerra
+  beginShape();
+vertex(241, 271.1875);
+vertex(258, 260.1875);
+vertex(278, 252.1875);
+vertex(301, 250.1875);
+vertex(321, 257.1875);
+vertex(335, 268.1875);
+vertex(345, 283.1875);
+vertex(348, 290.1875);
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(256, 291.1875);
+vertex(246, 281.1875);
+endShape(CLOSE);
+  noFill()
+  //ULL esq
+  beginShape();
+vertex(338, 299.1875);
+vertex(325, 306.1875);
+vertex(305, 311.1875);
+vertex(287, 309.1875);
+vertex(273, 303.1875);
+vertex(257, 278.1875);
+vertex(270, 263.1875);
+vertex(288, 257.1875);
+vertex(305, 259.1875);
+vertex(320, 265.1875);
+vertex(332, 272.1875);
+vertex(341, 282.1875);
+vertex(348, 290.1875);
+endShape(CLOSE);
+  fill(0)
+  beginShape();
+vertex(296, 263.1875);
+vertex(282, 266.1875);
+vertex(277, 276.1875);
+vertex(274, 287.1875);
+vertex(289, 300.1875);
+vertex(297, 303.1875);
+vertex(312, 296.1875);
+vertex(319, 281.1875);
+vertex(310, 267.1875);
+endShape(CLOSE);
+fill(255);
+  //pupila dret
+  noFill()
+  beginShape();
+vertex(400, 284.1875);
+vertex(410, 269.1875);
+vertex(429, 256.1875);
+vertex(439, 251.1875);
+vertex(462, 254.1875);
+vertex(479, 263.1875);
+vertex(492, 276.1875);
+vertex(489, 292.1875);
+vertex(477, 298.1875);
+vertex(463, 304.1875);
+vertex(443, 306.1875);
+vertex(428, 302.1875);
+vertex(413, 297.1875);
+endShape(CLOSE);
+  noFill()
+  //ull dret
+  fill(0)
+  beginShape();
+vertex(438, 263.1875);
+vertex(446, 267.1875);
+vertex(451, 271.1875);
+vertex(453, 275.1875);
+vertex(455, 281.1875);
+vertex(453, 289.1875);
+vertex(447, 295.1875);
+vertex(439, 298.1875);
+vertex(430, 296.1875);
+vertex(424, 288.1875);
+vertex(424, 278.1875);
+vertex(428, 268.1875);
+endShape(CLOSE);
+  fill(255)
+beginShape()
+  vertex(397, 77.1875);
+vertex(317, 219.1875);
+vertex(306, 195.1875);
+vertex(279, 241.1875);
+vertex(270, 229.1875);
+vertex(263, 241.1875);
+vertex(242, 249.1875);
+vertex(225, 242.1875);
+vertex(215, 258.1875);
+vertex(190, 234.1875);
+vertex(162, 222.1875);
+vertex(141, 242.1875);
+vertex(123, 266.1875);
+vertex(114, 284.1875);
+vertex(100, 261.1875);
+vertex(90, 221.1875);
+vertex(88, 179.1875);
+  vertex(94, 137.1875);
+vertex(112, 80.1875);
+vertex(131, 48.1875);
+vertex(161, 10.1875);
+vertex(161, 10.1875);
+vertex(203, 6.1875);
+vertex(246, 6.1875);
+vertex(296, 6.1875);
+vertex(334, 10.1875);
+vertex(376, 27.1875);
+  vertex(406, 56.1875);
+endShape(CLOSE);
+
+  beginShape();
+vertex(274, 459.1875);
+vertex(197, 300.1875);
+endShape();
+            break;
+
+          default:
+          stroke(0); // gris suau
+strokeWeight(5)
+  fill(255)
+  outline();
+  beginShape();
+vertex(252, 226.1875);
+vertex(299, 231.1875);
+vertex(340, 249.1875);
+endShape();
+  
+  //cella dreta
+  beginShape();
+vertex(394, 247.1875);
+vertex(437, 229.1875);
+vertex(514, 225.1875);
+endShape();
   //boca
     noFill()
 strokeWeight(2)
@@ -687,6 +1458,28 @@ vertex(296, 6.1875);
 vertex(334, 10.1875);
 vertex(376, 27.1875);
 endShape(CLOSE);
+
+  
+  //Nas
+beginShape();
+vertex(394, 295.1875);
+vertex(425, 400.1875);
+vertex(451, 412.1875);
+vertex(454, 433.1875);
+vertex(427, 446.1875);
+vertex(389, 452.1875);
+vertex(340, 452.1875);
+vertex(319, 446.1875);
+vertex(312, 423.1875);
+vertex(323, 402.1875);
+vertex(342, 399.1875);
+endShape();
+  
+    beginShape();
+vertex(356, 267.1875);
+vertex(365, 285.1875);
+vertex(386, 412.1875);
+endShape();
   }
 
       //--------------------------------------------------
