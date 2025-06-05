@@ -147,15 +147,14 @@ tbody tr:hover{
     <p>Recreació del cablejat a tinkercad</p>
     <h2>Codi</h2>
     <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-<code class="language-arduino">
-#include <Adafruit_NeoPixel.h> // Incloim la llibreria de neopixel
+<code class="language-arduino">#include <Adafruit_NeoPixel.h> // Incloim la llibreria de neopixel
 #ifdef __AVR__
 #include <avr/power.h>
 #endif
 
 #define PIN 6 //Indiquem el pin del LED Strip
 
-#define NUMPIXELS 20 // Indiquem el numero de leds de la strip
+#define NUMPIXELS 20 //Indiquem el numero de leds de la strip
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
@@ -168,9 +167,10 @@ void setup()
 void loop() 
     {
         tone(D8, 523.25); //Fem que l'altaveu emiti la frequencia especificada, 523.25 en aquest cas
-        pixels.clear();
+        pixels.clear(); //Netegem tots els lleds
         pixels.setPixelColor(0, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
-        pixels.show();
+        //Indiquem quin led volem iluminar
+        pixels.show(); //Ensenyem els leds que hem indicat
         delay(600); //Fem que el codi esperi 600 mil·lisegons
         tone(D8, 880);
         pixels.clear();
@@ -257,7 +257,6 @@ void loop()
         noTone(D8);
         delay(150);
 
-        //loop4
         tone(D8, 659.26);
         pixels.clear();
         pixels.setPixelColor(15, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
