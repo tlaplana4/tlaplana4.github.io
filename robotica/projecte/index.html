@@ -147,64 +147,175 @@ tbody tr:hover{
     <p>Recreació del cablejat a tinkercad</p>
     <h2>Codi</h2>
     <pre><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy"></i></button>
-<code class="language-arduino">void setup()
+<code class="language-arduino">
+#include <Adafruit_NeoPixel.h> // Incloim la llibreria de neopixel
+#ifdef __AVR__
+#include <avr/power.h>
+#endif
+
+#define PIN 6 //Indiquem el pin del LED Strip
+
+#define NUMPIXELS 20 // Indiquem el numero de leds de la strip
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+void setup() 
     {
         pinMode(D8, OUTPUT); //Indiquem que utilitzarem el pin D8 (El pin 8 en mode digital) com a output
+        pixels.begin();
     }
-          
-void loop()
+
+void loop() 
     {
         tone(D8, 523.25); //Fem que l'altaveu emiti la frequencia especificada, 523.25 en aquest cas
+        pixels.clear();
+        pixels.setPixelColor(0, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(600); //Fem que el codi esperi 600 mil·lisegons
-        tone(D8, 880); //Emitim una altre frequencia
+        tone(D8, 880);
+        pixels.clear();
+        pixels.setPixelColor(1, pixels.ColorHSV(map(880, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(150);
         tone(D8, 783.99);
+        pixels.clear();
+        pixels.setPixelColor(2, pixels.ColorHSV(map(783.99, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(300);
         tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(3, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(1150);
         noTone(D8); //Fem que l'altaveu no emiteixi ningun to
+        pixels.clear();
         delay(200);
         tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(4, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(600);
         tone(D8, 880);
+        pixels.clear();
+        pixels.setPixelColor(5, pixels.ColorHSV(map(880, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(150);
         tone(D8, 783.99);
+        pixels.clear();
+        pixels.setPixelColor(6, pixels.ColorHSV(map(783.99, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(300);
         tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(7, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(650);
         noTone(D8);
+        pixels.clear();
         delay(100);
         tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(8, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(300);
         tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(9, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(250);
         noTone(D8);
+        pixels.clear();
         delay(50);
         tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(10, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(600);
         tone(D8, 880);
+        pixels.clear();
+        pixels.setPixelColor(11, pixels.ColorHSV(map(880, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(150);
         tone(D8, 783.99);
+        pixels.clear();
+        pixels.setPixelColor(12, pixels.ColorHSV(map(783.99, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(300);
         tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(13, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(950);
         noTone(D8);
+        pixels.clear();
         delay(100);
         tone(D8, 659.26);
+        pixels.clear();
+        pixels.setPixelColor(14, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
+        pixels.show();
         delay(150);
         noTone(D8);
         delay(150);
-        
-        for(let iwon = 0, iwon > 3, iwon++)
-        {
-            tone(D8, 659.26);
-            delay(200);
-            tone(D8, 523.25);
-            delay(200);
-            tone(D8, 587.33);
-            delay(200);
-        }
-    }</code></pre>
+
+        //loop4
+        tone(D8, 659.26);
+        pixels.clear();
+        pixels.setPixelColor(15, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(16, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(17, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 659.26);
+        pixels.clear();
+        pixels.setPixelColor(15, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(16, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(17, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);tone(D8, 659.26);
+        pixels.clear();
+        pixels.setPixelColor(15, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(16, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(17, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);tone(D8, 659.26);
+        pixels.clear();
+        pixels.setPixelColor(15, pixels.ColorHSV(map(659.26, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 523.25);
+        pixels.clear();
+        pixels.setPixelColor(16, pixels.ColorHSV(map(523.25, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);
+        tone(D8, 587.33);
+        pixels.clear();
+        pixels.setPixelColor(17, pixels.ColorHSV(map(587.33, 523.25,880,0,300), 50, 50));
+        pixels.show();
+        delay(200);}</code></pre>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
