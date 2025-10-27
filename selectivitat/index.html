@@ -126,7 +126,7 @@ function renderQuiz() {
     filtered.forEach(q => {
         const div = document.createElement("div");
         div.innerHTML = `
-            <p><strong>${q.type==='exercicis'?'Exercici':'Qüestió'} ${q.originalIndex+1}:</strong> ${q.text}</p>
+            <!-- <p><strong>${q.type==='exercicis'?'Exercici':'Qüestió'} ${q.originalIndex+1}:</strong> ${q.text}</p> -->
             ${renderImages(q)}
             ${generateOptions(q.options,q.originalIndex,q.correctAnswer)}
             <div id="result${q.originalIndex}" class="ocult">
