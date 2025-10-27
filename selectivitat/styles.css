@@ -193,6 +193,10 @@ body.dark-mode .solution-button:hover {
     box-shadow: 0 0 25px rgba(255,123,0,0.9), 0 6px 15px rgba(0,0,0,0.5);
 }
 
+body.dark-mode strong {
+    color: #ffffff;
+    transition: color 0.4s;
+}
 /* ===== DARK MODE TOGGLE ===== */
 .dark-toggle {
     display: block;
