@@ -135,7 +135,7 @@ function renderQuiz() {
                 <p id="steps${q.originalIndex}">${q.steps || ''}</p>
             </div>
             ${q.type==='exercicis'?`<button class="solution-button" onclick="toggleSolution(${q.originalIndex},this)">Mostra solució</button>`:''}
-            <hr><br>
+            <hr>
         `;
         quizContainer.appendChild(div);
     });
