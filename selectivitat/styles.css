@@ -27,10 +27,10 @@ h2 {
 /* ===== QUIZ CONTAINER ===== */
 .label-search {
     max-width: 1000px
-    align-items: center;
+    margin: auto;
 }
 .pad {
-    max-width: 300px;
+    width: 500px;
     display: table;
     margin: 0 auto;
 }
