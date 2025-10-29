@@ -25,10 +25,6 @@ h2 {
 }
 
 /* ===== QUIZ CONTAINER ===== */
-.label-search {
-    max-width: 1000px
-    margin: auto;
-}
 .pad {
     width: 500px;
     display: table;
@@ -52,6 +48,8 @@ label {
     margin-top: 20px;
     color: #34495e;
     transition: color 0.4s;
+    max-width: 1000px
+    margin: auto;
 }
 
 select {
