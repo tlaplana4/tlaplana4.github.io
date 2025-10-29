@@ -48,8 +48,6 @@ label {
     margin-top: 20px;
     color: #34495e;
     transition: color 0.4s;
-    max-width: 1000px
-    margin: auto;
 }
 
 select {
@@ -62,6 +60,8 @@ select {
     font-size: 16px;
     transition: background 0.4s, color 0.4s, border 0.4s, box-shadow 0.3s;
     box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 1000px
+    margin: auto;
 }
 
 /* ===== QUESTIONS & ANSWERS ===== */
