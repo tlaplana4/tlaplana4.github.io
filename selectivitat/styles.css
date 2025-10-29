@@ -27,6 +27,7 @@ h2 {
 /* ===== QUIZ CONTAINER ===== */
 .pad {
     max-width: 300px;
+    align-items: center;
 }
 #quiz-container {
     max-width: 1000px;
