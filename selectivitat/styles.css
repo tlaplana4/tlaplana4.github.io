@@ -31,7 +31,8 @@ h2 {
 }
 .pad {
     max-width: 300px;
-    align-items: center;
+    display: table;
+    margin: 0 auto;
 }
 #quiz-container {
     max-width: 1000px;
