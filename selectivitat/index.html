@@ -102,7 +102,7 @@ function renderImages(q) {
 /* ----------------- Funció per opcions ----------------- */
 function generateOptions(options, idx, correctAnswer) {
     if(!options) return '';
-    return `<ul>${options.map(o => `
+    return `<ul class="pad">${options.map(o => `
         <li>
             <span class="option-letter">${o.value.toUpperCase()}</span>
             <button onclick="checkAnswer('${o.value}','${correctAnswer}','answer${idx}','steps${idx}','result${idx}')">
