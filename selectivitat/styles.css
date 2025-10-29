@@ -25,7 +25,7 @@ h2 {
 }
 
 /* ===== QUIZ CONTAINER ===== */
-#pad {
+.pad {
     max-width: 300px;
 }
 #quiz-container {
