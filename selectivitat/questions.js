@@ -201,7 +201,7 @@ const questions = [
         correctAnswer: "a",
         steps: `
             Formula de la Velocitat de Sincronisme: \\(P_{n} = frac{\\text{Frequencia}!\cdot\!60}{text{Pols}}\\, \\text{kg}\\)
-            Solució: \\(P_{n} = frac{\\50!\cdot\!60}{text{4}}\\ = 750\\, \\text{min}^{-1}\\)
+            Solució: \\(P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\)
             `,
         images: ``  // Imatge opcional al final de la pregunta
     }
