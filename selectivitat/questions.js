@@ -193,10 +193,10 @@ const questions = [
         category: "materials",
         text: `En un motor asíncron de corrent altern de quatre parells de pols, que està connectat a la xarxa de tensió \\(U = 230\\, \\text{V}\\) i freqüència \\(f = 50\\, \\text{Hz}\\), la velocitat de sincronisme és`,
         options: [
-            { text: "\\(750\\, \\text{min}^(-1)\\)", value: "a" },
-            { text: "\\(1800\\, \\text{min}^(-1)\\)", value: "b" },
-            { text: "\\(1500\\, \\text{min}^(-1)\\)", value: "c" },
-            { text: "\\(3000\\, \\text{min}^(-1)\\)", value: "d" }
+            { text: "\\(750\\, \\text{min}^{-1}\\)", value: "a" },
+            { text: "\\(1800\\, \\text{min}^{-1}\\)", value: "b" },
+            { text: "\\(1500\\, \\text{min}^{-1}\\)", value: "c" },
+            { text: "\\(3000\\, \\text{min}^{-1}\\)", value: "d" }
         ],
         correctAnswer: "a",
         steps: `
