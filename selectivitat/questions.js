@@ -191,14 +191,14 @@ const questions = [
     {
         type: "questions", // Tipus de pregunta
         category: "materials",
-        text: `En un motor asíncron de corrent altern de quatre parells de pols, que està connectat a la xarxa de tensió \\(U = 230\\, \\text{V}V\\) i freqüència f = 50 Hz, la velocitat de sincronisme és`,
+        text: `En un motor asíncron de corrent altern de quatre parells de pols, que està connectat a la xarxa de tensió \\(U = 230\\, \\text{V}\\) i freqüència \\(f = 50\\, \\text{Hz}\\), la velocitat de sincronisme és`,
         options: [
-            { text: "25,22 kg CO2eq", value: "a" },
-            { text: "37,83 kg CO2eq", value: "b" },
-            { text: "63,05 kg CO2eq", value: "c" },
-            { text: "88,27 kg CO2eq", value: "d" }
+            { text: "\\(750\\, \\text{min}^(-1)\\)", value: "a" },
+            { text: "\\(1800\\, \\text{min}^(-1)\\)", value: "b" },
+            { text: "\\(1500\\, \\text{min}^(-1)\\)", value: "c" },
+            { text: "\\(3000\\, \\text{min}^(-1)\\)", value: "d" }
         ],
-        correctAnswer: "b",
+        correctAnswer: "a",
         steps: `
             \\[
             \\text{Quantitat inicial d’envasos} = 525 \\, \\text{kg}
