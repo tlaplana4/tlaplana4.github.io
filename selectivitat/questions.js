@@ -204,6 +204,23 @@ const questions = [
             Solució: \\(P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\)
             `,
         images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions", // Tipus de pregunta
+        category: "materials",
+        text: `La fabricació d’una peça es duu a terme en dos processos: el primer en una fresado-ra i el segon en una rectificadora. Després de cada procés, es controla la qualitat de les peces i es desestimen les que no són correctes. D’un total inicial de 1 500 peces, se n’han desestimat 75 després del fresatge i 6 després de la rectificació. Quina és la taxa de rebuig del procés de rectificació?`,
+        options: [
+            { text: "8 %", value: "a" },
+            { text: "0,42 %", value: "b" },
+            { text: "0,40 %", value: "c" },
+            { text: "5,4 %", value: "d" }
+        ],
+        correctAnswer: "b",
+        steps: `
+            \\(text{Formula de la Velocitat de Sincronisme:}\\, \\P_{n} = \\frac{\\text{Frequencia}^{-1}*60}{\\text{Pols}}\\)
+            Solució: \\(P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\)
+            `,
+        images: ``  // Imatge opcional al final de la pregunta
     }
 ];
 
