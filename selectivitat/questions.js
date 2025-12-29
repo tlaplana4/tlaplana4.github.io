@@ -200,7 +200,7 @@ const questions = [
         ],
         correctAnswer: "a",
         steps: `
-            \\(text{Formula de la Velocitat de Sincronisme:}\\, \\P_{n} = \\frac{\\text{Frequencia}^{-1}*60}{\\text{Pols}}\\)
+            \\( text{Formula de la Velocitat de Sincronisme:}\\, \\P_{n} = \\frac{\\text{Frequencia}^{-1}*60}{\\text{Pols}}\\)
             Solució: \\(P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\)
             `,
         images: ``  // Imatge opcional al final de la pregunta
