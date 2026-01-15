@@ -1,196 +1,7 @@
 const questions = [
     {
-        type: "exercicis",
-        category: "energia",
-        text: `S’han instal·lat \\(n = 50\\) aerogeneradors de 3 pales en un parc eòlic. 
-               El diàmetre de l’àrea d’escombratge de les pales és \\(d = 77 \\, \\text{m}\\) i el rendiment dels aerogeneradors \\(\\eta_{\\text{aerog}} = 0{,}68\\). 
-               S’estima que la velocitat mitjana del vent al parc és \\(v = 25 \\, \\text{km/h}\\); el parc està en funcionament 300 dies a l’any i obté energia 18 hores diàries. 
-               La potència mitjana del vent \\(P_{\\text{vent}}\\) es pot estimar, per a un aerogenerador, com l’energia cinètica del vent per unitat de temps mitjançant l’expressió:
-               \\[
-               P_{\\text{vent}} = \\frac{1}{2} \\rho A v^3
-               \\]
-               en què \\(A\\) és l’àrea que escombren les pales de l’aerogenerador, \\(\\rho\\) és la densitat de l’aire i \\(v\\) és la velocitat del vent. 
-               D’aquesta potència, el coeficient d’aprofitament del vent és \\(c_a = 0{,}42\\).
-               
-               Sabent que \\(1{,}225 \\, \\text{g}\\) d’aire ocupen un volum d’\\(1 \\, \\text{m}^3\\), determineu:
-               <br><strong>a)</strong> La potència mitjana del vent \\(P_{\\text{vent}}\\) per a un aerogenerador. [0,5 punts]
-               <br><strong>b)</strong> La potència elèctrica útil \\(P_{\\text{útil}}\\) que generarà cada aerogenerador. [0,5 punts]
-               <br><strong>c)</strong> L’energia elèctrica total \\(E_{\\text{total}}\\) que es generarà al parc durant un any. [0,5 punts]
-               <br><strong>d)</strong> Els ingressos que tindrà el parc eòlic si el preu de venda de l’energia eòlica és \\(p_{\\text{venda}} = 7{,}624\\) cèntims d’euro per \\(\\text{kWh}\\). [0,5 punts]
-               <br><strong>e)</strong> En quin percentatge disminuirien els ingressos anteriors si la velocitat mitjana del vent es reduís un 10 %.
-               <br><br>
-               <img src="ruta/a/imatgePregunta.jpg" alt="Imatge relacionada amb la pregunta">`,  // Imatge opcional al final de la pregunta
-        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
-        steps: `
-            <strong>a) Càlcul de la potència mitjana del vent \\(P_{\\text{vent}}\\) per a un aerogenerador:</strong>
-            <br>
-            - Àrea d’escombratge de les pales:
-            \\[
-            A = \\frac{\\pi d^2}{4} = \\frac{\\pi \\times (77 \\, \\text{m})^2}{4} = 4657{,}7 \\, \\text{m}^2
-            \\]
-            - Densitat de l’aire:
-            \\[
-            \\rho = \\frac{1{,}225 \\, \\text{g}}{\\text{m}^3} = 1{,}225 \\, \\frac{\\text{kg}}{\\text{m}^3}
-            \\]
-            - Velocitat del vent (en \\(\\text{m/s}\\)):
-            \\[
-            v = \\frac{25 \\, \\text{km/h}}{3{,}6} = 6{,}94 \\, \\text{m/s}
-            \\]
-            - Potència del vent:
-            \\[
-            P_{\\text{vent}} = \\frac{1}{2} \\times 1{,}225 \\, \\frac{\\text{kg}}{\\text{m}^3} \\times 4657{,}7 \\, \\text{m}^2 \\times (6{,}94 \\, \\text{m/s})^3 = 828{,}08 \\, \\text{kW}
-            \\]
-            <br>
-            <strong>b) Potència elèctrica útil \\(P_{\\text{útil}}\\) generada per cada aerogenerador:</strong>
-            <br>
-            - Aplicant el rendiment de l’aerogenerador:
-            \\[
-            P_{\\text{útil}} = P_{\\text{vent}} \\times \\eta_{\\text{aerog}} \\times c_a = 828{,}08 \\, \\text{kW} \\times 0{,}68 \\times 0{,}42 = 236{,}62 \\, \\text{kW}
-            \\]
-            <br>
-            <strong>c) Energia elèctrica total \\(E_{\\text{total}}\\) generada al parc durant un any:</strong>
-            <br>
-            - Nombre total d'hores operatives a l'any:
-            \\[
-            h = 300 \\, \\text{dies/any} \\times 18 \\, \\text{h/dia} = 5400 \\, \\text{h/any}
-            \\]
-            - Energia generada per un aerogenerador:
-            \\[
-            E_{\\text{útil}} = P_{\\text{útil}} \\times h = 236{,}62 \\, \\text{kW} \\times 5400 \\, \\text{h} = 1277{,}75 \\, \\text{MWh/any}
-            \\]
-            - Energia total generada per 50 aerogeneradors:
-            \\[
-            E_{\\text{total}} = 1277{,}75 \\, \\text{MWh/any} \\times 50 = 63{,}89 \\, \\text{GWh/any}
-            \\]
-            <br>
-            <strong>d) Ingressos del parc eòlic:</strong>
-            <br>
-            - Ingressos totals:
-            \\[
-            Ingressos = E_{\\text{total}} \\times p_{\\text{venda}} = 63{,}89 \\, \\text{GWh/any} \\times 7{,}624 \\, \\text{cèntims/kWh} = 4865{,}9 \\, \\text{k€}
-            \\]
-            <br>
-            <strong>e) Impacte d'una reducció del 10 % en la velocitat del vent:</strong>
-            <br>
-            - Nova velocitat del vent:
-            \\[
-            v_{nou} = 0{,}9 \\times v = 0{,}9 \\times 6{,}94 \\, \\text{m/s} = 6{,}25 \\, \\text{m/s}
-            \\]
-            - Nova potència del vent:
-            \\[
-            P_{\\text{vent, nou}} = \\frac{1}{2} \\times 1{,}225 \\, \\frac{\\text{kg}}{\\text{m}^3} \\times 4657{,}7 \\, \\text{m}^2 \\times (6{,}25 \\, \\text{m/s})^3 = 654{,}8 \\, \\text{kW}
-            \\]
-            - Nova potència útil:
-            \\[
-            P_{\\text{útil, nou}} = 654{,}8 \\, \\text{kW} \\times 0{,}68 \\times 0{,}42 = 187{,}19 \\, \\text{kW}
-            \\]
-            - Nova energia total:
-            \\[
-            E_{\\text{total, nou}} = 187{,}19 \\, \\text{kW} \\times 5400 \\, \\text{h} \\times 50 = 50{,}7 \\, \\text{GWh/any}
-            \\]
-            - Nous ingressos:
-            \\[
-            Ingressos_{nou} = 50{,}7 \\, \\text{GWh/any} \\times 7{,}624 \\, \\text{cèntims/kWh} = 3865{,}58 \\, \\text{k€}
-            \\]
-            - Percentatge de disminució:
-            \\[
-            \\frac{4865{,}9 - 3865{,}58}{4865{,}9} \\times 100 \\approx 20{,}6\\%
-            \\]
-            <br><br>
-            <img src="ruta/a/imatgeResposta.jpg" alt="Imatge relacionada amb la resposta">`,  // Imatge opcional al final de la resposta
-    },
-    {
         type: "questions", // Tipus de pregunta
-        category: "energia",
-        text: `Un rentaplats ha consumit \\(0{,}9 \\, \\text{kWh}\\) d’energia elèctrica per a escalfar \\(11 \\, \\text{L}\\) d’aigua des d’una temperatura ambient \\(T_{amb} = 10 \\, ^\\circ \\text{C}\\) a una temperatura \\(T = 70 \\, ^\\circ \\text{C}\\). La calor específica de l’aigua és \\(c_e = 4{,}18 \\, \\frac{\\text{J}}{\\text{g} \\cdot ^\\circ \\text{C}}\\). El rendiment del rentaplats és:`,
-        options: [
-            { text: "11,74 %", value: "a" },
-            { text: "27,59 %", value: "b" },
-            { text: "76,63 %", value: "c" },
-            { text: "85,15 %", value: "d" }
-        ],
-        correctAnswer: "d",
-        steps: `
-            \\[
-            m = 11 \\, \\text{L} \\times 1000 \\, \\text{g/L} = 11000 \\, \\text{g}
-            \\]
-            \\[
-            \\Delta T = 70 \\, ^\\circ \\text{C} - 10 \\, ^\\circ \\text{C} = 60 \\, ^\\circ \\text{C}
-            \\]
-            \\[
-            Q = m \\times c_e \\times \\Delta T
-            \\]
-            \\[
-            Q = 11000 \\, \\text{g} \\times 4{,}18 \\, \\frac{\\text{J}}{\\text{g} \\cdot ^\\circ \\text{C}} \\times 60 \\, ^\\circ \\text{C}
-            \\]
-            \\[
-            Q = 11000 \\times 4{,}18 \\times 60 = 2{,}7588 \\times 10^6 \\, \\text{J}
-            \\]
-            \\[
-            W = 0{,}9 \\, \\text{kWh} \\times 3600000 \\, \\text{J/kWh} = 3240000 \\, \\text{J}
-            \\]
-            \\[
-            \\eta = \\frac{Q}{W} \\times 100
-            \\]
-            \\[
-            \\eta = \\frac{2{,}7588 \\times 10^6}{3{,}24 \\times 10^6} \\times 100 = 85{,}15 \\, \\%
-            \\]
-            <br><br>
-            <img src="ruta/a/imatgeResposta.jpg" alt="Imatge relacionada amb la resposta">`,  // Imatge opcional al final de la resposta
-        images: `<img src="ruta/a/imatgePregunta.jpg" alt="Imatge relacionada amb la pregunta">`  // Imatge opcional al final de la pregunta
-    },
-    {
-        type: "questions", // Tipus de pregunta
-        category: "materials",
-        text: `Una família que anualment generava 525 kg d’envasos, en un any ha aconseguit reduir aquesta quantitat un 60 %. Quina reducció en emissions de GEH ha obtingut respecte a l’any anterior, tenint en compte que el factor d’emissió dels envasos és de 120,09 g CO2eq/kg residu?`,
-        options: [
-            { text: "25,22 kg CO2eq", value: "a" },
-            { text: "37,83 kg CO2eq", value: "b" },
-            { text: "63,05 kg CO2eq", value: "c" },
-            { text: "88,27 kg CO2eq", value: "d" }
-        ],
-        correctAnswer: "b",
-        steps: `
-            \\[
-            \\text{Quantitat inicial d’envasos} = 525 \\, \\text{kg}
-            \\]
-            \\[
-            \\text{Percentatge de reducció} = 60\\%
-            \\]
-            \\[
-            \\text{Quantitat reduïda} = 525 \\, \\text{kg} \\times 0{,}60 = 315 \\, \\text{kg}
-            \\]
-            \\[
-            \\text{Quantitat de residu restant} = 525 \\, \\text{kg} - 315 \\, \\text{kg} = 210 \\, \\text{kg}
-            \\]
-            \\[
-            \\text{Emissions inicials} = 525 \, \\text{kg} \\times 120{,}09 \, \\text{g CO2eq/kg}
-            \\]
-            \\[
-            \\text{Emissions inicials} = 63047,25 \, \\text{g CO2eq}
-            \\]
-            \\[
-            \\text{Emissions inicials} = 63{,}05 \, \\text{kg CO2eq}
-            \\]
-            \\[
-            \\text{Emissions després de la reducció} = 210 \, \\text{kg} \\times 120{,}09 \, \\text{g CO2eq/kg}
-            \\]
-            \\[
-            \\text{Emissions després de la reducció} = 25218{,}9 \, \\text{g CO2eq}
-            \\]
-            \\[
-            \\text{Emissions després de la reducció} = 25{,}22 \, \\text{kg CO2eq}
-            \\]
-            \\[
-            \\text{Reducció en emissions} = 63{,}05 \, \\text{kg CO2eq} - 25{,}22 \, \\text{kg CO2eq} = 37{,}83 \, \\text{kg CO2eq}
-            \\]
-            <br><br>
-            <img src="ruta/a/imatgeResposta.jpg" alt="Imatge relacionada amb la resposta">`,  // Imatge opcional al final de la resposta
-        images: `<img src="ruta/a/imatgePregunta.jpg" alt="Imatge relacionada amb la pregunta">`  // Imatge opcional al final de la pregunta
-    },
-    {
-        type: "questions", // Tipus de pregunta
-        category: "materials",
+        category: "motors",
         text: `En un motor asíncron de corrent altern de quatre parells de pols, que està connectat a la xarxa de tensió \\(U = 230\\, \\text{V}\\) i freqüència \\(f = 50\\, \\text{Hz}\\), la velocitat de sincronisme és`,
         options: [
             { text: "\\(750\\, \\text{min}^{-1}\\)", value: "a" },
@@ -200,20 +11,20 @@ const questions = [
         ],
         correctAnswer: "a",
         steps: `
-            Formula de la Velocitat de Sincronisme: \\(P_{n} = \\frac{\\text{Frequencia}^{-1}*60}{\\text{Pols}}\\)
-            Solució: \\(P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\)
+            Formula de la Velocitat de Sincronisme: \\[P_{n} = \\frac{\\text{Frequencia}^{-1}*60}{\\text{Pols}}\\]
+            Solució: \\[P_{n} = \\frac{50*60}{4}\\ = 750\\, \\text{min}^{-1}\\]
             `,
         images: ``  // Imatge opcional al final de la pregunta
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "materials",
+        category: "organitzacio",
         text: `La fabricació d’una peça es duu a terme en dos processos: el primer en una fresado-ra i el segon en una rectificadora. Després de cada procés, es controla la qualitat de les peces i es desestimen les que no són correctes. D’un total inicial de 1 500 peces, se n’han desestimat 75 després del fresatge i 6 després de la rectificació. Quina és la taxa de rebuig del procés de rectificació?`,
         options: [
-            { text: "8 %", value: "a" },
-            { text: "0,42 %", value: "b" },
-            { text: "0,40 %", value: "c" },
-            { text: "5,4 %", value: "d" }
+            { text: "\\(8 \\text{%}\\)", value: "a" },
+            { text: "\\(0.42 \\text{%}\\)", value: "b" },
+            { text: "\\(0.40 \\text{%}\\)", value: "c" },
+            { text: "\\(5.4 \\text{%}\\)", value: "d" }
         ],
         correctAnswer: "b",
         steps: `
@@ -466,26 +277,20 @@ const questions = [
     {
         type: "questions", // Tipus de pregunta
         category: "organitzacio",
-        text: `Connectem en paral·lel una reactància capacitiva de \\(100\\text{ Ω}\\) i una reactància inductiva de \\(50\\text{ Ω}\\). El conjunt s’alimenta d’una xarxa de \\(100\\text{ V}\\). Quina és la potència reactiva consumida pel conjunt?`,
+        text: `La tensió de ruptura d’un fil de niló és \\(σ = 67\\text{ MPa}\\). Si s’utilitza per a penjar sòlids amb una massa de \\(45 \\text{ kg}\\), quina és la secció mínima que ha de tenir perquè no es trenqui? (Preneu \\(g = 10 \\text{ m/s}^2\\).)`,
         options: [
-            { text: "\\(0 \\text{ var}\\)", value: "a" },
-            { text: "\\(100 \\text{ var}\\)", value: "b" },
-            { text: "\\(200 \\text{ var}\\)", value: "c" },
-            { text: "\\(-100 \\text{ var}\\)", value: "d" }
+            { text: "\\(1.489 \\text{ mm}^2\\)", value: "a" },
+            { text: "\\(6.716 \\text{ mm}^2\\)", value: "b" },
+            { text: "\\(67.16 \\text{ mm}^2\\)", value: "c" },
+            { text: "\\(14.89 \\text{ mm}^2\\)", value: "d" }
         ],
         correctAnswer: "b",
         steps: `
             \\[
-            \\text{Potència reactiva: } = Q = \\frac{V^2}{X}\\]
-            \\[
-            Q_L = \\frac{V^2}{X_L} = \\frac{100^2}{50} = \\frac{10000}{50} = 200\\text{ var}\\]
-            \\[
-            \\text{Peces perdudes en Rectificació} = R = 6\\]
-            \\[
-            Q_C = \\frac{V^2}{X_C} = \\frac{100^2}{100} = \\frac{10000}{100} = 100\\text{ var}
+            F = m* g = 45 * 10 = 450 \\text{ N}
             \\]
             \\[
-            Q_T = Q_L - Q_C = 200\\text{ var} - 100\\text{ var} = 100 \\text{ var}
+            A = \\frac{F}{σ} = \\frac{450}{67 * 10^6} = 6.716 * 10^{−6} \\text{ m}^2 = 6.716 \\text{ mm}^2
             \\]
             `,
         images: ``  // Imatge opcional al final de la pregunta
@@ -493,47 +298,53 @@ const questions = [
     {
         type: "questions", // Tipus de pregunta
         category: "organitzacio",
-        text: `A quina velocitat gira un motor d’inducció de dos parells de pols connectat a una xarxa de \\(50\\text{ Hz}\\) i funcionant en condicions nominals?`,
+        text: `Una atracció d’autos de xoc disposa de 20 vehicles de dues places cadascun. La dura-da de cada viatge és de \\(4 \\text{ min}\\) i l’interval entre l’acabament d’un viatge i el començament del viatge següent és de \\(15 \\text{ s}\\). Quin és el nombre màxim d’usuaris que poden fer un viatge complet en una hora?`,
         options: [
-            { text: "Una mica per sota de \\(1500\\text{ min}^{−1}\\)", value: "a" },
-            { text: "Exactament a \\(1500\\text{ min}^{−1}\\)", value: "b" },
-            { text: "Una mica per sota de \\(3000\\text{ min}^{−1}\\)", value: "c" },
-            { text: "Exactament a \\(3000\\text{ min}^{−1}\\)", value: "d" }
+            { text: "\\(600 \\text{ usuaris}\\)", value: "a" },
+            { text: "\\(300 \\text{ usuaris}\\)", value: "b" },
+            { text: "\\(560 \\text{ usuaris}\\)", value: "c" },
+            { text: "\\(280 \\text{ usuaris}\\)", value: "d" }
         ],
         correctAnswer: "a",
         steps: `
             \\[
-            V_s = \\frac{60*f}{p} = \\frac{60*50}{2} = \\frac{3000}{2} = 1500\\text{ min}^{−1}
+            4 \\text{ min} = 240 \\text{ s}
             \\]
             \\[
-            \\text{Condicions nominals: } V = V_s *(1-s\\text{ (Lliscament)})\\]
-            Per tant, si o si ha de ser menys de \\(1500\\text{ min}^{−1}\\)
+            T = 240 +15 = 255\\text{ s}
+            \\]
+            \\[
+            \\text{Viatges per hora} = \\frac{1\\text{ h} = 3600\\text{ s}}{255\\text{ s}} = 14.11 \\text{ viatges}= 14\\text{ viatges}
+            \\]
+            \\[
+            20 \\text{ vehicles/viatge} * 2 \\text{ persones/vehicles} = 40 \\text{ persones/viatge}
+            \\]
+            \\[
+            P = 40 \\text{ persones/viatge} * 14 \\text{ viatges} = 560 \\text{Persones}
+            \\]
             `,
         images: ``  // Imatge opcional al final de la pregunta
     },
     {
         type: "questions", // Tipus de pregunta
         category: "organitzacio",
-        text: `Connectem en paral·lel una reactància capacitiva de \\(100\\text{ Ω}\\) i una reactància inductiva de \\(50\\text{ Ω}\\). El conjunt s’alimenta d’una xarxa de \\(100\\text{ V}\\). Quina és la potència reactiva consumida pel conjunt?`,
+        text: `Es  prepara  una  mescla  de  dos  materials  pesant-los  en  una  bàscula  que  té  una  precisió  de ±\\(1,6\\text{ %}\\). Per fer-ho, s’agafen \\(105 \\text{ g}\\) del primer material i \\(84 \\text{ g}\\) del segon. Quina serà la quantitat de mescla obtinguda?`,
         options: [
-            { text: "\\(0 \\text{ var}\\)", value: "a" },
-            { text: "\\(100 \\text{ var}\\)", value: "b" },
-            { text: "\\(200 \\text{ var}\\)", value: "c" },
-            { text: "\\(-100 \\text{ var}\\)", value: "d" }
+            { text: "Entre \\(186.0 \\text{ g}\\) i \\(192.0 \\text{ g}\\)", value: "a" },
+            { text: "Entre \\(185.8 \\text{ g}\\) i \\(192.2 \\text{ g}\\)", value: "b" },
+            { text: "Entre \\(187.4 \\text{ g}\\) i \\(190.6 \\text{ g}\\)", value: "c" },
+            { text: "Entre \\(188.4 \\text{ g}\\) i \\(189.6 \\text{ g}\\)", value: "d" }
         ],
-        correctAnswer: "b",
+        correctAnswer: "a",
         steps: `
             \\[
-            \\text{Potència reactiva: } = Q = \\frac{V^2}{X}\\]
-            \\[
-            Q_L = \\frac{V^2}{X_L} = \\frac{100^2}{50} = \\frac{10000}{50} = 200\\text{ var}\\]
-            \\[
-            \\text{Peces perdudes en Rectificació} = R = 6\\]
-            \\[
-            Q_C = \\frac{V^2}{X_C} = \\frac{100^2}{100} = \\frac{10000}{100} = 100\\text{ var}
+            \\text{Error: } 189 \\text{ g} * 0.016 = 3.024 \\text{ g}
             \\]
             \\[
-            Q_T = Q_L - Q_C = 200\\text{ var} - 100\\text{ var} = 100 \\text{ var}
+            \\text{Quantitat minima: } 189−3.024=185.976\\text{ g} = 186.0 \\text{ g}
+            \\]
+            \\[
+            \\text{Quantitat maxima: } 189+3.024=192.024\\text{ g} = 192.0 \\text{ g}
             \\]
             `,
         images: ``  // Imatge opcional al final de la pregunta
@@ -541,49 +352,300 @@ const questions = [
     {
         type: "questions", // Tipus de pregunta
         category: "organitzacio",
-        text: `Una càrrega trifàsica està formada per tres impedàncies iguals de valor \\(Z = 12 + \\text{j } 9 \\text{ Ω}\\) connectades en estrella. Si connectem la càrrega a una xarxa de \\(230\\text{ V}\\) de tensió composta, quina és la potència activa consumida per la càrrega?`,
+        text: `Un cotxe té un motor V8 amb vuit cilindres. La cilindrada és de \\(3999 \\text{ cm}^3\\) i el diàmetre dels cilindres és de \\(92 \\text{ mm}\\). Quina és la cursa dels cilindres?`,
         options: [
-            { text: "\\(1628\\text{ W}\\)", value: "a" },
-            { text: "\\(2820\\text{ W}\\)", value: "b" },
-            { text: "\\(3526\\text{ W}\\)", value: "c" },
-            { text: "\\(4885\\text{ W}\\)", value: "d" }
-        ],
-        correctAnswer: "b",
-        steps: `
-            \\[
-            Z = \\sqrt{R^2+X_{L}^{2}} = \\sqrt{12^2+9^{2}} = \\sqrt{225} = 15\\text{ Ω}
-            \\]
-            \\[
-            \\text{cos φ} = \\frac{Z}{R} ​=\\frac{15}{12}​=0.8
-            \\]
-            \\[
-            V_f = \\frac{V_L}{\\sqrt{3}} = \\frac{230}{\\sqrt{3}} = 132.79\\text{ V}
-            \\]
-            \\[
-            I_f = \\frac{V_f}{Z} = \\frac{132.79}{\\sqrt{15}} = 8.85\\text{ A}
-            \\]
-            \\[
-            P = \\sqrt{3}*V_L*I_f * \\text{cos φ} = \\sqrt{3}*230*8.85 * 0.8 = 2821,4 \\text{ W} ≈2820\\text{ W}
-            \\]
-            `,
-        images: ``  // Imatge opcional al final de la pregunta
-    },
-    {
-        type: "questions", // Tipus de pregunta
-        category: "organitzacio",
-        text: `Si es produís un curtcircuit al final d’una línia monofàsica, això provocaria un corrent massa petit per a la protecció instal·lada (interruptor  magnetotèrmic). Per tal de solucionar aquest problema es podria `,
-        options: [
-            { text: `<img src="images/2016_jun_s3_e1_p5_1.png" width = 40% height = 40%>`, value: "a" },
-            { text: `<img src="images/2016_jun_s3_e1_p5_2.png" width = 40% height = 40%>`, value: "b" },
-            { text: `<img src="images/2016_jun_s3_e1_p5_3.png" width = 40% height = 40%>`, value: "c" },
-            { text: `<img src="images/2016_jun_s3_e1_p5_4.png" width = 40% height = 40%>`, value: "d" }
+            { text: "\\(73.60 \\text{ mm}\\)", value: "a" },
+            { text: "\\(43.47 \\text{ mm}\\)", value: "b" },
+            { text: "\\(59.06 \\text{ mm}\\)", value: "c" },
+            { text: "\\(75.20 \\text{ mm}\\)", value: "d" }
         ],
         correctAnswer: "d",
-        steps: `<img src="images/2016_jun_s3_e1_p5_5.png" width = 20% height = 20%> \\( = \\)
-                <img src="images/2016_jun_s3_e1_p5_6.png" width = 20% height = 20%> \\( = \\)
-                <img src="images/2016_jun_s3_e1_p5_7.png" width = 20% height = 20%> \\( = \\)
-                <img src="images/2016_jun_s3_e1_p5_4.png" width = 20% height = 20%>`,
+        steps: `
+            \\[
+            \\text{Cilindrada per Cilindre: } C = \\frac{\\text{Cilindrada total}}{\\text{Nombre de cilindres}} = \\frac{3999 \\text{ cm}^3}{8} = 499.875\\text{ cm}^3
+            \\]
+            \\[
+            \\text{Cursa: } C = \\frac{π*D^2*L}{4} \\text{ -> } L = \\frac{4*C}{π*D^2} = \\frac{4*499.875}{π*9.2^2} = \\frac{1999.5}{265.9} = 7.520 \\text{ cm} = 75.20 \\text{ mm}
+            \\]
+            `,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions", // Tipus de pregunta
+        category: "organitzacio",
+        text: `En l’ajust indeterminat 45 H7 / j6, la tolerància H7 del forat és (+25, 0) i la tolerància j6de l’eix és (+11, -5). Quins són el joc i el serratge màxims?`,
+        options: [
+            { text: "El joc màxim és \\(5 \\text{ μm}\\) i el serratge màxim és \\(36 \\text{ μm}\\)", value: "a" },
+            { text: "El joc màxim és \\(16 \\text{ μm}\\) i el serratge màxim és \\(25 \\text{ μm}\\)", value: "b" },
+            { text: "El joc màxim és \\(20 \\text{ μm}\\) i el serratge màxim és \\(11 \\text{ μm}\\)", value: "c" },
+            { text: "El joc màxim és \\(30 \\text{ μm}\\) i el serratge màxim és \\(11 \\text{ μm}\\)", value: "d" }
+        ],
+        correctAnswer: "d",
+        steps: `
+            \\[
+            \\text{Joc màxim: } J_{max} = C_{fmax} - C_{emin} = 25 - (-5) = 30 \\text{ μm} 
+            \\]
+            \\[
+            \\text{Serratge màxim: } S_{max} = C_{emax} - C_{fmin} = 11 - 0 = 11 \\text{ μm}
+            \\]
+            `,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `Un sistema automàtic de control de l’aforament d’un recinte està constituït per tres sen-sors de comptatge de persones situats estratègicament.<br>
+            El sistema emet un avís per megafonia quan almenys dos d’aquests sensors superen el valor de referència prefixat \\(p_{màx}\\). Responeu a les qüestions que hi ha a continuació utilitzant les variables d’estat següents:
+            <br>Sensor: <img src="images/2016_jun_s3_e1.1.png" width = 40% height = 40%>
+            <br>Avís de megafonia: <img src="images/2016_jun_s3_e1.2.png" width = 40% height = 40%>
+            <br><strong>a)</strong> Escriviu la taula de veritat del sistema. [1 punt]
+            <br><strong>b)</strong> Determineu la funció lògica entre aquestes variables i, si escau, simplifiqueu-la. [1 punt]
+            <br><strong>c)</strong> Dibuixeu l’esquema de contactes equivalent. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            <img src="images/2016_jun_s3_e1.3.png" width = 20% height = 20%><br>
+            <strong>b)</strong>
+            <img src="images/2016_jun_s3_e1.4.png" width = 40% height = 40%><br>
+            <strong>c)</strong>
+            <img src="images/2016_jun_s3_e1.5.png" width = 40% height = 40%>`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `Una cafetera elèctrica disposa de dues resistències: una resistència d’escalfament \\(R_e\\) i una de manteniment \\(R_m\\). En la primera fase d’elaboració del cafè, funciona només la resistència d’escalfament,  que  proporciona  una  potència  \\(P_1=700 \\text{ W}\\) i escalfa l’aigua fins a \\(T_1=120\\text{°C}\\) sense que es produeixi un canvi d’estat.
+            <br>Quan l’aigua arriba a la temperatura \\(T_1\\), es connec-ten  les  dues  resistències  en  sèrie  i  proporcionen  una  potència  \\(P_2=260 \\text{ W}\\).  La  temperatura  inicial  de  l’aigua  és  \\(T_0 = 20 \\text{°C}\\),  el  volum  d’aigua escalfat és \\(V = 0.5 \\text{ L}\\) i la cafetera està connectada a la xarxa elèctrica de tensió \\(U = 230\\text{ V}\\). Sabent que la calor específica de l’aigua és \\(c_e=4,18 \\text{ kJ/(kg°C)}\\), determineu:
+            <br><strong>a)</strong> L’energia \\(E_1\\) necessària per a escalfar l’aigua en la primera fase. [1 punt]
+            <br><strong>b)</strong> El temps \\(t_1\\) de durada de la primera fase. [0.5 punts]
+            <br><strong>c)</strong> El valor de les resistències \\(R_e\\) i \\(R_m\\). [1 punt]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            E_1 = V*ρ*c_e*(T_1-T_0) = 0.5 * 1 * 4.18 * 10 * (120 - 20) = 209.0 \\text{ kJ} = 58.06 \\text{ Wh}
+            \\]
+            <strong>b)</strong>
+            \\[
+            E_1 = P_1 * t_1 \\text{ -> } t_1 = \\frac{E_1}{P_1} = \\frac{58.06}{700} = 0.083 \\text{ h} = 298.59 \\text{ s} 
+            \\]
+            <strong>c)</strong>
+            \\[
+            P = \\frac{U^2}{R} \\text{ -> } R_e = \\frac{U^2}{P_1} = \\frac{230^2}{700} = 75.57 \\text{ Ω}
+            \\]
+            \\[
+            R_e + R_m = \\frac{U^2}{P_2} = R_e = \\frac{U^2}{P_2} - R_m = \\frac{230^2}{260} - 75.57 = 127.89 \\text{ Ω}
+            \\]`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `<img src="images/2016_jun_s3_e4_1.png" width = 40% height = 40%>
+            <br>Un ciclista puja un pendent a una velocitat constant \\(v = 18 \\text{ km/h}\\). La marxa que té posada fa que la relació de transmissió entre els pedals i la roda sigui \\(τ = ω_{roda}/ω_{pedals} = 1.8\\). La roda té un radi \\(r = 330 \\text\{ mm}\\), el perfil de la carretera forma un angle \\(α = 12°\\) respecte de l’horitzontal i la massa del ciclista més la bicicleta és \\(m = 87 \\text{ kg}\\). Si es considera que el rendiment mecànic de la bicicleta és \\(η = 0.95\\), determineu:
+            <br><strong>a)</strong> Les velocitats de gir de la roda \\(ω_{roda}\\) i dels pedals \\(ω_{pedals}\\), en rad/s. [0.5 punts]
+            <br><strong>b)</strong> La potència \\(P_{bicicleta}\\) necessària per a pujar el pendent. [1 punt]
+            <br><strong>c)</strong> La potència \\(P_{pedals}\\) que ha de desenvolupar el ciclista. [0.5 punts]
+            <br><strong>d)</strong> El parell a l’eix dels pedals \\(Γ_{pedals}\\). [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            ω_{roda} = \\frac{V}{r} = \\frac{18 \\text{ km/h} = 5 \\text{ m/s}}{0.33 \\text{ m}} = 15.15 \\text{ rad/s}
+            \\]
+            \\[
+            τ = \\frac{ω_{roda}}{ω_{pedals}} \\text{ -> } ω_{pedals} = \\frac{ω_{roda}}{τ} \\frac{15.15}{1.8} = 8.418 \\text{ rad/s}
+            \\]
+            <strong>b)</strong>
+            \\[
+            P_{bici} = m*g*v* \\text{sin α} = 87 * 9.81 * 18 * \\text{sin 12°} = 887.0 \\text{ W}
+            \\]
+            <strong>c)</strong>
+            \\[
+            η = \\frac{P_{bici}}{P_{pedals}} \\text{ -> } P_{pedals} = \\frac{P_{bici}}{η} = \\frac{887}{0.95} = 993.6\\text{ W}
+            \\]
+            <strong>d)</strong>
+            \\[
+            Γ_{pedals} = \\frac{P_{pedals}}{ω_{pedals}} = \\frac{993.6}{8.418} = 110.9 \\text{ Nm}
+            \\]`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `<img src="images/2016_jun_s3_e3_2.png" width = 40% height = 40%>
+            <br>Es vol construir un prisma massís de base quadrada com el de la figura a partir d’un tauler de fusta. Es pot escollir entre dos taulers, l’un de gruix \\(e_1 = 12 \\text{ mm}\\) i l’altre de gruix \\(e_2 = 14 \\text{ mm}\\). Per a construir el prisma, s’hauran de tallar quadrats o rectangles, segons s’esculli, i encolar-los entre ells fins a obtenir la figura.
+            El gruix de la cola es considera negligible. La botiga calcula el cost del prisma segons l’expressió \\(c = c_a*p + c_b*s\\), en què \\(p\\) és el perímetre del quadrat o del rectangle tallat i \\(s\\) és la superfície de tauler utilitzada. El primer coeficient de cost és \\(c_a =  0.7 \\text{ €/m}\\), i l’altre coeficient de cost és \\(c_{b1} = 3.2 \\text{ €/m}^2\\) si s’utilitza el tauler de gruix \\(e_1\\), o \\(c_{b2} = 4.8 \\text{ €/m}^2\\) si s’utilitza el tauler de gruix \\(e_2\\). Determineu:
+            <br><strong>a)</strong> Quin tauler s’utilitzarà per a construir el prisma a base de quadrats i quin per a cons-truir-lo a base de rectangles? Per què? [1 punt]
+            <br><strong>b)</strong> El perímetre total dels quadrats o dels rectangles tallats en cada cas, \\(p_1\\) i \\(p_2\\). [0.5 punts]
+            <br><strong>c)</strong> La superfície de tauler de fusta utilitzada en cada cas, \\(s_1\\) i \\(s_2\\). [0.5 punts]
+            <br><strong>d)</strong> El cost de cadascuna de les opcions, \\(c_1\\) i \\(c_2\\). Quina és la més econòmica?. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            Si el vol construir a base de quadrats (bxb) cal utilitzar el tauler de gruix \\(12\\text{ mm}\\) ja que l’alçada \\(h\\) només és divisible per \\(12 \\text{ mm}\\).
+            \\[
+            n_1 = \\frac{h}{e_1} = \\frac{0.3}{12} = 25 \\text{ quadrats necessaris.}
+            \\]
+            Si el vol construir a base de rectangles (hxb) cal utilitzar el tauler de gruix \\(14\\text{ mm}\\) ja que la longitud \\(b\\) només és divisible per \\(14 \\text{ mm}\\).
+            \\[
+            n_2 = \\frac{b}{e_2} = \\frac{0.14}{14} = 10 \\text{ rectangles necessaris.}
+            \\]
+            <strong>b)</strong>
+            \\[
+            p_1 = 4*b*n_1= 4* 0.14 * 25 = 14 \\text{ m}
+            \\]
+            \\[
+            p_2 = 2*(b+h)*n_2= 2* (0.14+0.30 = 0.44) * 25 = 8.8 \\text{ m}
+            \\]
+            <strong>c)</strong>
+            \\[
+            s_1 = b^2*n_1=0.14^2*25=0.49 \\text{ m}^2
+            \\]
+            \\[
+            s_2 = b*h*n_2=0.14*0.3*10=0.42 \\text{ m}^2
+            \\]
+            <strong>d)</strong>
+            \\[
+            c_1=c_a*p_1+c_{b1}*s_1= 0.7 * 14 + 3.2 * 0.49 = 11.37 \\text{ €}
+            \\]
+            \\[
+            c_2=c_a*p_2+c_{b2}*s_2= 0.7 * 8.8 + 4.8 * 0.42 = 8.18 \\text{ €}
+            \\]
+            És més econòmic construir-lo a base de rectangles.`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `Un elevador de cotxes d’un taller de reparacions funciona mitjançant dos cilindres hidràulicsconnectats directament a la base que suporta el cotxe. Els cilindres tenen un diàmetre interior \\(d_{int} = 100 \\text{ mm}\\) i el diàmetre de la tija és \\(d_{tija} = 56 \\text{ mm}\\). Si la pressió relativa a l’interior dels cilindres és \\(p_{int} = 2.5 \\text{ MPa}\\), determineu:
+            <br><strong>a)</strong> La massa màxima \\(m_{màx}\\) que pot aguantar l’elevador.  [1 punt]
+            <br><strong>b)</strong> La tensió normal a compressió de la tija \\(σ_{tija}\\) quan s’eleva la massa màxima. [0.5 punts]
+            <br>El rendiment dels cilindres és \\(η = 0.88\\). Quan l’elevador puja la càrrega màxima a una velocitat \\(v = 0.038 \\text{ m/s}\\), la bomba subministra un cabal d’oli \\(q = 0,2985 \\text{ L/s}\\) a cadascun dels cilindres. Determineu:
+            <br><strong>c)</strong> La potència \\(P_h\\) proporcionada per la bomba a cadascun dels cilindres. [0.5 punts]
+            <br><strong>d)</strong> La pressió \\(p\\) proporcionada per la bomba. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            2*F_{ch} = m*g \\text{ -> } F_{ch} = \\frac{m*g}{2}
+            \\]
+            \\[
+            p_{int} = \\frac{F_{ch}}{s_{int}} = \\frac{m*g}{2*s_{int}} \\text{ -> } m = \\frac{2*s_{int} * p_{int}}{g} = \\frac{2*π*(\\frac{d_{int}}{2})^2* p_{int}}{g} = \\frac{2*π*(\\frac{0.1}{2})^2* 3.5*10^6}{9.81} = 4004 \\text{ kg}
+            \\]
+            <strong>b)</strong>
+            \\[
+            σ_{tija} = \\frac{F_{ch}}{s_{tija}} = \\frac{m*g}{2*s_{tija}} = \\frac{m*g}{2*π*(\\frac{d_{int}}{2})^2} = \\frac{4004*9.81}{2*π*(\\frac{0.056}{2})^2} = 7.972 \\text{ MPa}
+            \\]
+            <strong>c)</strong>
+            \\[
+            η = \\frac{F_{ch}*v}{P_h} = \\frac{m*g*v}{2*P_h} \\text{ -> } P_h = \\frac{m*g*v}{2*η} = \\frac{4004*9.81*0.038}{2*0.88} = 847.9 \\text{ W}
+            \\]
+            <strong>d)</strong>
+            \\[
+            P_h = p*q \\text{ -> } p = \\frac{P_h}{q} = \\frac{847.9}{0.2985} = 2.840 \\text{ MPa}
+            \\]`,
+    },
+    {
+        type: "questions",
+        category: "energia",
+        text: `La composició en volum d’un gas natural és la següent: \\(86.15 \\text{ %}\\) de metà, \\(12.68 \\text{ %}\\) d’età, \\(0.4 \\text{ %}\\) de propà, \\(0.09 \\text{ %}\\) de butà i la resta és nitrogen. Si el nitrogen té una densitat d’\\(1.251 \\text{ g/L}\\), quants kilograms de nitrogen hi ha en \\(4500 \\text{ L}\\) d’aquest gas?`,
+         options: [
+            { text: "\\(0.03828 \\text{ kg}\\)", value: "a" },
+            { text: "\\(30.6 \\text{ kg}\\)", value: "b" },
+            { text: "\\(0.0306 \\text{ kg}\\)", value: "c" },
+            { text: "\\(3.828 \\text{ kg}\\)", value: "d" }
+        ],
+        correctAnswer: "a",
+        steps: `
+            \\[
+            \\text{Suma components coneguts} = 86.15 + 12.68 + 0.4 + 0.09 = 99.32%
+            \\]
+            \\[
+            \\text{% Nitrogen} = 100 − 99.32 = 0.68 \\text{ %}
+            \\]
+            \\[
+            V_N = \\frac{0.68}{100  } * V = 0.0068 * 4500 = 30.6 \\text{ L}
+            \\]
+            \\[
+            m = d*v = 1.251 * 30.6 = 0.03828 \\text{ kg}
+            \\]
+            `,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions",
+        category: "energia",
+        text: `Una empresa comercialitza un model de pantalons nou. El cost de producció unitària és de 10 €. Durant el primer any, l’empresa vol recuperar 250000€ de  la  inversió  inicial,  obtenir un benefici mínim de 15000 € i pagar les despeses de fabricació de totes les unitats venudes. Si la venda prevista està entre 5500 i 9500 unitats, quin ha de ser el preu de venda dels pantalons?`,
+         options: [
+            { text: "\\(55.45 \\text{ €}\\)", value: "a" },
+            { text: "\\(36.32 \\text{ €}\\)", value: "b" },
+            { text: "\\(60\\text{ €}\\)", value: "c" },
+            { text: "\\(58.18 \\text{ €}\\)", value: "d" }
+        ],
+        correctAnswer: "d",
+        steps: `
+            \\[
+            n * p = I + B + (n*c) \\text{ -> } p = \\frac{I+B+(n*c)}{n} = \\frac{250000+15000+(5500*10)}{5500} = 58.18 \\text{ €}
+            \\]`,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions",
+        category: "energia",
+        text: `Una barra massissa de secció quadrada de 5 mm de costat pot aguantar una força de trac-ció de fins a 5,9 kN. Quina és la resistència a la tracció del material de la barra?`,
+         options: [
+            { text: "\\(300.5 \\text{ MPa}\\)", value: "a" },
+            { text: "\\(472 \\text{ MPa}\\)", value: "b" },
+            { text: "\\(1180\\text{ MPa}\\)", value: "c" },
+            { text: "\\(236 \\text{ MPa}\\)", value: "d" }
+        ],
+        correctAnswer: "d",
+        steps: `
+            Com que la barra té una secció quadrada, l'àrea es calcula elevant el costat al quadrat:
+            \\[
+            A=c^2=0.005^2 = 0.000025 \\text{ m}^2
+            \\]
+            \\[
+            σ = \\frac{F}{A} = \\frac{5900\\text{ N}}{0.000025\\text{ m}^2} = 236 \\text{ MPa}
+            \\]`,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions",
+        category: "energia",
+        text: `Un  motor  de  corrent  altern  asíncron  de  dos  parells  de  pols  té  un  lliscament  relatiu  de  0,05. Si està connectat a la xarxa de tensió U = 220 V  i  freqüència f = 50 Hz,  a  quina  velocitat està girant?`,
+         options: [
+            { text: "\\(1425 \\text{ min}^{-1}\\)", value: "a" },
+            { text: "\\(1710 \\text{ min}^{-1}\\)", value: "b" },
+            { text: "\\(2850 \\text{ min}^{-1}\\)", value: "c" },
+            { text: "\\(1500 \\text{ min}^{-1}\\)", value: "d" }
+        ],
+        correctAnswer: "a",
+        steps: `
+            \\[
+            n_s​=\\frac{60⋅f}{p}​​=\\frac{60⋅50}{2}​ =1500 \\text{ min}^{-1}
+            \\]
+            En un motor asíncron, el rotor gira una mica més lent que el camp magnètic. Aquesta diferència es defineix pel lliscament (s):
+            \\[
+            n=n_s​*(1−s) = 1500 * (1-0.05) = 1425 \\text{ min}^{-1}
+            \\]`,
+        images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "questions",
+        category: "energia",
+        text: `Les característiques tècniques de la bateria d’un vehicle elèctric indiquen que té una capa-citat de 100 A    h, que el temps de càrrega és de 5 h, que funciona a una tensió de 220 V i que permet 1 800 cicles de càrrega/descàrrega. Tenint en compte aquestes característiques, quina és la potència necessària en el procés de càrrega de la bateria?`,
+         options: [
+            { text: "\\(4.4 \\text{ kW}\\)", value: "a" },
+            { text: "\\(3.6 \\text{ kW}\\)", value: "b" },
+            { text: "\\(3.96\\text{ kW}\\)", value: "c" },
+            { text: "\\(8.8 \\text{ kW}\\)", value: "d" }
+        ],
+        correctAnswer: "a",
+        steps: `
+            \\[
+            E=C*U = 100 * 220 = 22000\\text{ Wh}\\)
+            \\]
+            \\[
+            P = \\frac{E}{t} = \\frac{22000}{5} = 4.4 \\text{ kW}
+            \\]`,
         images: ``  // Imatge opcional al final de la pregunta
     }
 ];
-
