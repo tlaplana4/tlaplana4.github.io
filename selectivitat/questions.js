@@ -1,7 +1,7 @@
 const questions = [
     {
         type: "questions", // Tipus de pregunta
-        category: "motors",
+        category: "electrics",
         text: `En un motor asíncron de corrent altern de quatre parells de pols, que està connectat a la xarxa de tensió \\(U = 230\\, \\text{V}\\) i freqüència \\(f = 50\\, \\text{Hz}\\), la velocitat de sincronisme és`,
         options: [
             { text: "\\(750\\, \\text{min}^{-1}\\)", value: "a" },
@@ -51,7 +51,7 @@ const questions = [
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "organitzacio",
+        category: "materials",
         text: `Un aliatge de coure, que s’utilitza per a elèctrodes de soldadura, conté un \\(96.9 \\text{%}\\) de coure (Cu), un \\(2.5 \\text{%}\\) de cobalt (Co) i un \\(0.6 \\text{%}\\) de beril·li (Be). Amb \\(500 \\) \\(\\text{kg}\\) de coure, quina quantitat de cobalt cal per a obtenir aquest aliatge?`,
         options: [
             { text: "\\(96.9 \\) \\(\\text{kg}\\)", value: "a" },
@@ -75,7 +75,7 @@ const questions = [
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "organitzacio",
+        category: "metrologia",
         text: `En un plànol s’acoten les mides \\(L_{1}\\), \\(L_{2}\\) i \\(L_{3}\\). Si es vol que la tolerància de l’amplària s sigui de ± 150 μm, quina tolerància general cal indicar? <br> <img src="images/2016_set_s1_e1_p4.png" width = 20% height = 20%>`,
         options: [
             { text: "± \\(50\\) \\(\\text{ μm}\\)", value: "a" },
@@ -114,7 +114,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "control",
         text: `Un climatitzador automàtic posa en marxa el mode «aire condicionat» si la temperatura interior del vehicle és superior a la temperatura de consigna \\(T_{c}\\), sempre que la temperatura de consigna sigui més de 3 °C inferior a la temperatura exterior del vehicle.
             <br>El sistema també té un sensor que apaga l’aire condicionat si detecta que hi ha alguna finestra oberta. Responeu a les qüestions que hi ha a continuació utilitzant les variables d’estat següents:
             <br>Temperatura interior:<br><img src="images/2016_set_s1_e2_1.png" width = 20% height = 20%>
@@ -132,7 +132,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "materials",
         text: `Es vol construir una estrella com la de la figura a partir d’un tauler de fusta. La botiga en calcula el cost segons l’expressió \\( c = c_{1} * s + c_{2} * p\\), en què \\(s\\) és la superfície de fusta utilitzada i \\(p\\) és el perímetre de les peces tallades.
             <br>El primer coeficient de cost és \\(c_{1}\\) = 10 €/m2 i l’altre coeficient de cost és \\(c_{2}\\) =  0,5 €/m si el perfil és senzill (com, per exemple, un triangle) o és \\(c_{2}\\) = 1,3 €/m  si el perfil és complex (com, per exemple, una estrella). Determineu:
             <br><img src="images/2016_set_s1_e3.1.png" width = 40% height = 40%>
@@ -176,7 +176,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "electrics",
         text: `Els llums antiboira d’un automòbil consumeixen un corrent \\(I_{b} = 10.22 \\text{ A}\\) quan s’ali-menten directament a 12 V. La bateria i els llums es connecten amb un cable bipolar que té una longitud \\(L = 3 \\text{ m}\\) i és de coure de resistivitat \\(ρ = 1.7 * 10^{–8} \\text{ Ωm}\\)<br>
             El circuit s’alimenta amb una bateria de tensió U =   12 V. Si es vol que la caiguda de tensió en el cable no sigui superior al 3 %, determineu:
             <br><strong>a)</strong> La secció mínima que ha de tenir el cable. [1 punt]
@@ -212,7 +212,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "pneumatica",
         text: `<img src="images/2016_set_s1_e3.2.png" width = 40% height = 40%>
             <br>El sistema de la figura s’utilitza per a fer pujar un bloc de massa \\(m = 50 \\text{ kg}\\). La relació entre la variació d’altura \\(Δ_{h}\\) del bloc i l’angle girat pel motor \\(φ_{motor}\\) és:
             \\[
@@ -276,7 +276,7 @@ const questions = [
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "organitzacio",
+        category: "materials",
         text: `La tensió de ruptura d’un fil de niló és \\(σ = 67\\text{ MPa}\\). Si s’utilitza per a penjar sòlids amb una massa de \\(45 \\text{ kg}\\), quina és la secció mínima que ha de tenir perquè no es trenqui? (Preneu \\(g = 10 \\text{ m/s}^2\\).)`,
         options: [
             { text: "\\(1.489 \\text{ mm}^2\\)", value: "a" },
@@ -327,7 +327,7 @@ const questions = [
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "organitzacio",
+        category: "metrologia",
         text: `Es  prepara  una  mescla  de  dos  materials  pesant-los  en  una  bàscula  que  té  una  precisió  de ±\\(1,6\\text{ %}\\). Per fer-ho, s’agafen \\(105 \\text{ g}\\) del primer material i \\(84 \\text{ g}\\) del segon. Quina serà la quantitat de mescla obtinguda?`,
         options: [
             { text: "Entre \\(186.0 \\text{ g}\\) i \\(192.0 \\text{ g}\\)", value: "a" },
@@ -372,7 +372,7 @@ const questions = [
     },
     {
         type: "questions", // Tipus de pregunta
-        category: "organitzacio",
+        category: "metrologia",
         text: `En l’ajust indeterminat 45 H7 / j6, la tolerància H7 del forat és (+25, 0) i la tolerància j6de l’eix és (+11, -5). Quins són el joc i el serratge màxims?`,
         options: [
             { text: "El joc màxim és \\(5 \\text{ μm}\\) i el serratge màxim és \\(36 \\text{ μm}\\)", value: "a" },
@@ -393,7 +393,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "control",
         text: `Un sistema automàtic de control de l’aforament d’un recinte està constituït per tres sen-sors de comptatge de persones situats estratègicament.<br>
             El sistema emet un avís per megafonia quan almenys dos d’aquests sensors superen el valor de referència prefixat \\(p_{màx}\\). Responeu a les qüestions que hi ha a continuació utilitzant les variables d’estat següents:
             <br>Sensor: <img src="images/2016_jun_s3_e1.1.png" width = 40% height = 40%>
@@ -412,7 +412,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "electrics",
         text: `Una cafetera elèctrica disposa de dues resistències: una resistència d’escalfament \\(R_e\\) i una de manteniment \\(R_m\\). En la primera fase d’elaboració del cafè, funciona només la resistència d’escalfament,  que  proporciona  una  potència  \\(P_1=700 \\text{ W}\\) i escalfa l’aigua fins a \\(T_1=120\\text{°C}\\) sense que es produeixi un canvi d’estat.
             <br>Quan l’aigua arriba a la temperatura \\(T_1\\), es connec-ten  les  dues  resistències  en  sèrie  i  proporcionen  una  potència  \\(P_2=260 \\text{ W}\\).  La  temperatura  inicial  de  l’aigua  és  \\(T_0 = 20 \\text{°C}\\),  el  volum  d’aigua escalfat és \\(V = 0.5 \\text{ L}\\) i la cafetera està connectada a la xarxa elèctrica de tensió \\(U = 230\\text{ V}\\). Sabent que la calor específica de l’aigua és \\(c_e=4,18 \\text{ kJ/(kg°C)}\\), determineu:
             <br><strong>a)</strong> L’energia \\(E_1\\) necessària per a escalfar l’aigua en la primera fase. [1 punt]
@@ -469,7 +469,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "materials",
         text: `<img src="images/2016_jun_s3_e3_2.png" width = 40% height = 40%>
             <br>Es vol construir un prisma massís de base quadrada com el de la figura a partir d’un tauler de fusta. Es pot escollir entre dos taulers, l’un de gruix \\(e_1 = 12 \\text{ mm}\\) i l’altre de gruix \\(e_2 = 14 \\text{ mm}\\). Per a construir el prisma, s’hauran de tallar quadrats o rectangles, segons s’esculli, i encolar-los entre ells fins a obtenir la figura.
             El gruix de la cola es considera negligible. La botiga calcula el cost del prisma segons l’expressió \\(c = c_a*p + c_b*s\\), en què \\(p\\) és el perímetre del quadrat o del rectangle tallat i \\(s\\) és la superfície de tauler utilitzada. El primer coeficient de cost és \\(c_a =  0.7 \\text{ €/m}\\), i l’altre coeficient de cost és \\(c_{b1} = 3.2 \\text{ €/m}^2\\) si s’utilitza el tauler de gruix \\(e_1\\), o \\(c_{b2} = 4.8 \\text{ €/m}^2\\) si s’utilitza el tauler de gruix \\(e_2\\). Determineu:
@@ -513,7 +513,7 @@ const questions = [
     },
     {
         type: "exercicis",
-        category: "energia",
+        category: "pneumatica",
         text: `Un elevador de cotxes d’un taller de reparacions funciona mitjançant dos cilindres hidràulicsconnectats directament a la base que suporta el cotxe. Els cilindres tenen un diàmetre interior \\(d_{int} = 100 \\text{ mm}\\) i el diàmetre de la tija és \\(d_{tija} = 56 \\text{ mm}\\). Si la pressió relativa a l’interior dels cilindres és \\(p_{int} = 2.5 \\text{ MPa}\\), determineu:
             <br><strong>a)</strong> La massa màxima \\(m_{màx}\\) que pot aguantar l’elevador.  [1 punt]
             <br><strong>b)</strong> La tensió normal a compressió de la tija \\(σ_{tija}\\) quan s’eleva la massa màxima. [0.5 punts]
@@ -544,7 +544,7 @@ const questions = [
     },
     {
         type: "questions",
-        category: "energia",
+        category: "materials",
         text: `La composició en volum d’un gas natural és la següent: \\(86.15 \\text{ %}\\) de metà, \\(12.68 \\text{ %}\\) d’età, \\(0.4 \\text{ %}\\) de propà, \\(0.09 \\text{ %}\\) de butà i la resta és nitrogen. Si el nitrogen té una densitat d’\\(1.251 \\text{ g/L}\\), quants kilograms de nitrogen hi ha en \\(4500 \\text{ L}\\) d’aquest gas?`,
          options: [
             { text: "\\(0.03828 \\text{ kg}\\)", value: "a" },
@@ -571,7 +571,7 @@ const questions = [
     },
     {
         type: "questions",
-        category: "energia",
+        category: "organitzacio",
         text: `Una empresa comercialitza un model de pantalons nou. El cost de producció unitària és de 10 €. Durant el primer any, l’empresa vol recuperar 250000€ de  la  inversió  inicial,  obtenir un benefici mínim de 15000 € i pagar les despeses de fabricació de totes les unitats venudes. Si la venda prevista està entre 5500 i 9500 unitats, quin ha de ser el preu de venda dels pantalons?`,
          options: [
             { text: "\\(55.45 \\text{ €}\\)", value: "a" },
@@ -588,8 +588,8 @@ const questions = [
     },
     {
         type: "questions",
-        category: "energia",
-        text: `Una barra massissa de secció quadrada de 5 mm de costat pot aguantar una força de trac-ció de fins a 5,9 kN. Quina és la resistència a la tracció del material de la barra?`,
+        category: "materials",
+        text: `Una barra massissa de secció quadrada de 5 mm de costat pot aguantar una força de tracció de fins a 5,9 kN. Quina és la resistència a la tracció del material de la barra?`,
          options: [
             { text: "\\(300.5 \\text{ MPa}\\)", value: "a" },
             { text: "\\(472 \\text{ MPa}\\)", value: "b" },
@@ -609,7 +609,7 @@ const questions = [
     },
     {
         type: "questions",
-        category: "energia",
+        category: "electrics",
         text: `Un  motor  de  corrent  altern  asíncron  de  dos  parells  de  pols  té  un  lliscament  relatiu  de  0,05. Si està connectat a la xarxa de tensió U = 220 V  i  freqüència f = 50 Hz,  a  quina  velocitat està girant?`,
          options: [
             { text: "\\(1425 \\text{ min}^{-1}\\)", value: "a" },
@@ -647,5 +647,176 @@ const questions = [
             P = \\frac{E}{t} = \\frac{22000}{5} = 4.4 \\text{ kW}
             \\]`,
         images: ``  // Imatge opcional al final de la pregunta
+    },
+    {
+        type: "exercicis",
+        category: "control",
+        text: `En l’encreuament entre un carril de tramvia i un carril de cotxes es dóna prioritat al tram-via. Per fer-ho, es controla la presència de tramvies en el tram d’1,5 km abans d’arribar a l’encreuament.
+            <br>Quan el semàfor dels cotxes es posa verd, es manté verd durant 15 s com a mínim, i no passa a vermell fins que es detecta la presència d’un tramvia. El semàfor del tramvia passa a vermell quan no es detecta la presència de cap tramvia.
+            <br>Evidentment, quan el semàfor dels cotxes  és  verd,  el  del  tramvia  és  vermell,  i  viceversa.  Es  defineix  la  variable  \\(tc\\)  com  el  temps  transcorregut des del darrer canvi d’estat dels semàfors. Responeu a les qüestions que hi ha a continuació utilitzant les variables d’estat següents:
+            <br><img src="images/2016_jun_s5_e1.1.png" width = 40% height = 40%>
+            <br>Control de presència: <img src="images/2016_jun_s3_e1.2.png" width = 40% height = 40%>
+            <br>Control de temps: <img src="images/2016_jun_s5_e1.3.png" width = 40% height = 40%>
+            <br>Semàfors: <img src="images/2016_jun_s5_e1.4.png" width = 40% height = 40%>
+            <br><strong>a)</strong> Escriviu la taula de veritat del sistema. [1 punt]
+            <br><strong>b)</strong> Determineu la funció lògica entre aquestes variables i, si escau, simplifiqueu-la. [1 punt]
+            <br><strong>c)</strong> Dibuixeu l’esquema de contactes equivalent. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            <img src="images/2016_jun_s5_e1.5.png" width = 20% height = 20%><br>
+            <strong>b)</strong>
+            <img src="images/2016_jun_s5_e1.6.png" width = 40% height = 40%><br>
+            <strong>c)</strong>
+            <img src="images/2016_jun_s5_e1.7.png" width = 40% height = 40%>`,
+    },
+    {
+        type: "exercicis",
+        category: "electrics",
+        text: `En el disseny d’una planxa de cuina elèctrica s’utilitza fil de constantà per a la resistència. El distribuïdor comercialitza el fil de constantà amb els diàmetres i els preus següents:
+            <br><img src="images/2016_jun_s5_e2.1.png" width = 40% height = 40%>
+            <br>Es vol que la planxa tingui una potència \\(P = 2.2 \\text{ kW}\\) alimentada amb una tensió \\(U = 230 \\text{ V}\\) i unes dimensions de \\(300 × 400 \\text{ mm}^2\\). La resistivitat del constantà és \\(ρ = 4.9 * 10^{–7} \\text{ Ωm}\\).
+            <br><strong>a)</strong> Determineu el corrent \\(I\\) que circularà per la resistència, per a cadascun dels diàmetres disponibles. [0.5 punts]
+            <br><strong>b)</strong> Determineu les longituds de fil de constantà necessàries per a cada diàmetre. [1 punt]
+            <br><strong>c)</strong> Si es calcula que el fil manté calenta una superfície d’una amplària que és 200 vegades el diàmetre del fil, quin és el diàmetre adequat per a escalfar la planxa i quin cost tindrà el fil de constantà necessari?  [1 punt]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            P = I*U \\text{ -> } I = \\frac{P}{U} = \\frac{2200}{230} = 9.565 \\text{ A}
+            \\]
+            <strong>b)</strong>
+            \\[
+            R = \\frac{U^2}{P} = \\frac{ρ*L}{S} = \\frac{4*ρ*L}{π*d^2} \\text{ -> } L = \\frac{U^2*π*d^2}{4*ρ*P}
+            \\]
+            \\[
+            L_1 = \\frac{U^2*π*d_{1}^2}{4*ρ*P} = \\frac{230^2*π*0.125^2}{4*4.9 * 10^{–7}*2200} = 0.6022 \\text{ m}
+            \\]
+            \\[
+            L_2 = \\frac{U^2*π*d_{2}^2}{4*ρ*P} = \\frac{230^2*π*0.25^2}{4*4.9 * 10^{–7}*2200} = 2.409 \\text{ m}
+            \\]
+            \\[
+            L_3 = \\frac{U^2*π*d_{3}^2}{4*ρ*P} = \\frac{230^2*π*0.5^2}{4*4.9 * 10^{–7}*2200} = 9.635 \\text{ m}
+            \\]
+            <strong>c)</strong>
+            \\[
+            S_0 = 300 * 400 = 120000 \\text{ mm}^2 = 0.12 \\text{ m}^2
+            \\]
+            \\[
+            S = L * 200*d
+            \\]
+            \\[
+            S_1 = L * 200*d_1 = 0.6022 * 200*0.125 = 0.01506 \\text{ m}^2
+            \\]
+            \\[
+            S_2 = L * 200*d_2 = 0.6022 * 200*0.25 = 0.1204 \\text{ m}^2
+            \\]
+            \\[
+            S_3 = L * 200*d_3 = 0.6022 * 200*0.5 = 0.9635 \\text{ m}^2
+            \\]
+            La segona opció es la correcta
+            \\[
+            \\text{Cost} = 2.409 * 1.29 = 3.107 \\text{ €}
+            \\]`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `Un panell solar fotovoltaic consisteix en dos grups en paral·lel de 36 cel·les solars en sèrie. La intensitat de corrent que produeix tot el panell en funció de la tensió es pot calcular aproximadament amb l’expressió:
+            <br><img src="images/2016_jun_s5_e3.1.png" width = 40% height = 40%>
+            <br>Per a tot el panell, determineu:
+            <br><strong>a)</strong> El corrent de curtcircuit \\(I_{cs}\\). [0.5 punts]
+            <br><strong>b)</strong> La tensió de circuit obert \\(Uco\\) (tensió en els borns quan no hi circula corrent). [0.5 punts]
+            <br>El panell subministra la potència màxima quan la tensió entre els borns és \\(U_{\\text{màx}} = 17.4 \\text{ V}\\).
+            <br>En aquesta configuració, determineu:
+            <br><strong>c)</strong> La potència màxima \\(P_{\\text{màx}}\\) que subministra el panell. [0.5 punts]
+            <br><strong>d)</strong> La tensió i la intensitat que subministren cadascuna de les cel·les. [1 punt]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            I_{cs} = 6.54 * (1-\\text{exp}(\\frac{0-21.6}{1.556})) = 6.540 \\text{ A}
+            \\]
+            <strong>b)</strong>
+            \\[
+            I = 0 = 6.54 * (1-\\text{exp}(\\frac{0-21.6}{1.556})) = 1 = \\text{exp}(\\frac{0-21.6}{1.556})) = 6.540 \\text{ A}
+            \\]
+            <strong>c)</strong>
+            \\[
+            I_{\\text{màx}} = 6.54 * (1-\\text{exp}(\\frac{17.4-21.6}{1.556})) = 6.100 \\text{ A}
+            \\]
+            \\[
+            P_{\\text{màx}} = I_{\\text{màx}} * V_{\\text{màx}} = 6.100 *17.4 = 106.1 \\text{ W}
+            \\]
+            <strong>d)</strong>
+            2 grups en paral·lel
+            \\[
+            I_{\\text{cel·la}} = \\frac{I_{\\text{màx}}}{2} = \\frac{6.100}{2} = 3.05 \\text{ A}
+            \\]
+            36 cel·les en sèrie
+            \\[
+            U_{\\text{cel·la}} = \\frac{U_{\\text{màx}}}{2} = \\frac{17.4}{36} = 0.4833 \\text{ V}
+            \\]`,
+    },
+    {
+        type: "exercicis",
+        category: "pneumatica",
+        text: `<img src="images/2016_jun_s5_e3.2_1.png" width = 40% height = 40%>
+            <br>La  pala  d’obres  públiques  de  la  figura  s’utilitza  per  a  elevar  una  massa  \\(m = 1 800 \\text{ kg}\\)  de material  mitjançant  l’acció  de  dos  cilindres  hidràulics  que  actuen  en  paral·lel.  Els  cilindres  tenen  un  diàmetre  interior  \\(d_{\\text{int}}  = 110 \\text{ mm}\\)  i  el  diàmetre  de  la  tija  és  \\(d_{\\text{tija}} = 70 \\text{ mm}\\).
+            <br>Per  a  una altura  d’elevació  de  la  pala  \\(0  \\text{ mm} < h < 1500 \\text{ mm}\\),  la  relació  entre  la  velocitat  d’allargament  del cilindre \\(v_{\\text{cil}}\\) i la velocitat d’elevació del centre d’inèrcia de la pala \\(v_p\\) és, aproximadament:
+            <br><img src="images/2016_jun_s5_e3.2_2.png" width = 40% height = 40%>
+            <br><strong>a)</strong> Dibuixeu, d’una manera aproximada i indicant les escales, la relació \\(\\frac{v_{cil}{v_p}\\) en funció de \\(h\\), per a \\(0  \\text{ mm} < h < 1500 \\text{ mm}\\). [1 punt]
+            <br>Si  les  resistències  passives  es  consideren  negligibles  i  la  pala  puja  a  velocitat  constant,  quan \\(h = 1100 \\text{ mm}\\):
+            <br><strong>b)</strong> Determineu la força \\(F_{cil}\\) que fa cadascun dels dos cilindres. [1 punt]
+            <br><strong>c)</strong> Calculeu la pressió \\(p_{int}\\) relativa a l’interior dels cilindres. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            <br><img src="images/2016_jun_s5_e3.2_3.png" width = 40% height = 40%>
+            <br><strong>b)</strong>
+            \\[
+            P_{cil} = 2*F_{cil}*v_{cil} = m*g*v_h \\text{ -> } F_{cil} = \\frac{m*g*v_h}{2*v_{cil}} = \\frac{m*g*50000}{2*(10155-h)} = \\frac{1800*9.81*50000}{2*(10155-1100)} = 48.74 \\text{ kN}
+            \\]
+            <strong>c)</strong>
+            \\[
+            p_{\\text{int}} = \\frac{F_{cil}}{π*(\\frac{d_{\\text{int}}}{2})^2} = \\frac{48740}{π*(\\frac{0.110}{2})^2} = 5.128 \\text{ MPa}
+            \\]`,
+    },
+    {
+        type: "exercicis",
+        category: "energia",
+        text: `En un habitatge unifamiliar s’utilitzen captadors solars de superfície \\(S = 2.2 \\text{ m}^2\\) per a pro-duir aigua calenta, que es complementen amb un escalfador elèctric de potència \\(P = 1800 \\text{ W}\\) els dies en què la radiació solar no és suficient.
+            <br>L’aigua que entra en el sistema té una temperatura de \\(10 \\text{°C}\\) i es vol que surti a \\(45 \\text{°C}\\). Es calcula que el consum diari d’aigua és \\(c = 240 \\text{ L}\\). Sabent que la calor específica de l’aigua és \\(ce = 4.18 \\text{ J/(g °C)}\\),  determineu:
+            <br><strong>a)</strong> La irradiació solar diària mínima \\(I_{dia}\\), en \\(\\text{MJ}/\\text{m}^2\\), necessària per a produir tota l’energia amb un únic captador solar. [1 punt]
+            <br>Si  la  radiació  solar  diària  és  una  tercera  part  de  la  radiació  mínima  necessària  i  es  vol  cobrir, com a mínim, el \\(60 \\text{ %}\\) de la demanda amb energia solar, determineu:
+            <br><strong>b)</strong> El nombre de captadors que cal instal·lar. [1 punt]
+            <br><strong>c)</strong> L’energia elèctrica diària consumida \\(E_{elèctr}\\), en \\(\\text{kWh}\\), si s’instal·la el nombre de capta-dors determinat en l’apartat b. [0.5 punts]`,
+        correctAnswer: "",  // No és necessari aquí perquè es tracta d'un exercici obert
+        steps: `
+            <strong>a)</strong>
+            \\[
+            E_{dia} = c*ρ*c_e*ΔT = 240 * 1 * s.18 * 10^3 * (45-10) = 35.11 \\text{ MJ}
+            \\]
+            \\[
+            I_{dia} = \\frac{E_{dia}}{S} = \\frac{35.11*10^6}{2.2} = 15.96 \\text{ MJ/m}^2
+            \\]
+            <br><strong>b)</strong>
+            \\[
+            I = \\frac{I_{dia}}{3} = \\frac{15.96}{3} = 5.32 \\text{ MJ/m}^2
+            \\]
+            \\[
+            S_{necessària} = \\frac{0.60*E_{dia}}{I} = \\frac{0.60*35.11}{5.32} = 3.96 \\text{ m}^2
+            \\]
+            \\[
+            \\frac{S_{necessària}}{S} = \\frac{3.96}{2.2} = 1.18
+            \\]
+            Es necessiten 2 captadors
+            <br><strong>c)</strong>
+            \\[
+            E_{solar} = 2 * S * I = 2 * 2.2 * 5.32 = 23.41 \\text{ MJ}
+            \\]
+            \\[
+            E_{elèctr} = E_{dia}-E_{solar} = 35.11-23.41 = 11.70 \\text{ MJ} = 3.25 \\text{kWh}
+            \\]`,
     }
 ];
